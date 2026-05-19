@@ -1,345 +1,240 @@
-import type { Metadata } from "next";
+"use client";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import {
-  ArrowRight,
-  Building2,
-  Store,
-  MapPinned,
-  Utensils,
-  ShoppingCart,
-  Wrench,
-  Dumbbell,
-  Briefcase,
-  Quote,
+  Building2, Store, MapPinned, ArrowRight,
+  BarChart2, ShieldCheck, Megaphone, Wallet,
+  Brain, Package, Star, TrendingUp,
+  Map, ClipboardList, Bell, MessageSquare,
+  Utensils, ShoppingCart, Wrench, Dumbbell, Briefcase,
+  CheckCircle,
 } from "lucide-react";
 
-export const metadata: Metadata = { title: "Solutions" };
-
-/* ─── Data ──────────────────────────────────────────────────────────────── */
-
-const AUDIENCES = [
+const ROLES = [
   {
     id: "head-office",
     icon: Building2,
     label: "Head Office",
-    accentColor: "#C8921A",
-    headline: "Give your marketing leadership team the control they need — without slowing down the network.",
-    sections: [
-      {
-        title: "Full-network visibility, finally.",
-        body: "For most franchise marketing leaders, the honest answer to 'how is the network performing right now?' is 'we will know by Thursday once the reports come in.' Sova replaces that delay with a real-time operations layer. Every location's campaign status, spend rate, creative compliance, and key performance indicators are visible in a single dashboard — updated continuously, not weekly.",
-      },
-      {
-        title: "Brand consistency at scale.",
-        body: "The risk of a franchise network is that 50 locations means 50 separate marketing decisions, many of which deviate from brand standards. Sova's content and campaign architecture enforces brand guidelines at the point of creation — franchisees can only work within the guardrails you have set. That means consistent visual identity, consistent messaging hierarchy, and consistent CASL compliance across every market in the country.",
-      },
-      {
-        title: "Strategic resource allocation, not reactive firefighting.",
-        body: "Sova's AI Intelligence layer does the synthesis work that currently sits on your team's plate — flagging underperforming locations, recommending budget reallocation, predicting seasonal demand curves, and generating structured briefs for your creative team. The result is a marketing function that operates on evidence rather than intuition, and a team that spends its time on strategy rather than data wrangling.",
-      },
-      {
-        title: "Marketing fund management that builds franchisee trust.",
-        body: "Co-op marketing funds are one of the most sensitive operational topics in any franchise system. Sova provides fully transparent co-op tracking — franchisees can see exactly how their contributions are being allocated, and head office can demonstrate clearly that fund governance is sound. That transparency removes a persistent source of franchisee friction and builds the kind of trust that makes adoption of network initiatives far easier.",
-      },
+    color: "#C8921A",
+    tagline: "Control without micromanagement.",
+    stats: [
+      { n: "Real-time", l: "network visibility" },
+      { n: "100%", l: "brand compliance" },
+      { n: "2×", l: "faster campaign launch" },
+      { n: "Zero", l: "manual report pulls" },
+    ],
+    benefits: [
+      { icon: BarChart2, title: "Live network dashboard", desc: "Every location's spend, performance, and compliance — right now." },
+      { icon: ShieldCheck, title: "Brand guardrails", desc: "Franchisees customise within rules you set. No rogue creative." },
+      { icon: Megaphone, title: "One-click deployment", desc: "Push campaigns to any number of locations instantly." },
+      { icon: Wallet, title: "Co-op transparency", desc: "Fund allocations franchisees can see. Builds trust, reduces friction." },
+      { icon: Brain, title: "AI-powered decisions", desc: "Anomaly alerts, budget recommendations, demand forecasting." },
+      { icon: Package, title: "Vendor governance", desc: "Pre-vetted suppliers, network pricing, centralised procurement." },
     ],
   },
   {
     id: "franchisees",
     icon: Store,
     label: "Franchisees",
-    accentColor: "#1A6478",
-    headline: "Market like a professional without building a marketing department.",
-    sections: [
-      {
-        title: "Everything you need, ready to use.",
-        body: "Most franchisees entered the system to run a business, not to become a marketing generalist. Sova's franchisee experience is designed around that reality — pre-approved campaigns, ready-to-deploy templates, and a curated vendor marketplace that eliminates the need to source, negotiate with, or manage marketing suppliers independently. You can launch a professional local campaign in the time it used to take to brief an agency.",
-      },
-      {
-        title: "Local control where it matters.",
-        body: "Your market is not identical to the location two provinces over. Sova gives you the flexibility to adjust messaging, promotional offers, and scheduling within the parameters your franchisor has established — without requiring approvals for every minor change. Geofencing tools let you target your trade area precisely, weather-triggered campaigns activate automatically, and self-serve paid media tools let you invest incremental budget in the placements most relevant to your local customer base.",
-      },
-      {
-        title: "Visibility into your own performance.",
-        body: "Understanding how your marketing investment is performing should not require a data analyst. Sova provides franchisee-level dashboards that translate raw campaign data into clear business outcomes: leads generated, return on ad spend, email engagement by segment, and foot-traffic attribution from your digital campaigns. Peer benchmarking reports show how your location compares to similar stores in your region — giving you context without exposing competitive data from other franchisees.",
-      },
-      {
-        title: "Access to network pricing you could not get alone.",
-        body: "As a single location, your negotiating power with print suppliers, signage vendors, and creative agencies is limited. As a Sova network member, you access the combined purchasing power of the entire franchise system. Pre-negotiated rates on print, promotional merchandise, photography, and digital services are available directly through the platform — no sourcing, no RFP, no back-and-forth on pricing.",
-      },
+    color: "#1A6478",
+    tagline: "Local flexibility. Brand confidence.",
+    stats: [
+      { n: "Minutes", l: "to launch a campaign" },
+      { n: "Network", l: "buying power" },
+      { n: "Clear", l: "performance data" },
+      { n: "No agency", l: "required" },
+    ],
+    benefits: [
+      { icon: Megaphone, title: "Ready-to-use campaigns", desc: "Pre-approved templates — launch a local campaign in minutes." },
+      { icon: MapPinned, title: "Trade-area targeting", desc: "Geofencing tools built for your specific location and radius." },
+      { icon: BarChart2, title: "Your performance, simply", desc: "Leads, ROAS, foot traffic — no data analyst needed." },
+      { icon: Star, title: "Peer benchmarking", desc: "See how your location ranks against similar stores in your region." },
+      { icon: Package, title: "Network vendor pricing", desc: "Access print, signage, and creative at rates you can't get alone." },
+      { icon: TrendingUp, title: "Incremental media buying", desc: "Self-serve paid ads within approved parameters." },
     ],
   },
   {
     id: "field-managers",
     icon: MapPinned,
     label: "Field Managers",
-    accentColor: "#2EA5A0",
-    headline: "Move from territory oversight to territory impact.",
-    sections: [
-      {
-        title: "Your territory, structured and searchable.",
-        body: "Field managers and franchise business consultants typically carry a territory of 15 to 30 locations — and the operational record for each one lives in a combination of email inboxes, shared drives, and personal notebooks. Sova replaces that fragmented picture with a structured territory workspace: every franchisee's performance history, visit logs, action items, compliance flags, and escalation threads in one place.",
-      },
-      {
-        title: "Conversations with context.",
-        body: "Walking into a franchisee coaching conversation with their last three months of marketing performance in front of you changes the quality of the discussion. Sova surfaces the data that matters — campaign participation rates, spend efficiency, creative compliance, peer benchmark position — so that field visits are grounded in evidence rather than impressions. Structured visit logs capture the outcomes and commitments from each conversation, creating accountability on both sides.",
-      },
-      {
-        title: "Proactive rather than reactive support.",
-        body: "The traditional field management model is reactive: a franchisee calls with a problem, the field manager responds. Sova inverts that dynamic. Automated compliance flags alert you when a franchisee has not activated a required campaign, when their marketing spend rate suggests a budget problem, or when their performance metrics have shifted meaningfully. You can act before the franchisee even knows there is an issue — which is exactly the kind of support that builds loyalty to the system.",
-      },
-      {
-        title: "A closed loop to head office.",
-        body: "Field managers are the most important channel of information flowing between franchisees and head office — but that information rarely makes it upward in a structured form. Sova's escalation workflows, territory rollup reports, and shared visibility across roles ensure that what your field team observes on the ground informs the decisions being made at the corporate level. The gap between what head office believes is happening and what is actually happening in the network closes significantly.",
-      },
+    color: "#2EA5A0",
+    tagline: "Your territory. Structured and searchable.",
+    stats: [
+      { n: "Full", l: "territory history" },
+      { n: "Proactive", l: "compliance alerts" },
+      { n: "Structured", l: "visit workflows" },
+      { n: "Closed", l: "loop to head office" },
+    ],
+    benefits: [
+      { icon: Map, title: "Territory workspace", desc: "Every franchisee's performance, visits, and flags in one view." },
+      { icon: ClipboardList, title: "Structured visit logs", desc: "Capture commitments and outcomes from every coaching conversation." },
+      { icon: Bell, title: "Proactive alerts", desc: "Get notified when a franchisee skips a campaign or spend dips." },
+      { icon: BarChart2, title: "Coaching with data", desc: "Walk into every visit with the last 90 days of performance loaded." },
+      { icon: MessageSquare, title: "Escalation workflows", desc: "Surface field observations to head office in a structured format." },
+      { icon: TrendingUp, title: "Regional rollups", desc: "Territory-level performance summaries for every review cycle." },
     ],
   },
 ];
 
 const VERTICALS = [
-  {
-    id: "qsr",
-    icon: Utensils,
-    name: "Quick Service Restaurants",
-    accentColor: "#D84F18",
-    body: "QSR franchises operate on thin margins, high transaction volumes, and intensely local competition. Sova's geofencing and paid media tools are optimised for drive-time targeting, daypart-specific promotions, and trade-area conquest campaigns. Foot-traffic attribution closes the loop between your digital spend and actual customer visits — giving you a real return-on-ad-spend figure rather than a platform-reported estimate.",
-  },
-  {
-    id: "retail",
-    icon: ShoppingCart,
-    name: "Retail",
-    accentColor: "#C8921A",
-    body: "Retail franchise networks face the dual challenge of maintaining a consistent brand experience while responding to highly localised inventory, seasonal demand, and competitive dynamics. Sova's Content Studio and Campaign Engine allow head office to centralise brand standards while giving individual locations the flexibility to promote their own events, local partnerships, and clearance inventory — all within a compliant framework.",
-  },
-  {
-    id: "home-services",
-    icon: Wrench,
-    name: "Home Services",
-    accentColor: "#1A6478",
-    body: "Home services franchises — plumbing, HVAC, restoration, landscaping — depend on hyper-local targeting and reputation management. Sova's geofencing module allows franchisees to target specific postal codes and neighbourhoods with precision, while weather-triggered campaigns activate automatically during the conditions that drive demand. The Vendor Marketplace provides access to pre-vetted direct mail and door-hanger suppliers at network pricing.",
-  },
-  {
-    id: "fitness",
-    icon: Dumbbell,
-    name: "Fitness and Wellness",
-    accentColor: "#2EA5A0",
-    body: "Fitness and wellness franchises operate with strong seasonality — January, back-to-school, and pre-summer are peak acquisition windows. Sova's demand forecasting surfaces those periods well in advance, allowing head office to pre-build campaign infrastructure and franchisees to activate at the right moment. Member retention campaigns, referral program coordination, and local event marketing are all managed within a single platform.",
-  },
-  {
-    id: "professional-services",
-    icon: Briefcase,
-    name: "Professional Services",
-    accentColor: "#1C2B4A",
-    body: "Professional services franchises — financial advisory, legal, accounting, real estate — operate in regulated environments where marketing compliance is non-negotiable. Sova's brand governance layer ensures that every piece of franchisee-generated content has passed through an approval workflow before publication. CASL opt-in management and automated suppression lists protect the network from compliance exposure at every location.",
-  },
+  { icon: Utensils,    name: "Quick Service",        color: "#D84F18", line: "Drive-time targeting, daypart promos, foot-traffic attribution." },
+  { icon: ShoppingCart,name: "Retail",               color: "#C8921A", line: "Brand-consistent local promotions with head-office guardrails." },
+  { icon: Wrench,      name: "Home Services",         color: "#1A6478", line: "Postal-code geofencing, weather triggers, direct mail suppliers." },
+  { icon: Dumbbell,    name: "Fitness & Wellness",    color: "#2EA5A0", line: "Seasonal demand forecasting, member retention, referral programs." },
+  { icon: Briefcase,   name: "Professional Services", color: "#1C2B4A", line: "Regulated marketing compliance, CASL management, approval workflows." },
 ];
 
-const TESTIMONIAL = {
-  quote:
-    "Before Sova, our field team was spending two days a week pulling together territory reports from individual franchisee spreadsheets. Now that work is done automatically, and our coaches are spending that time having better conversations with franchisees. The quality of our field program has improved measurably.",
-  name: "Director of Franchise Development",
-  org: "National QSR Brand, 180+ Canadian Locations",
-};
-
-/* ─── Page ───────────────────────────────────────────────────────────────── */
-
 export default function SolutionsPage() {
+  const [active, setActive] = useState(ROLES[0].id);
+  const role = ROLES.find((r) => r.id === active)!;
+  const RoleIcon = role.icon;
+
   return (
     <>
-      {/* ── Hero ────────────────────────────────────────────────────────── */}
-      <section
-        className="relative overflow-hidden"
-        style={{ background: "#EDE9E3" }}
-      >
-        <div
-          className="absolute inset-0 grid-subtle opacity-60 pointer-events-none"
-        />
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 55% 65% at 75% 40%, rgba(200,146,26,0.07) 0%, transparent 70%)",
-          }}
-        />
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-10 pt-36 pb-24">
-          <div className="max-w-3xl">
-            <div
-              className="font-sans-ui text-[11px] font-semibold tracking-[0.22em] uppercase mb-6"
-              style={{ color: "#C8921A" }}
-            >
-              Sova Solutions
-            </div>
-            <h1
-              className="font-display text-[64px] sm:text-[80px] lg:text-[96px] leading-[0.9] mb-8"
-              style={{ color: "#1C2B4A" }}
-            >
-              SOLUTIONS FOR EVERY LAYER OF YOUR FRANCHISE
-            </h1>
-            <div className="rule-gold mb-8" />
-            <p
-              className="text-xl leading-relaxed max-w-2xl"
-              style={{
-                fontFamily: "'Constantia', Georgia, serif",
-                color: "#4A5568",
-              }}
-            >
-              A franchise marketing platform is only effective if it works for every role in the system — not just head office. Sova is designed for the full structure of the modern franchise organisation: the corporate marketing team, the franchisee running the business, and the field manager holding it all together.
-            </p>
+      {/* Hero */}
+      <section className="relative overflow-hidden bg-[#EDE9E3]">
+        <div className="absolute inset-0 grid-subtle opacity-50 pointer-events-none" />
+        <div className="absolute inset-0 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse 50% 60% at 70% 40%, rgba(200,146,26,0.07) 0%, transparent 70%)" }} />
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-10 pt-36 pb-20">
+          <div className="font-sans-ui text-[11px] font-semibold tracking-[0.22em] text-[#C8921A] uppercase mb-5">
+            Sova Solutions
           </div>
+          <h1 className="font-display text-[clamp(52px,7vw,96px)] text-[#1C2B4A] leading-[0.88] mb-6 max-w-3xl">
+            ONE PLATFORM.<br />EVERY ROLE.<br /><span style={{ color: "#C8921A" }}>EVERY LAYER.</span>
+          </h1>
+          <p className="text-lg text-[#4A5568] max-w-xl mb-12" style={{ fontFamily: "'Constantia', Georgia, serif" }}>
+            Designed for the full franchise structure — head office, franchisees, and field teams all working from the same platform.
+          </p>
 
-          {/* Role quick-nav */}
-          <div className="mt-16 flex flex-wrap gap-3">
-            {AUDIENCES.map((a) => (
-              <a
-                key={a.id}
-                href={`#${a.id}`}
-                className="font-sans-ui text-sm font-medium px-4 py-2 rounded-sm transition-all duration-200"
-                style={{
-                  background: "#FDFBF8",
-                  color: "#1C2B4A",
-                  border: "1px solid rgba(28,43,74,0.12)",
-                }}
-              >
-                {a.label}
-              </a>
-            ))}
+          {/* Role tabs */}
+          <div className="flex gap-2 flex-wrap">
+            {ROLES.map((r) => {
+              const Icon = r.icon;
+              const isActive = r.id === active;
+              return (
+                <button
+                  key={r.id}
+                  onClick={() => setActive(r.id)}
+                  className="flex items-center gap-2 font-sans-ui text-[13px] font-semibold px-5 py-2.5 rounded-sm transition-all duration-200"
+                  style={{
+                    background: isActive ? r.color : "#FDFBF8",
+                    color: isActive ? "white" : "#1C2B4A",
+                    border: `1px solid ${isActive ? r.color : "rgba(28,43,74,0.12)"}`,
+                  }}
+                >
+                  <Icon size={14} />
+                  {r.label}
+                </button>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* ── Audience sections ─────────────────────────────────────────────── */}
-      {AUDIENCES.map((audience, i) => {
-        const Icon = audience.icon;
-        const isAlt = i % 2 === 1;
-        const bg = isAlt ? "#FDFBF8" : "#F5F1EB";
-
-        return (
-          <section
-            key={audience.id}
-            id={audience.id}
-            className="py-24"
-            style={{ background: bg }}
-          >
-            <div className="max-w-7xl mx-auto px-6 lg:px-10">
-              {/* Section header */}
-              <div className="mb-16">
-                <div className="flex items-center gap-3 mb-5">
-                  <div
-                    className="w-10 h-10 rounded-sm flex items-center justify-center"
-                    style={{ background: audience.accentColor }}
-                  >
-                    <Icon size={20} color="#fff" />
+      {/* Role panel */}
+      <AnimatePresence mode="wait">
+        <motion.section
+          key={active}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -8 }}
+          transition={{ duration: 0.3 }}
+          className="py-20 bg-[#F5F1EB]"
+        >
+          <div className="max-w-7xl mx-auto px-6 lg:px-10">
+            {/* Role header */}
+            <div className="flex flex-wrap items-end justify-between gap-8 mb-14">
+              <div>
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center" style={{ background: role.color }}>
+                    <RoleIcon size={18} color="white" />
                   </div>
-                  <span
-                    className="font-sans-ui text-[11px] font-semibold tracking-[0.2em] uppercase"
-                    style={{ color: audience.accentColor }}
-                  >
-                    {audience.label}
+                  <span className="font-sans-ui text-[11px] font-semibold tracking-[0.2em] uppercase" style={{ color: role.color }}>
+                    {role.label}
                   </span>
                 </div>
-                <h2
-                  className="font-display text-[40px] sm:text-[52px] lg:text-[60px] leading-[0.93] max-w-3xl"
-                  style={{ color: "#1C2B4A" }}
-                >
-                  {audience.headline.toUpperCase()}
+                <h2 className="font-display text-[clamp(36px,4vw,56px)] text-[#1C2B4A] leading-[0.92]">
+                  {role.tagline.toUpperCase()}
                 </h2>
-                <div
-                  className="w-12 h-0.5 mt-6"
-                  style={{ background: audience.accentColor }}
-                />
               </div>
 
-              {/* Content grid */}
-              <div className="grid sm:grid-cols-2 gap-8">
-                {audience.sections.map((sec, si) => (
-                  <div
-                    key={si}
-                    className="rounded-sm p-8"
-                    style={{
-                      background: isAlt ? "#F5F1EB" : "#FDFBF8",
-                      border: "1px solid rgba(28,43,74,0.07)",
-                    }}
-                  >
-                    <div
-                      className="w-8 h-0.5 mb-4"
-                      style={{ background: audience.accentColor }}
-                    />
-                    <h3
-                      className="font-sans-ui text-base font-semibold mb-3"
-                      style={{ color: "#1C2B4A" }}
-                    >
-                      {sec.title}
-                    </h3>
-                    <p
-                      className="text-sm leading-relaxed"
-                      style={{
-                        fontFamily: "'Constantia', Georgia, serif",
-                        color: "#4A5568",
-                      }}
-                    >
-                      {sec.body}
-                    </p>
+              {/* Stat strip */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-[rgba(28,43,74,0.08)] rounded-xl overflow-hidden border border-[rgba(28,43,74,0.08)]">
+                {role.stats.map((s) => (
+                  <div key={s.l} className="bg-[#FDFBF8] px-5 py-4 text-center">
+                    <div className="font-display text-[28px] leading-none mb-1" style={{ color: role.color }}>{s.n}</div>
+                    <div className="font-sans-ui text-[11px] text-[#718096] leading-tight">{s.l}</div>
                   </div>
                 ))}
               </div>
             </div>
-          </section>
-        );
-      })}
 
-      {/* ── Industry verticals ─────────────────────────────────────────────── */}
-      <section className="py-24" style={{ background: "#EDE9E3" }}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="mb-14">
-            <div
-              className="font-sans-ui text-[11px] font-semibold tracking-[0.2em] uppercase mb-4"
-              style={{ color: "#C8921A" }}
-            >
-              Industry Coverage
+            {/* Benefit grid */}
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {role.benefits.map((b, i) => {
+                const BIcon = b.icon;
+                return (
+                  <motion.div
+                    key={b.title}
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.06 }}
+                    className="bg-white rounded-xl p-6 border border-[rgba(28,43,74,0.07)] flex items-start gap-4 card-hover"
+                  >
+                    <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0 mt-0.5"
+                      style={{ background: `${role.color}15` }}>
+                      <BIcon size={16} style={{ color: role.color }} />
+                    </div>
+                    <div>
+                      <div className="font-sans-ui text-[14px] font-semibold text-[#1C2B4A] mb-1">{b.title}</div>
+                      <div className="font-sans-ui text-[12px] text-[#718096] leading-relaxed">{b.desc}</div>
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
-            <h2
-              className="font-display text-[44px] sm:text-[56px] lg:text-[68px] leading-[0.92] max-w-2xl"
-              style={{ color: "#1C2B4A" }}
-            >
-              BUILT FOR THE CANADIAN FRANCHISE LANDSCAPE
+          </div>
+        </motion.section>
+      </AnimatePresence>
+
+      {/* Network flow diagram */}
+      <section className="py-20 bg-[#1C2B4A] overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <div className="text-center mb-14">
+            <div className="font-sans-ui text-[11px] font-semibold tracking-[0.2em] text-[#C8921A] uppercase mb-4">How It Connects</div>
+            <h2 className="font-display text-[clamp(36px,5vw,64px)] text-white leading-[0.9]">
+              THE FULL FRANCHISE LOOP.
             </h2>
-            <div className="rule-gold mt-6" />
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {VERTICALS.map((v) => {
-              const Icon = v.icon;
+          <div className="grid lg:grid-cols-3 gap-4 relative">
+            {ROLES.map((r, i) => {
+              const Icon = r.icon;
               return (
-                <div
-                  key={v.id}
-                  className="rounded-sm p-7 flex flex-col gap-4"
-                  style={{
-                    background: "#FDFBF8",
-                    border: "1px solid rgba(28,43,74,0.08)",
-                  }}
-                >
-                  <div className="flex items-center gap-3">
-                    <div
-                      className="w-9 h-9 rounded-sm flex items-center justify-center flex-shrink-0"
-                      style={{ background: v.accentColor }}
-                    >
-                      <Icon size={17} color="#fff" />
+                <div key={r.id} className="relative">
+                  <div className="rounded-xl p-7 border h-full"
+                    style={{ background: "rgba(255,255,255,0.04)", borderColor: `${r.color}40`, borderTop: `2px solid ${r.color}` }}>
+                    <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-5" style={{ background: `${r.color}25` }}>
+                      <Icon size={18} style={{ color: r.color }} />
                     </div>
-                    <h3
-                      className="font-sans-ui text-sm font-semibold leading-snug"
-                      style={{ color: "#1C2B4A" }}
-                    >
-                      {v.name}
-                    </h3>
+                    <div className="font-display text-[22px] text-white mb-3">{r.label.toUpperCase()}</div>
+                    <ul className="space-y-2">
+                      {r.benefits.slice(0, 3).map((b) => (
+                        <li key={b.title} className="flex items-center gap-2 font-sans-ui text-[12px] text-white/50">
+                          <CheckCircle size={11} style={{ color: r.color, flexShrink: 0 }} />
+                          {b.title}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <p
-                    className="text-sm leading-relaxed"
-                    style={{
-                      fontFamily: "'Constantia', Georgia, serif",
-                      color: "#4A5568",
-                    }}
-                  >
-                    {v.body}
-                  </p>
+                  {i < 2 && (
+                    <div className="hidden lg:flex absolute top-1/2 -right-2.5 z-10 w-5 h-5 rounded-full items-center justify-center"
+                      style={{ background: "#1C2B4A", border: "2px solid rgba(200,146,26,0.4)" }}>
+                      <ArrowRight size={10} style={{ color: "#C8921A" }} />
+                    </div>
+                  )}
                 </div>
               );
             })}
@@ -347,90 +242,54 @@ export default function SolutionsPage() {
         </div>
       </section>
 
-      {/* ── Testimonial callout ───────────────────────────────────────────── */}
-      <section className="py-24" style={{ background: "#1C2B4A" }}>
-        <div className="max-w-5xl mx-auto px-6 lg:px-10">
-          <div className="grid lg:grid-cols-[auto_1fr] gap-10 items-start">
-            <div
-              className="w-14 h-14 rounded-sm flex items-center justify-center flex-shrink-0"
-              style={{ background: "rgba(200,146,26,0.15)", border: "1px solid rgba(200,146,26,0.2)" }}
-            >
-              <Quote size={28} style={{ color: "#C8921A" }} />
-            </div>
-            <div>
-              <blockquote
-                className="text-xl sm:text-2xl leading-relaxed mb-8"
-                style={{
-                  fontFamily: "'Constantia', Georgia, serif",
-                  color: "rgba(253,251,248,0.88)",
-                  fontStyle: "italic",
-                }}
-              >
-                &ldquo;{TESTIMONIAL.quote}&rdquo;
-              </blockquote>
-              <div
-                className="w-10 h-0.5 mb-5"
-                style={{ background: "#C8921A" }}
-              />
-              <div
-                className="font-sans-ui text-sm font-semibold"
-                style={{ color: "#FDFBF8" }}
-              >
-                {TESTIMONIAL.name}
-              </div>
-              <div
-                className="font-sans-ui text-sm mt-1"
-                style={{ color: "rgba(253,251,248,0.5)" }}
-              >
-                {TESTIMONIAL.org}
-              </div>
-            </div>
+      {/* Verticals */}
+      <section className="py-20 bg-[#EDE9E3]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+          <div className="mb-12">
+            <div className="font-sans-ui text-[11px] font-semibold tracking-[0.2em] text-[#C8921A] uppercase mb-4">Industry Coverage</div>
+            <h2 className="font-display text-[clamp(36px,5vw,60px)] text-[#1C2B4A] leading-[0.9]">
+              BUILT FOR YOUR CATEGORY.
+            </h2>
+          </div>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            {VERTICALS.map((v, i) => {
+              const Icon = v.icon;
+              return (
+                <motion.div
+                  key={v.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.07 }}
+                  className="bg-white rounded-xl p-6 border border-[rgba(28,43,74,0.08)] card-hover"
+                  style={{ borderTop: `3px solid ${v.color}` }}
+                >
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
+                    style={{ background: `${v.color}15` }}>
+                    <Icon size={18} style={{ color: v.color }} />
+                  </div>
+                  <div className="font-sans-ui text-[13px] font-semibold text-[#1C2B4A] mb-2">{v.name}</div>
+                  <div className="font-sans-ui text-[11px] text-[#718096] leading-relaxed">{v.line}</div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* ── CTA ───────────────────────────────────────────────────────────── */}
-      <section className="py-24" style={{ background: "#F5F1EB" }}>
+      {/* CTA */}
+      <section className="py-20 bg-[#F5F1EB]">
         <div className="max-w-4xl mx-auto px-6 lg:px-10 text-center">
-          <div
-            className="font-sans-ui text-[11px] font-semibold tracking-[0.2em] uppercase mb-4"
-            style={{ color: "#C8921A" }}
-          >
-            Book a Demo
-          </div>
-          <h2
-            className="font-display text-[52px] sm:text-[68px] lg:text-[80px] leading-[0.92] mb-6"
-            style={{ color: "#1C2B4A" }}
-          >
-            SEE HOW SOVA FITS YOUR NETWORK
+          <h2 className="font-display text-[clamp(40px,6vw,72px)] text-[#1C2B4A] leading-[0.9] mb-6">
+            SEE HOW SOVA<br />FITS YOUR NETWORK.
           </h2>
           <div className="rule-gold mx-auto mb-8" />
-          <p
-            className="text-lg leading-relaxed mb-10 max-w-2xl mx-auto"
-            style={{
-              fontFamily: "'Constantia', Georgia, serif",
-              color: "#4A5568",
-            }}
-          >
-            Every franchise system is structured differently. Book a 45-minute session with a Sova specialist and we will show you how the platform maps to your specific roles, workflows, and growth priorities — no generic demos, no sales theatre.
-          </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              href="/demo"
-              className="font-sans-ui inline-flex items-center gap-2.5 text-base font-medium tracking-wide px-7 py-3.5 rounded-sm transition-all duration-200 active:scale-[0.98]"
-              style={{ background: "#1C2B4A", color: "#fff" }}
-            >
-              Book a Demo
-              <ArrowRight size={16} />
+            <Link href="/demo" className="font-sans-ui inline-flex items-center gap-2 text-[14px] font-semibold px-7 py-3.5 rounded-sm bg-[#1C2B4A] text-white hover:bg-[#263d6b] transition-colors">
+              Book a Demo <ArrowRight size={15} />
             </Link>
-            <Link
-              href="/platform"
-              className="font-sans-ui inline-flex items-center gap-2.5 text-base font-medium tracking-wide px-7 py-3.5 rounded-sm transition-all duration-200"
-              style={{
-                border: "1px solid rgba(28,43,74,0.25)",
-                color: "#1C2B4A",
-              }}
-            >
+            <Link href="/platform" className="font-sans-ui inline-flex items-center gap-2 text-[14px] font-medium px-7 py-3.5 rounded-sm border border-[rgba(28,43,74,0.2)] text-[#1C2B4A] hover:border-[#1C2B4A] transition-colors">
               Explore the Platform
             </Link>
           </div>

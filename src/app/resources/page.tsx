@@ -132,7 +132,7 @@ export default function ResourcesPage() {
             THE FRANCHISE MARKETING BRIEF.
           </h2>
           <p className="text-[15px] text-white/55 max-w-md mx-auto mb-8" style={{ fontFamily: "'Constantia', Georgia, serif" }}>
-            Monthly intelligence for Canadian franchise marketers — industry shifts, platform updates, and curated insights. No spam, unsubscribe anytime.
+            Monthly intelligence for Canadian franchise marketers — industry shifts, platform updates, and curated insights.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
             <input

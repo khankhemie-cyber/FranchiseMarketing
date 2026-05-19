@@ -68,27 +68,27 @@ const TIERS = [
 const FAQS = [
   {
     q: "What's included in setup?",
-    a: "All plans include a structured onboarding process covering platform configuration, location data import, and brand asset setup. Managed plans include a dedicated onboarding manager for the first 60 days. Enterprise onboarding is scoped as part of the contract.",
+    a: "All plans include platform configuration, location data import, and brand asset setup. Managed plans add a dedicated onboarding manager for the first 60 days.",
   },
   {
     q: "Can franchisees have their own logins?",
-    a: "Yes. Each location can have its own franchisee-facing login with permissions set by the brand. Franchisees can access local reporting, submit creative requests, and run approved local campaigns — within boundaries the brand controls.",
+    a: "Yes — each location gets a franchisee-facing login with permissions set by the brand. Franchisees can view local reporting and run brand-approved campaigns within defined boundaries.",
   },
   {
     q: "Is there a minimum contract term?",
-    a: "Platform plans are available month-to-month. Managed plans require a 12-month commitment. Enterprise terms are negotiated per contract and typically run 24 months with defined renewal options.",
+    a: "Platform plans are month-to-month. Managed plans require a 12-month commitment; Enterprise terms are negotiated per contract.",
   },
   {
     q: "Do you offer trials?",
-    a: "We do not offer self-serve free trials. Instead, we offer a structured 30-day pilot for qualified Growth and Enterprise prospects, with full platform access and support. Book a demo to determine eligibility.",
+    a: "No self-serve trials — qualified prospects can access a structured 30-day pilot with full platform support. Book a demo to determine eligibility.",
   },
   {
     q: "How are locations counted?",
-    a: "A location is any distinct operating unit within your franchise network — a physical store, a service territory, or a licensed outlet. Corporate-owned and franchisee-owned locations are counted equally. Temporary or seasonal locations are counted if they are active for more than 90 consecutive days.",
+    a: "A location is any distinct operating unit — physical store, service territory, or licensed outlet. Temporary or seasonal locations count only if active for more than 90 consecutive days.",
   },
   {
     q: "Can pricing scale mid-year if we open new locations?",
-    a: "Yes. If your network grows past a plan's location threshold during a contract term, your plan will be upgraded at the next billing cycle. Prorated credits are applied when applicable. You will not be charged retroactively.",
+    a: "Yes. Your plan upgrades at the next billing cycle when your network grows past a threshold. You will not be charged retroactively.",
   },
 ];
 
@@ -222,7 +222,7 @@ export default function PricingPage() {
             NOT SURE WHICH<br />PLAN FITS?
           </h2>
           <p className="text-[17px] text-white/60 leading-relaxed mb-10">
-            Book a 15-minute call with a Sova team member. We&rsquo;ll ask about your network, walk through the platform, and recommend a starting point — no commitment required.
+            Book a 15-minute call and we&rsquo;ll recommend the right plan for your network — no commitment required.
           </p>
           <BookingCTA />
         </div>

@@ -36,9 +36,6 @@ export default function ContactPage() {
               <div className="font-sans-ui text-[11px] font-semibold tracking-[0.2em] text-[#C8921A] uppercase mb-6">
                 Get in Touch
               </div>
-              <h2 className="font-display text-[44px] text-[#1C2B4A] leading-[0.9] mb-8">
-                WE'D LOVE TO HEAR FROM YOU
-              </h2>
               <div className="rule-gold mb-10" />
 
               <div className="space-y-8">
