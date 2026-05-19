@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://sovaos.ca/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://sovaos.ca/platform/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://sovaos.ca/solutions/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://sovaos.ca/pricing/</loc><changefreq>monthly</changefreq><priority>0.85</priority></url>
+  <url><loc>https://sovaos.ca/executive-circle/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sovaos.ca/rankings/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sovaos.ca/about/</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://sovaos.ca/resources/</loc><changefreq>weekly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://sovaos.ca/demo/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://sovaos.ca/contact/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://sovaos.ca/early-access/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://sovaos.ca/legal/</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://sovaos.ca/legal/privacy/</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://sovaos.ca/legal/terms/</loc><changefreq>yearly</changefreq><priority>0.4</priority></url>
+  <url><loc>https://sovaos.ca/legal/cookies/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://sovaos.ca/legal/accessibility/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://sovaos.ca/legal/security/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://sovaos.ca/legal/communication/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://sovaos.ca/legal/billing/</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+</urlset>
