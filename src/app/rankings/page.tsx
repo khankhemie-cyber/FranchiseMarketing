@@ -67,15 +67,9 @@ export default function RankingsPage() {
             THE DEFINITIVE<br />RANKING FOR<br />CANADIAN<br />FRANCHISE BRANDS.
           </h1>
           <div className="w-12 h-0.5 bg-[#C8921A] mb-8" />
-          <p className="text-[18px] sm:text-[20px] text-[#4A5568] leading-relaxed max-w-2xl mb-6">
+          <p className="text-[18px] sm:text-[20px] text-[#4A5568] leading-relaxed max-w-2xl">
             Sova evaluates Canadian franchise brands on four equally weighted pillars — marketing sophistication, franchisee support, digital presence, and growth trajectory. Updated annually each spring.
           </p>
-          <div className="inline-flex items-start gap-3 bg-[#C8921A]/08 border border-[#C8921A]/20 rounded-lg px-5 py-3 max-w-2xl">
-            <span className="font-sans-ui text-[#C8921A] text-lg leading-none mt-0.5">ⓘ</span>
-            <p className="font-sans-ui text-[12px] text-[#4A5568] leading-relaxed">
-              <strong className="text-[#1C2B4A]">Illustrative rankings.</strong> Scores shown are based on Sova&apos;s proprietary assessment framework applied to publicly available data. They do not constitute an endorsement of, or affiliation with, any brand listed. Brands may request a methodology review at <a href="mailto:rankings@sovaos.ca" className="text-[#C8921A]">rankings@sovaos.ca</a>.
-            </p>
-          </div>
         </div>
       </section>
 
