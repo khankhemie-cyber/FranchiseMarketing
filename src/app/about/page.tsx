@@ -27,32 +27,6 @@ const values = [
   },
 ];
 
-const team = [
-  {
-    name: "Marie Tremblay",
-    title: "Co-Founder & CEO",
-    bio:
-      "Marie spent twelve years as VP Marketing at two of Canada's largest QSR franchise groups before co-founding Sova. She led the national rollout of a 400-location digital transformation program and holds an MBA from HEC Montréal.",
-  },
-  {
-    name: "James MacKenzie",
-    title: "Co-Founder & CTO",
-    bio:
-      "James built data infrastructure at a Bay Street fintech before pivoting to franchise tech. He architected Sova's multi-tenant analytics engine and holds a B.Sc. in Computer Science from the University of Waterloo.",
-  },
-  {
-    name: "Priya Nair",
-    title: "VP Product",
-    bio:
-      "Priya joined from a Toronto-based marketing SaaS where she led a team of 14 product managers. She is deeply focused on the franchisee experience and ensuring the platform serves both ends of the franchisor-franchisee relationship.",
-  },
-  {
-    name: "David Park",
-    title: "VP Customer Success",
-    bio:
-      "David was Director of Franchise Operations for a national home-services brand before joining Sova. He brings direct field experience to every onboarding and ensures our clients realise value within their first 90 days.",
-  },
-];
 
 export default function AboutPage() {
   return (
@@ -169,91 +143,6 @@ export default function AboutPage() {
                 </p>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Team */}
-      <section className="bg-[#EDE9E3] py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="font-sans-ui text-[11px] font-semibold tracking-[0.2em] text-[#C8921A] uppercase mb-4">
-            Leadership
-          </div>
-          <h2 className="font-display text-[52px] sm:text-[64px] text-[#1C2B4A] leading-[0.9] mb-16">
-            THE TEAM
-          </h2>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {team.map((member) => (
-              <div key={member.name} className="flex flex-col">
-                {/* Avatar placeholder */}
-                <div
-                  className="w-full aspect-[4/3] rounded-sm mb-5 flex items-end p-4"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, #1C2B4A 0%, #1A6478 100%)",
-                  }}
-                >
-                  <div>
-                    <div className="font-display text-[22px] text-white leading-tight">
-                      {member.name.split(" ")[0].toUpperCase()}
-                    </div>
-                    <div className="font-display text-[22px] leading-tight" style={{ color: "#C8921A" }}>
-                      {member.name.split(" ")[1].toUpperCase()}
-                    </div>
-                  </div>
-                </div>
-                <div className="font-sans-ui text-[11px] font-semibold tracking-[0.15em] text-[#C8921A] uppercase mb-1">
-                  {member.title}
-                </div>
-                <h3 className="font-display text-[22px] text-[#1C2B4A] mb-3">
-                  {member.name.toUpperCase()}
-                </h3>
-                <p
-                  className="text-sm leading-relaxed text-[#4A5568] flex-1"
-                  style={{ fontFamily: "'Constantia', Georgia, serif" }}
-                >
-                  {member.bio}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Toronto HQ */}
-      <section className="bg-[#F5F1EB] py-20">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="bg-[#FDFBF8] border border-[rgba(28,43,74,0.08)] rounded-sm p-10 flex flex-col lg:flex-row lg:items-center gap-10">
-            <div className="flex-1">
-              <div className="font-sans-ui text-[11px] font-semibold tracking-[0.2em] text-[#C8921A] uppercase mb-4">
-                Headquarters
-              </div>
-              <h2 className="font-display text-[40px] sm:text-[48px] text-[#1C2B4A] leading-[0.9] mb-6">
-                TORONTO, ONTARIO
-              </h2>
-              <div className="rule-gold mb-6" />
-              <address
-                className="not-italic text-[#4A5568] space-y-1"
-                style={{ fontFamily: "'Constantia', Georgia, serif" }}
-              >
-                <div className="text-lg font-medium text-[#1C2B4A]">Sova Inc.</div>
-                <div>Suite 1400 — 150 King Street West</div>
-                <div>Toronto, ON  M5H 1J9</div>
-                <div className="pt-2 text-sm text-[#718096]">Canada</div>
-              </address>
-            </div>
-            <div className="flex-1 lg:pl-10 lg:border-l border-[rgba(28,43,74,0.1)]">
-              <p
-                className="text-lg leading-relaxed text-[#4A5568]"
-                style={{ fontFamily: "'Constantia', Georgia, serif" }}
-              >
-                Our team works out of the heart of Toronto's financial district —
-                minutes from the franchise brands, legal counsel, and investment
-                community that make up the Canadian franchise ecosystem. We hold
-                regular in-person roundtables for clients and host onboarding
-                sessions for new network partners throughout the year.
-              </p>
-            </div>
           </div>
         </div>
       </section>
