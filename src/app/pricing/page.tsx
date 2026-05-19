@@ -5,54 +5,59 @@ export const metadata: Metadata = { title: 'Pricing' };
 
 const TIERS = [
   {
-    name: 'Starter',
-    tagline: 'For brands with up to 25 locations.',
-    price: '$799',
-    period: '/mo CAD',
-    note: null,
+    name: 'Platform',
+    tagline: 'Self-serve access to the full Sova platform.',
+    price: '$250',
+    period: '/mo',
+    sub: '+ $75 per location / month',
+    note: 'CAD. HST not included.',
     popular: false,
-    cta: 'Get Started',
+    cta: 'Book a Demo',
     ctaHref: '/demo',
     features: [
-      'Campaign Engine',
-      'Network Analytics (basic)',
-      'Vendor Marketplace access',
-      'Up to 25 locations',
+      'All 8 platform modules',
+      'Unlimited head office users',
+      'Per-location franchisee logins',
+      'Campaign Engine & Content Studio',
+      'Network Analytics & AI Layer',
+      'Paid Media, Geofencing & Vendors',
       'Email support',
     ],
   },
   {
-    name: 'Growth',
-    tagline: 'For brands with 26–100 locations.',
-    price: '$2,200',
-    period: '/mo CAD',
-    note: null,
+    name: 'Managed',
+    tagline: 'Platform plus a dedicated Sova team managing your campaigns.',
+    price: '$3,000',
+    period: '/mo',
+    sub: '+ $75 per location / month',
+    note: 'CAD. HST not included.',
     popular: true,
     cta: 'Book a Demo',
     ctaHref: '/demo',
     features: [
-      'Everything in Starter',
-      'Paid Media module',
-      'Geofencing',
-      'Content Studio',
-      'AI Insights (standard)',
-      'Phone & email support',
-      'Dedicated onboarding',
+      'Everything in Platform',
+      'Dedicated franchise marketing manager',
+      'Monthly campaign planning & execution',
+      'Paid media buying & optimisation',
+      'Monthly performance reviews',
+      'Priority phone & email support',
+      'Quarterly strategy sessions',
     ],
   },
   {
     name: 'Enterprise',
-    tagline: 'For networks with 100+ locations.',
+    tagline: 'For large networks with complex requirements.',
     price: 'Custom',
-    period: ' pricing',
-    note: 'Contact us for a tailored quote.',
+    period: '',
+    sub: 'Tailored to your network',
+    note: null,
     popular: false,
     cta: 'Contact Sales',
-    ctaHref: '/demo',
+    ctaHref: '/contact',
     features: [
-      'All modules',
-      'Custom AI models',
-      'API access',
+      'All Managed plan features',
+      'Custom AI models & reporting',
+      'API access & integrations',
       'Dedicated franchise success manager',
       'SLA guarantees',
       'Custom contract terms',
@@ -63,7 +68,7 @@ const TIERS = [
 const FAQS = [
   {
     q: "What's included in setup?",
-    a: "All plans include a structured onboarding process covering platform configuration, location data import, and brand asset setup. Growth plans include a dedicated onboarding manager for the first 60 days. Enterprise onboarding is scoped as part of the contract.",
+    a: "All plans include a structured onboarding process covering platform configuration, location data import, and brand asset setup. Managed plans include a dedicated onboarding manager for the first 60 days. Enterprise onboarding is scoped as part of the contract.",
   },
   {
     q: "Can franchisees have their own logins?",
@@ -71,7 +76,7 @@ const FAQS = [
   },
   {
     q: "Is there a minimum contract term?",
-    a: "Starter plans are available month-to-month. Growth plans require a 12-month commitment. Enterprise terms are negotiated per contract and typically run 24 months with defined renewal options.",
+    a: "Platform plans are available month-to-month. Managed plans require a 12-month commitment. Enterprise terms are negotiated per contract and typically run 24 months with defined renewal options.",
   },
   {
     q: "Do you offer trials?",
@@ -104,7 +109,7 @@ export default function PricingPage() {
           </h1>
           <div className="w-12 h-0.5 bg-[#C8921A] mx-auto mb-8" />
           <p className="text-[18px] sm:text-[20px] text-white/60 leading-relaxed max-w-2xl mx-auto">
-            Three plans built around network size. No hidden fees. All prices in CAD. HST not included.
+            Simple per-location pricing. Self-serve platform or fully managed — you choose. All prices in CAD.
           </p>
         </div>
       </section>
@@ -144,10 +149,11 @@ export default function PricingPage() {
                   <div className="mb-8 pb-8 border-b border-[rgba(28,43,74,0.08)]">
                     <div className="flex items-baseline gap-1">
                       <span className="font-display text-[52px] text-[#1C2B4A] leading-none">{tier.price}</span>
-                      <span className="font-sans-ui text-[14px] text-[#718096]">{tier.period}</span>
+                      {tier.period && <span className="font-sans-ui text-[14px] text-[#718096]">{tier.period}</span>}
                     </div>
+                    <p className="font-sans-ui text-[12px] text-[#C8921A] font-medium mt-1">{tier.sub}</p>
                     {tier.note && (
-                      <p className="font-sans-ui text-[12px] text-[#718096] mt-2">{tier.note}</p>
+                      <p className="font-sans-ui text-[11px] text-[#718096] mt-1">{tier.note}</p>
                     )}
                   </div>
 
