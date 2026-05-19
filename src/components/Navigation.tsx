@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const NAV_LINKS = [
@@ -39,28 +39,11 @@ export function Navigation() {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <a href="#" className="flex items-center gap-2.5 group">
-              <div className="relative w-8 h-8 flex items-center justify-center">
-                <svg viewBox="0 0 40 40" className="w-8 h-8">
-                  <defs>
-                    <linearGradient id="owlGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                      <stop offset="0%" stopColor="#C89520" />
-                      <stop offset="100%" stopColor="#E0AB30" />
-                    </linearGradient>
-                  </defs>
-                  {/* Owl eyes logo simplified */}
-                  <path d="M5 16 C10 8, 17 14, 14 20 C11 14, 7 13, 5 16Z" fill="url(#owlGrad)" />
-                  <path d="M35 16 C30 8, 23 14, 26 20 C29 14, 33 13, 35 16Z" fill="url(#owlGrad)" />
-                  <circle cx="14" cy="22" r="5.5" fill="none" stroke="url(#owlGrad)" strokeWidth="1.8" />
-                  <circle cx="26" cy="22" r="5.5" fill="none" stroke="url(#owlGrad)" strokeWidth="1.8" />
-                  <path d="M14 28 L20 32 L26 28" fill="none" stroke="url(#owlGrad)" strokeWidth="1.8" strokeLinejoin="round" />
-                </svg>
-              </div>
-              <span
-                className="text-xl font-bold tracking-[0.15em] text-white group-hover:text-[#C89520] transition-colors"
-                style={{ fontFamily: "'Bebas Neue', sans-serif" }}
-              >
-                SOVA
-              </span>
+              <img
+                src="/sova-logo.png"
+                alt="Sova"
+                className="h-9 w-auto"
+              />
             </a>
 
             {/* Desktop nav */}

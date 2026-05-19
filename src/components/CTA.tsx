@@ -2,7 +2,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Calendar, Mail } from "lucide-react";
+import { ArrowRight, Calendar } from "lucide-react";
 
 export function CTA() {
   const ref = useRef(null);
@@ -30,20 +30,13 @@ export function CTA() {
           animate={inView ? { opacity: 1, scale: 1 } : {}}
           transition={{ duration: 0.7 }}
         >
-          {/* Icon */}
+          {/* Logo */}
           <div className="flex justify-center mb-8">
-            <div
-              className="w-20 h-20 rounded-2xl flex items-center justify-center glow-gold"
-              style={{ background: "linear-gradient(135deg, #C89520 0%, #E0AB30 100%)" }}
-            >
-              <svg viewBox="0 0 40 40" className="w-10 h-10">
-                <path d="M5 16 C10 8, 17 14, 14 20 C11 14, 7 13, 5 16Z" fill="#080C18" />
-                <path d="M35 16 C30 8, 23 14, 26 20 C29 14, 33 13, 35 16Z" fill="#080C18" />
-                <circle cx="14" cy="22" r="5.5" fill="none" stroke="#080C18" strokeWidth="1.8" />
-                <circle cx="26" cy="22" r="5.5" fill="none" stroke="#080C18" strokeWidth="1.8" />
-                <path d="M14 28 L20 32 L26 28" fill="none" stroke="#080C18" strokeWidth="1.8" strokeLinejoin="round" />
-              </svg>
-            </div>
+            <img
+              src="/sova-logo.png"
+              alt="Sova"
+              className="h-20 w-auto rounded-2xl glow-gold"
+            />
           </div>
 
           <h2
