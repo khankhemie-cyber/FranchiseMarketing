@@ -1,19 +1,22 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { Navigation } from "@/components/Navigation";
+import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Sova — The Operating System for Canadian Franchise Growth",
-  description:
-    "One platform. Eight modules. Built exclusively for the Canadian franchise market. Sova replaces disconnected tools with a unified operating platform for franchise brands.",
-  keywords: ["franchise marketing", "franchise software", "Canadian franchise", "franchise platform", "franchise SaaS"],
+  title: { default: "Sova — Franchise Growth Platform", template: "%s | Sova" },
+  description: "Sova gives Canadian franchise brands complete visibility, control, and confidence across every location. One platform built for franchise operators.",
+  keywords: ["franchise platform", "franchise marketing", "Canadian franchise", "franchise software", "franchise management"],
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="h-full antialiased">
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" className="h-full">
+      <body className="min-h-full flex flex-col">
+        <Navigation />
+        <main className="flex-1">{children}</main>
+        <Footer />
+      </body>
     </html>
   );
 }
