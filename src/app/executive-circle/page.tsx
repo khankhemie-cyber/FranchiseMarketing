@@ -1,29 +1,69 @@
 import type { Metadata } from 'next';
 import { ApplicationForm } from './ApplicationForm';
+import {
+  MessageSquare,
+  BookOpen,
+  Zap,
+  Network,
+  Users,
+  FileText,
+  Lightbulb,
+} from 'lucide-react';
 
 export const metadata: Metadata = { title: 'Executive Circle' };
 
+const WHAT_IT_IS = [
+  {
+    icon: MessageSquare,
+    headline: 'Real conversations',
+    caption: 'Co-op governance, compliance, and vendor tension — the topics conference panels won\'t touch.',
+  },
+  {
+    icon: Users,
+    headline: 'Peer-led agenda',
+    caption: 'Sessions are capped, vendor-free, and shaped entirely by members — not sponsors.',
+  },
+  {
+    icon: Lightbulb,
+    headline: 'Practical outcomes',
+    caption: 'Half-day sessions across Canadian markets, four times a year, with structured follow-through.',
+  },
+];
+
 const MEMBER_BENEFITS = [
   {
+    icon: Users,
+    stat: '4× per year',
     title: 'Peer Roundtables',
-    body:
-      'Quarterly sessions with CMOs and marketing VPs from across Canadian franchise categories. Structured discussion on shared challenges — media buying, franchisee compliance, network-wide campaigns, digital transformation. What is said in the room stays in the room.',
+    body: 'Quarterly half-day sessions with CMOs and marketing VPs across Canadian franchise categories — no vendor pitches, Chatham House rules.',
   },
   {
+    icon: BookOpen,
+    stat: 'Before public release',
     title: 'Annual Research Report',
-    body:
-      'Members receive the State of Canadian Franchise Marketing before public release, along with the underlying data set. Benchmark your brand\'s marketing maturity, spend efficiency, and digital adoption against the national peer group.',
+    body: 'Members receive the State of Canadian Franchise Marketing early, with the full underlying data set for benchmarking.',
   },
   {
+    icon: Zap,
+    stat: 'Early access',
     title: 'Private Briefings',
-    body:
-      'Early access to Sova platform features before general availability, plus closed-door briefings with category operators and supply-chain partners. Briefings are off-record and Chatham House rules apply.',
+    body: 'First look at new Sova features and closed-door briefings with category operators — off-record, no slides.',
   },
   {
+    icon: Network,
+    stat: '200+ members',
     title: 'Curated Network',
-    body:
-      'A vetted directory of 200+ franchise marketing and development executives across Canada, organized by brand category and geography. Introductions facilitated through the Sova team when appropriate.',
+    body: 'A vetted directory of franchise marketing and development executives across Canada, organized by brand and geography.',
   },
+];
+
+const QUALIFYING_ROLES = [
+  "CEO / Founder",
+  "COO / VP Operations",
+  "CMO / VP Marketing",
+  "VP Franchise Development",
+  "Director of Marketing",
+  "Director of Operations",
 ];
 
 export default function ExecutiveCirclePage() {
@@ -43,7 +83,9 @@ export default function ExecutiveCirclePage() {
           </h1>
           <div className="w-12 h-0.5 bg-[#C8921A] mb-8" />
           <p className="text-[18px] sm:text-[20px] text-white/60 leading-relaxed max-w-2xl">
-            An invitation-only peer community for the executives who set strategy, control spend, and own the brand across Canada&rsquo;s largest franchise systems. Not a conference. Not a panel. A working group.
+            An invitation-only peer community for the executives who set strategy,
+            control spend, and own the brand across Canada&rsquo;s largest franchise systems.
+            Not a conference. Not a panel. A working group.
           </p>
         </div>
       </section>
@@ -54,17 +96,30 @@ export default function ExecutiveCirclePage() {
           <p className="font-sans-ui text-[11px] font-semibold tracking-[0.2em] text-[#C8921A] uppercase mb-4">
             About the Community
           </p>
-          <h2 className="font-display text-[42px] sm:text-[52px] text-[#1C2B4A] leading-[0.94] mb-10">
+          <h2 className="font-display text-[42px] sm:text-[52px] text-[#1C2B4A] leading-[0.94] mb-12">
             WHERE FRANCHISE<br />OPERATORS SOLVE<br />REAL PROBLEMS.
           </h2>
 
-          <div className="grid lg:grid-cols-2 gap-x-16 gap-y-8 text-[17px] leading-relaxed text-[#4A5568]">
-            <p>
-              The Circle exists because the challenges facing Canadian franchise leaders are distinct — and rarely discussed openly. Co-op governance, franchisee compliance, vendor relationships, national vs. local spend tension. Not conference-panel material. The Circle is where those conversations happen properly.
-            </p>
-            <p>
-              Membership centres on four quarterly peer roundtables per year, hosted across Canadian markets. Sessions run half a day — no vendor pitches, no sponsors on the agenda. Attendance is capped. The agenda is set by members.
-            </p>
+          <div className="grid sm:grid-cols-3 gap-6">
+            {WHAT_IT_IS.map(({ icon: Icon, headline, caption }) => (
+              <div
+                key={headline}
+                className="bg-[#FDFBF8] border border-[rgba(28,43,74,0.08)] rounded-xl p-7"
+              >
+                <div
+                  className="w-10 h-10 rounded-lg flex items-center justify-center mb-5"
+                  style={{ background: 'rgba(200,146,26,0.1)' }}
+                >
+                  <Icon size={20} color="#C8921A" strokeWidth={1.75} />
+                </div>
+                <h3 className="font-display text-[20px] text-[#1C2B4A] leading-tight mb-2">
+                  {headline.toUpperCase()}
+                </h3>
+                <p className="font-sans-ui text-[13px] leading-relaxed text-[#718096]">
+                  {caption}
+                </p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -80,14 +135,34 @@ export default function ExecutiveCirclePage() {
           </h2>
 
           <div className="grid sm:grid-cols-2 gap-6">
-            {MEMBER_BENEFITS.map((benefit) => (
+            {MEMBER_BENEFITS.map(({ icon: Icon, stat, title, body }) => (
               <div
-                key={benefit.title}
+                key={title}
                 className="bg-[#FDFBF8] border border-[rgba(28,43,74,0.08)] rounded-xl p-8"
               >
-                <div className="w-8 h-0.5 bg-[#C8921A] mb-5" />
-                <h3 className="font-display text-[28px] text-[#1C2B4A] mb-4">{benefit.title.toUpperCase()}</h3>
-                <p className="text-[15px] leading-relaxed text-[#4A5568]">{benefit.body}</p>
+                <div className="flex items-start justify-between mb-5 gap-4">
+                  <div
+                    className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
+                    style={{ background: 'rgba(200,146,26,0.1)' }}
+                  >
+                    <Icon size={20} color="#C8921A" strokeWidth={1.75} />
+                  </div>
+                  <span
+                    className="font-sans-ui text-[11px] font-bold px-3 py-1 rounded-full shrink-0"
+                    style={{ background: 'rgba(28,43,74,0.07)', color: '#1C2B4A' }}
+                  >
+                    {stat}
+                  </span>
+                </div>
+                <h3 className="font-display text-[26px] text-[#1C2B4A] mb-3">
+                  {title.toUpperCase()}
+                </h3>
+                <p
+                  className="text-[14px] leading-relaxed text-[#4A5568]"
+                  style={{ fontFamily: "'Constantia', Georgia, serif" }}
+                >
+                  {body}
+                </p>
               </div>
             ))}
           </div>
@@ -106,26 +181,20 @@ export default function ExecutiveCirclePage() {
                 WHO QUALIFIES.
               </h2>
               <div className="w-10 h-0.5 bg-[#C8921A] mb-6" />
-            </div>
-            <div>
-              <p className="text-[17px] leading-relaxed text-white/65 mb-6">
-                Membership is by invitation only, for senior leaders at Canadian franchise brands with 10 or more locations.
+              <p className="font-sans-ui text-[14px] text-white/55">
+                Invitation only · Canadian franchise brands · 10+ locations
               </p>
-              <div className="grid grid-cols-2 gap-3">
-                {[
-                  "CEO / Founder",
-                  "COO / VP Operations",
-                  "CMO / VP Marketing",
-                  "VP Franchise Development",
-                  "Director of Marketing",
-                  "Director of Operations",
-                ].map((title) => (
-                  <div key={title} className="flex items-center gap-2 font-sans-ui text-[13px] text-white/60">
-                    <span className="w-1 h-1 rounded-full bg-[#C8921A] flex-shrink-0" />
-                    {title}
-                  </div>
-                ))}
-              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              {QUALIFYING_ROLES.map((role) => (
+                <div
+                  key={role}
+                  className="flex items-center gap-2 font-sans-ui text-[13px] text-white/60"
+                >
+                  <span className="w-1 h-1 rounded-full bg-[#C8921A] flex-shrink-0" />
+                  {role}
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -140,8 +209,8 @@ export default function ExecutiveCirclePage() {
           <h2 className="font-display text-[42px] sm:text-[52px] text-[#1C2B4A] leading-[0.94] mb-4">
             REQUEST AN<br />APPLICATION.
           </h2>
-          <p className="text-[16px] text-[#4A5568] mb-10 leading-relaxed">
-            Complete the form below and a member of the Sova team will review your submission. All fields are required.
+          <p className="text-[15px] text-[#4A5568] mb-10">
+            Submit below and the Sova team will review your application. All fields required.
           </p>
           <ApplicationForm />
         </div>

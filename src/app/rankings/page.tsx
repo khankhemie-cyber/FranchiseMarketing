@@ -1,5 +1,16 @@
 import type { Metadata } from 'next';
 import { ReportForm } from './ReportForm';
+import {
+  BarChart2,
+  Users,
+  Smartphone,
+  TrendingUp,
+  Utensils,
+  ShoppingBag,
+  Home,
+  Dumbbell,
+  Briefcase,
+} from 'lucide-react';
 
 export const metadata: Metadata = { title: 'Canada Franchise Rankings' };
 
@@ -18,37 +29,37 @@ const TOP_10 = [
 
 const METHODOLOGY = [
   {
+    icon: BarChart2,
     pillar: 'Marketing Sophistication',
     weight: '25%',
-    description:
-      'Evaluates the maturity of brand-level marketing operations: campaign planning cycles, co-op fund governance, multi-channel media deployment, creative production infrastructure, and franchisee marketing compliance rates.',
+    description: 'Campaign planning, co-op governance, multi-channel deployment, and franchisee compliance rates.',
   },
   {
+    icon: Users,
     pillar: 'Franchisee Support Quality',
     weight: '25%',
-    description:
-      'Drawn from an annual survey of active Canadian franchisees. Scores reflect satisfaction with marketing materials, local store marketing guidance, response times from the marketing team, and perceived ROI on required contributions.',
+    description: 'Annual franchisee survey: satisfaction with materials, guidance, response times, and perceived ROI.',
   },
   {
+    icon: Smartphone,
     pillar: 'Digital Presence & Innovation',
     weight: '25%',
-    description:
-      'Assesses each brand\'s digital footprint: local SEO performance by market, paid search share-of-voice, app adoption and rating, social media execution consistency across locations, and technology stack modernity.',
+    description: 'Local SEO, paid search share-of-voice, app adoption, social consistency, and tech stack modernity.',
   },
   {
+    icon: TrendingUp,
     pillar: 'Network Growth Trajectory',
     weight: '25%',
-    description:
-      'Measures net new locations opened over the trailing 24 months, franchisee renewal rates, average ramp time to profitability for new locations, and stated pipeline from franchise development disclosures.',
+    description: 'Net new locations (trailing 24 months), renewal rates, ramp time, and development pipeline.',
   },
 ];
 
 const CATEGORY_LEADERS = [
-  { category: 'QSR',                   brand: 'Tim Hortons',            score: 98.4 },
-  { category: 'Retail',                brand: 'M&M Food Market',        score: 84.3 },
-  { category: 'Home Services',         brand: 'ServiceMaster Clean',    score: 87.2 },
-  { category: 'Fitness',               brand: 'Anytime Fitness Canada', score: 85.9 },
-  { category: 'Professional Services', brand: 'RE/MAX Canada',          score: 83.0 },
+  { icon: Utensils,   category: 'QSR',                   brand: 'Tim Hortons',            score: 98.4 },
+  { icon: ShoppingBag, category: 'Retail',               brand: 'M&M Food Market',        score: 84.3 },
+  { icon: Home,       category: 'Home Services',          brand: 'ServiceMaster Clean',    score: 87.2 },
+  { icon: Dumbbell,   category: 'Fitness',                brand: 'Anytime Fitness Canada', score: 85.9 },
+  { icon: Briefcase,  category: 'Professional Services',  brand: 'RE/MAX Canada',          score: 83.0 },
 ];
 
 export default function RankingsPage() {
@@ -67,9 +78,18 @@ export default function RankingsPage() {
             THE DEFINITIVE<br />RANKING FOR<br />CANADIAN<br />FRANCHISE BRANDS.
           </h1>
           <div className="w-12 h-0.5 bg-[#C8921A] mb-8" />
-          <p className="text-[18px] sm:text-[20px] text-[#4A5568] leading-relaxed max-w-2xl">
-            Sova evaluates Canadian franchise brands on four equally weighted pillars — marketing sophistication, franchisee support, digital presence, and growth trajectory. Updated annually each spring.
-          </p>
+          <div className="flex flex-wrap gap-6">
+            {[
+              { stat: '1,300+', label: 'Brands ranked' },
+              { stat: '4',      label: 'Weighted pillars' },
+              { stat: 'Annual', label: 'Updated each spring' },
+            ].map(({ stat, label }) => (
+              <div key={label} className="flex items-baseline gap-2">
+                <span className="font-display text-[32px] text-[#C8921A]">{stat}</span>
+                <span className="font-sans-ui text-[13px] text-[#718096]">{label}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -79,25 +99,37 @@ export default function RankingsPage() {
           <p className="font-sans-ui text-[11px] font-semibold tracking-[0.2em] text-[#C8921A] uppercase mb-4">
             Methodology
           </p>
-          <h2 className="font-display text-[42px] sm:text-[52px] text-white leading-[0.94] mb-4">
+          <h2 className="font-display text-[42px] sm:text-[52px] text-white leading-[0.94] mb-14">
             HOW BRANDS<br />ARE SCORED.
           </h2>
-          <p className="text-[16px] text-white/55 mb-12 max-w-2xl leading-relaxed">
-            Each brand receives a composite score out of 100, drawn from four equally weighted pillars. No pillar can be waived; brands without sufficient data in a category receive a provisional score pending outreach.
-          </p>
 
           <div className="grid sm:grid-cols-2 gap-6">
-            {METHODOLOGY.map((m) => (
+            {METHODOLOGY.map(({ icon: Icon, pillar, weight, description }) => (
               <div
-                key={m.pillar}
-                className="rounded-xl p-8 border border-white/[0.07]"
+                key={pillar}
+                className="rounded-xl p-8 border border-white/[0.07] flex flex-col gap-5"
                 style={{ background: 'rgba(255,255,255,0.04)' }}
               >
-                <div className="flex items-start justify-between mb-5 gap-4">
-                  <h3 className="font-display text-[22px] text-white leading-tight">{m.pillar.toUpperCase()}</h3>
-                  <span className="font-sans-ui text-[13px] font-semibold text-[#C8921A] shrink-0">{m.weight}</span>
+                <div className="flex items-center gap-4">
+                  <div
+                    className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
+                    style={{ background: 'rgba(200,146,26,0.15)' }}
+                  >
+                    <Icon size={20} color="#C8921A" strokeWidth={1.75} />
+                  </div>
+                  <h3 className="font-display text-[20px] text-white leading-tight flex-1">
+                    {pillar.toUpperCase()}
+                  </h3>
+                  <span
+                    className="font-sans-ui text-[13px] font-bold shrink-0 px-3 py-1 rounded-full"
+                    style={{ background: 'rgba(200,146,26,0.18)', color: '#C8921A' }}
+                  >
+                    {weight}
+                  </span>
                 </div>
-                <p className="text-[14px] leading-relaxed text-white/55">{m.description}</p>
+                <p className="font-sans-ui text-[13px] leading-relaxed text-white/55">
+                  {description}
+                </p>
               </div>
             ))}
           </div>
@@ -116,7 +148,7 @@ export default function RankingsPage() {
 
           <div className="bg-[#FDFBF8] border border-[rgba(28,43,74,0.08)] rounded-xl overflow-hidden">
             {/* Table header */}
-            <div className="grid grid-cols-[48px_1fr_160px_80px_80px] gap-4 px-6 py-3 border-b border-[rgba(28,43,74,0.08)]">
+            <div className="grid grid-cols-[48px_1fr_160px_80px_80px] gap-4 px-6 py-3 bg-[#EDE9E3] border-b border-[rgba(28,43,74,0.08)]">
               <span className="font-sans-ui text-[10px] font-semibold tracking-[0.15em] text-[#718096] uppercase">Rank</span>
               <span className="font-sans-ui text-[10px] font-semibold tracking-[0.15em] text-[#718096] uppercase">Brand</span>
               <span className="font-sans-ui text-[10px] font-semibold tracking-[0.15em] text-[#718096] uppercase hidden md:block">Category</span>
@@ -127,10 +159,13 @@ export default function RankingsPage() {
             {TOP_10.map((row, i) => {
               const isPositive = row.yoy.startsWith('+');
               const yoyColor = isPositive ? 'text-[#1A6478]' : 'text-[#D84F18]';
+              const isEven = i % 2 === 0;
               return (
                 <div
                   key={row.rank}
-                  className={`grid grid-cols-[48px_1fr_160px_80px_80px] gap-4 px-6 py-4 items-center ${i < TOP_10.length - 1 ? 'border-b border-[rgba(28,43,74,0.05)]' : ''}`}
+                  className={`grid grid-cols-[48px_1fr_160px_80px_80px] gap-4 px-6 py-4 items-center transition-colors hover:bg-[rgba(28,43,74,0.03)] ${
+                    i < TOP_10.length - 1 ? 'border-b border-[rgba(28,43,74,0.05)]' : ''
+                  } ${isEven ? '' : 'bg-[rgba(28,43,74,0.015)]'}`}
                 >
                   <span className="font-display text-[24px] text-[#C8921A]">{row.rank}</span>
                   <span className="font-sans-ui text-[14px] font-medium text-[#1C2B4A]">{row.brand}</span>
@@ -154,25 +189,36 @@ export default function RankingsPage() {
           <p className="font-sans-ui text-[11px] font-semibold tracking-[0.2em] text-[#C8921A] uppercase mb-4">
             Category Leaders
           </p>
-          <h2 className="font-display text-[42px] sm:text-[52px] text-[#1C2B4A] leading-[0.94] mb-12">
-            NO. 1 BY<br />CATEGORY.
+          <h2 className="font-display text-[42px] sm:text-[52px] text-[#1C2B4A] leading-[0.94] mb-10">
+            NO. 1 BY CATEGORY.
           </h2>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {CATEGORY_LEADERS.map((leader) => (
+          <div className="flex flex-wrap gap-4">
+            {CATEGORY_LEADERS.map(({ icon: Icon, category, brand, score }) => (
               <div
-                key={leader.category}
-                className="bg-[#FDFBF8] border border-[rgba(28,43,74,0.08)] rounded-xl p-7"
+                key={category}
+                className="flex items-center gap-3 bg-[#FDFBF8] border border-[rgba(28,43,74,0.1)] rounded-full px-5 py-3 hover:border-[#C8921A] transition-colors"
               >
-                <p className="font-sans-ui text-[10px] font-semibold tracking-[0.18em] text-[#C8921A] uppercase mb-3">
-                  {leader.category}
-                </p>
-                <p className="font-display text-[26px] text-[#1C2B4A] leading-tight mb-2">
-                  {leader.brand.toUpperCase()}
-                </p>
-                <p className="font-sans-ui text-[12px] text-[#718096]">
-                  Score: <span className="font-semibold text-[#1C2B4A]">{leader.score}</span>
-                </p>
+                <div
+                  className="w-7 h-7 rounded-full flex items-center justify-center shrink-0"
+                  style={{ background: 'rgba(200,146,26,0.12)' }}
+                >
+                  <Icon size={14} color="#C8921A" strokeWidth={2} />
+                </div>
+                <div>
+                  <span className="font-sans-ui text-[10px] font-semibold tracking-[0.12em] text-[#718096] uppercase block leading-tight">
+                    {category}
+                  </span>
+                  <span className="font-sans-ui text-[13px] font-semibold text-[#1C2B4A] leading-tight">
+                    {brand}
+                  </span>
+                </div>
+                <span
+                  className="font-sans-ui text-[11px] font-bold ml-1 px-2 py-0.5 rounded-full"
+                  style={{ background: 'rgba(28,43,74,0.07)', color: '#1C2B4A' }}
+                >
+                  {score}
+                </span>
               </div>
             ))}
           </div>
@@ -188,8 +234,11 @@ export default function RankingsPage() {
           <h2 className="font-display text-[42px] sm:text-[52px] text-[#1C2B4A] leading-[0.94] mb-4">
             GET THE COMPLETE<br />2025 RANKINGS.
           </h2>
-          <p className="text-[16px] text-[#4A5568] leading-relaxed mb-10">
-            The full report covers all 1,300+ ranked brands, category breakdowns, provincial comparisons, and trend analysis from the prior three years. Enter your work email to receive a copy.
+          <p className="font-sans-ui text-[14px] text-[#718096] mb-2">
+            1,300+ brands · Category breakdowns · Provincial comparisons · 3-year trends
+          </p>
+          <p className="text-[15px] text-[#4A5568] leading-relaxed mb-10">
+            Enter your work email to receive the full report.
           </p>
           <ReportForm />
         </div>

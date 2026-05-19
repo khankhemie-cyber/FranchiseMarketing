@@ -5,19 +5,19 @@ export const metadata: Metadata = { title: "Book a Demo" };
 
 const expectations = [
   {
-    heading: "Tailored platform walkthrough",
-    body:
-      "We configure the demo around your brand category, network size, and the modules most relevant to your team. No generic slides.",
+    icon: "⚙",
+    heading: "Tailored walkthrough",
+    line: "Configured around your brand, network size, and relevant modules.",
   },
   {
-    heading: "Q&A with a franchise specialist",
-    body:
-      "Every demo is run by someone with direct franchise operations experience — not a sales rep reading from a script.",
+    icon: "💬",
+    heading: "Franchise specialist — not sales",
+    line: "Direct franchise operations experience on every call.",
   },
   {
-    heading: "Custom pricing based on your network size",
-    body:
-      "Sova is priced by network, not by seat. We will walk you through what the platform costs for your specific footprint before the call ends.",
+    icon: "📊",
+    heading: "Your pricing, before you leave",
+    line: "Network-based pricing quoted on the call. No follow-up surprises.",
   },
 ];
 
@@ -56,8 +56,7 @@ export default function DemoPage() {
             className="text-xl leading-relaxed text-[#4A5568] max-w-xl"
             style={{ fontFamily: "'Constantia', Georgia, serif" }}
           >
-            A 30-minute walkthrough built around your network. Book a time and
-            a franchise specialist will reach out to confirm.
+            A 30-minute walkthrough built around your network.
           </p>
         </div>
       </section>
@@ -76,33 +75,31 @@ export default function DemoPage() {
                 YOUR 30 MINUTES, WELL SPENT
               </h2>
 
-              <ul className="space-y-8">
-                {expectations.map((item, i) => (
-                  <li key={item.heading} className="flex gap-5">
-                    <div className="flex-shrink-0 mt-1">
-                      <div
-                        className="font-display text-[18px] w-8 h-8 rounded-sm flex items-center justify-center text-white"
-                        style={{ background: "#1C2B4A" }}
-                      >
-                        {i + 1}
-                      </div>
+              <div className="space-y-4">
+                {expectations.map((item) => (
+                  <div
+                    key={item.heading}
+                    className="bg-[#FDFBF8] border border-[rgba(28,43,74,0.08)] rounded-sm p-5 flex gap-4 items-start"
+                  >
+                    <div
+                      className="flex-shrink-0 w-10 h-10 rounded-sm flex items-center justify-center text-lg"
+                      style={{ background: "rgba(28,43,74,0.06)" }}
+                    >
+                      {item.icon}
                     </div>
                     <div>
-                      <h3
-                        className="font-sans-ui text-sm font-semibold text-[#1C2B4A] mb-2"
-                      >
+                      <h3 className="font-sans-ui text-sm font-semibold text-[#1C2B4A] mb-1">
                         {item.heading}
                       </h3>
                       <p
-                        className="text-sm leading-relaxed text-[#4A5568]"
-                        style={{ fontFamily: "'Constantia', Georgia, serif" }}
+                        className="font-sans-ui text-[13px] text-[#718096]"
                       >
-                        {item.body}
+                        {item.line}
                       </p>
                     </div>
-                  </li>
+                  </div>
                 ))}
-              </ul>
+              </div>
 
               {/* Social proof */}
               <div className="mt-14 pt-10 border-t border-[rgba(28,43,74,0.1)]">
