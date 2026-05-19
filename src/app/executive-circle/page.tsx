@@ -55,21 +55,15 @@ export default function ExecutiveCirclePage() {
             About the Community
           </p>
           <h2 className="font-display text-[42px] sm:text-[52px] text-[#1C2B4A] leading-[0.94] mb-10">
-            BUILT FOR THE<br />PEOPLE RUNNING<br />FRANCHISE MARKETING.
+            WHERE FRANCHISE<br />OPERATORS SOLVE<br />REAL PROBLEMS.
           </h2>
 
           <div className="grid lg:grid-cols-2 gap-x-16 gap-y-8 text-[17px] leading-relaxed text-[#4A5568]">
             <p>
-              The Executive Circle exists because the problems facing Canadian franchise marketing leaders are distinct. National media buys, franchisee co-op governance, local-vs-brand tension, vendor selection at scale — these are not conversations that fit into a general marketing conference session. The Circle is where those conversations happen properly.
+              The Circle exists because the challenges facing Canadian franchise leaders are distinct — and rarely discussed openly. Co-op governance, franchisee compliance, vendor relationships, national vs. local spend tension. Not conference-panel material. The Circle is where those conversations happen properly.
             </p>
             <p>
-              Membership centres on four quarterly peer roundtables per year. Each session is hosted in a different Canadian market, with a rotating chair drawn from the membership. Sessions run half a day. Attendance is capped. No sponsors on the agenda, no vendor pitches. The only agenda is the one members set in advance.
-            </p>
-            <p>
-              Members also receive access to Sova&rsquo;s original research program, including the annual State of Canadian Franchise Marketing report and any category-level studies produced during the year. The underlying data — drawn from franchisee surveys, platform intelligence, and public filings — is available to members before findings are published externally.
-            </p>
-            <p>
-              Beyond formal programming, the Circle maintains a curated network of 200+ brand operators across every major franchise category in Canada. Members can request introductions through the Sova team and participate in a private digital directory updated quarterly. The relationship layer is the point.
+              Membership centres on four quarterly peer roundtables per year, hosted across Canadian markets. Sessions run half a day — no vendor pitches, no sponsors on the agenda. Attendance is capped. The agenda is set by members.
             </p>
           </div>
         </div>
@@ -114,12 +108,24 @@ export default function ExecutiveCirclePage() {
               <div className="w-10 h-0.5 bg-[#C8921A] mb-6" />
             </div>
             <div>
-              <p className="text-[17px] leading-relaxed text-white/65 mb-4">
-                Membership is by invitation only. Candidates hold a marketing or franchise development leadership role at a Canadian franchise brand with 10 or more locations.
+              <p className="text-[17px] leading-relaxed text-white/65 mb-6">
+                Membership is by invitation only, for senior leaders at Canadian franchise brands with 10 or more locations.
               </p>
-              <p className="text-[17px] leading-relaxed text-white/65">
-                Titles typically include CMO, VP of Marketing, Director of Marketing, VP of Franchise Development, or equivalent. Candidates at brands headquartered outside Canada are considered if Canadian operations represent a significant portion of the network.
-              </p>
+              <div className="grid grid-cols-2 gap-3">
+                {[
+                  "CEO / Founder",
+                  "COO / VP Operations",
+                  "CMO / VP Marketing",
+                  "VP Franchise Development",
+                  "Director of Marketing",
+                  "Director of Operations",
+                ].map((title) => (
+                  <div key={title} className="flex items-center gap-2 font-sans-ui text-[13px] text-white/60">
+                    <span className="w-1 h-1 rounded-full bg-[#C8921A] flex-shrink-0" />
+                    {title}
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
