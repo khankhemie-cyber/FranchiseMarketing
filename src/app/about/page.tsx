@@ -59,6 +59,15 @@ export default function AboutPage() {
     <>
       {/* Hero */}
       <section className="bg-[#EDE9E3] relative overflow-hidden">
+        {/* Photo background */}
+        <img
+          src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1920&q=80"
+          alt=""
+          aria-hidden
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectFit: "cover" }}
+        />
+        <div className="absolute inset-0" style={{ background: "rgba(237,233,227,0.88)" }} />
         <div className="absolute inset-0 grid-subtle opacity-50 pointer-events-none" />
         <div
           className="absolute inset-0 pointer-events-none"
