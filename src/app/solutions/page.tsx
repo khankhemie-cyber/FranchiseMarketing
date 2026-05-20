@@ -78,7 +78,7 @@ const ROLES = [
 ];
 
 const VERTICALS = [
-  { icon: Utensils,    name: "Quick Service",        color: "#D84F18", line: "Drive-time targeting, daypart promos, foot-traffic attribution.",     photo: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" },
+  { icon: Utensils,    name: "Quick Service",        color: "#D84F18", line: "Drive-time targeting, daypart promos, foot-traffic attribution.",     photo: "https://images.unsplash.com/photo-1561758033-d89a9ad46330?auto=format&fit=crop&w=800&q=80" },
   { icon: ShoppingCart,name: "Retail",               color: "#C8921A", line: "Brand-consistent local promotions with head-office guardrails.",       photo: "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?auto=format&fit=crop&w=800&q=80" },
   { icon: Wrench,      name: "Home Services",         color: "#1A6478", line: "Postal-code geofencing, weather triggers, direct mail suppliers.",     photo: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80" },
   { icon: Dumbbell,    name: "Fitness & Wellness",    color: "#2EA5A0", line: "Seasonal demand forecasting, member retention, referral programs.",    photo: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80" },
