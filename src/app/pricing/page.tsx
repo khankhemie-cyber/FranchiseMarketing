@@ -81,8 +81,9 @@ export default function PricingPage() {
       className="min-h-screen bg-[#EDE9E3]"
     >
       {/* ── Hero ─────────────────────────────────────────────── */}
-      <section className="bg-[#1C2B4A] pt-40 pb-24 px-6 lg:px-10 text-center">
-        <div className="max-w-4xl mx-auto">
+      <section className="relative overflow-hidden bg-[#1C2B4A] pt-40 pb-24 px-6 lg:px-10 text-center">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover opacity-[0.12]" />
+        <div className="relative max-w-4xl mx-auto">
           <p className="font-sans-ui text-[11px] font-semibold tracking-[0.22em] text-[#C8921A] uppercase mb-6">
             Pricing
           </p>
@@ -198,8 +199,9 @@ export default function PricingPage() {
       </section>
 
       {/* ── Bottom CTA ───────────────────────────────────────── */}
-      <section className="py-20 px-6 lg:px-10 bg-[#1C2B4A]">
-        <div className="max-w-3xl mx-auto text-center">
+      <section className="relative overflow-hidden py-20 px-6 lg:px-10 bg-[#1C2B4A]">
+        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1920&q=80" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover opacity-[0.10]" />
+        <div className="relative max-w-3xl mx-auto text-center">
           <h2 className="font-display text-[42px] sm:text-[52px] text-white leading-[0.94] mb-6">
             NOT SURE WHICH<br />PLAN FITS?
           </h2>

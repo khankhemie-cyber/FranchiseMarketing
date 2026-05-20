@@ -69,8 +69,10 @@ export default function RankingsPage() {
       className="min-h-screen bg-[#EDE9E3]"
     >
       {/* ── Hero ─────────────────────────────────────────────── */}
-      <section className="bg-[#EDE9E3] pt-40 pb-24 px-6 lg:px-10">
-        <div className="max-w-5xl mx-auto">
+      <section className="relative overflow-hidden bg-[#EDE9E3] pt-40 pb-24 px-6 lg:px-10">
+        <img src="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1920&q=80" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover" />
+        <div className="absolute inset-0" style={{ background: "rgba(237,233,227,0.92)" }} />
+        <div className="relative max-w-5xl mx-auto">
           <p className="font-sans-ui text-[11px] font-semibold tracking-[0.22em] text-[#C8921A] uppercase mb-6">
             Canada Franchise Rankings
           </p>
@@ -94,8 +96,9 @@ export default function RankingsPage() {
       </section>
 
       {/* ── Methodology ──────────────────────────────────────── */}
-      <section className="py-24 px-6 lg:px-10 bg-[#1C2B4A]">
-        <div className="max-w-5xl mx-auto">
+      <section className="relative overflow-hidden py-24 px-6 lg:px-10 bg-[#1C2B4A]">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1920&q=80" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover opacity-[0.08]" />
+        <div className="relative max-w-5xl mx-auto">
           <p className="font-sans-ui text-[11px] font-semibold tracking-[0.2em] text-[#C8921A] uppercase mb-4">
             Methodology
           </p>

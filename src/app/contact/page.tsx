@@ -8,6 +8,11 @@ export default function ContactPage() {
     <>
       {/* Hero */}
       <section className="bg-[#1C2B4A] relative overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80"
+          alt="" aria-hidden
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.12]"
+        />
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
@@ -27,8 +32,14 @@ export default function ContactPage() {
       </section>
 
       {/* Two-column body */}
-      <section className="bg-[#EDE9E3] py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      <section className="bg-[#EDE9E3] py-24 relative overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=1920&q=80"
+          alt="" aria-hidden
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0" style={{ background: "rgba(237,233,227,0.93)" }} />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
 
             {/* Left — contact details */}

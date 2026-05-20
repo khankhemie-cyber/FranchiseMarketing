@@ -43,6 +43,11 @@ export default function EarlyAccessPage() {
     <>
       {/* Hero */}
       <section className="pt-32 pb-20 bg-[#1C2B4A] relative overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80"
+          alt="" aria-hidden
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.14]"
+        />
         <div
           className="absolute inset-0 pointer-events-none"
           style={{ background: 'radial-gradient(ellipse 60% 50% at 60% 40%, rgba(200,146,26,0.08) 0%, transparent 70%)' }}
@@ -63,8 +68,14 @@ export default function EarlyAccessPage() {
       </section>
 
       {/* Content + Form */}
-      <section className="py-20 bg-[#EDE9E3]">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      <section className="py-20 bg-[#EDE9E3] relative overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?auto=format&fit=crop&w=1920&q=80"
+          alt="" aria-hidden
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0" style={{ background: "rgba(237,233,227,0.93)" }} />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
           <div className="grid lg:grid-cols-2 gap-16">
             {/* Left — benefits */}
             <div>

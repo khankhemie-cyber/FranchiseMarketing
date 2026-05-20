@@ -43,6 +43,8 @@ export default function PlatformPage() {
         className="relative overflow-hidden"
         style={{ background: "#1C2B4A" }}
       >
+        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1920&q=80" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover opacity-[0.12]" />
+
         {/* Ambient glows */}
         <div
           className="absolute inset-0 pointer-events-none"
@@ -136,8 +138,9 @@ export default function PlatformPage() {
       </section>
 
       {/* ══ INTEGRATIONS STRIP ══════════════════════════════════════════════ */}
-      <section className="py-20" style={{ background: "#1C2B4A" }}>
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      <section className="relative overflow-hidden py-20" style={{ background: "#1C2B4A" }}>
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1920&q=80" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover opacity-[0.08]" />
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
           {/* Header */}
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10">
             <div>
@@ -233,7 +236,7 @@ export default function PlatformPage() {
             className="font-display text-[50px] sm:text-[68px] lg:text-[84px] leading-[0.90] mb-6"
             style={{ color: "#1C2B4A" }}
           >
-            SEE THE PLATFORM IN ACTION
+            BE AMONG THE FIRST BRANDS ON SOVA
           </h2>
 
           <div className="rule-gold mx-auto mb-8" />
@@ -245,15 +248,15 @@ export default function PlatformPage() {
               color: "#6B7280",
             }}
           >
-            45-minute walkthrough, mapped to your network&apos;s structure.
+            Early access is open to a limited cohort of Canadian franchise brands. Lock in founder pricing before general availability.
           </p>
 
           <Link
-            href="/demo"
+            href="/early-access"
             className="font-sans-ui inline-flex items-center gap-2.5 text-base font-medium tracking-wide px-8 py-4 rounded-sm transition-all duration-200 active:scale-[0.98]"
             style={{ background: "#1C2B4A", color: "#fff" }}
           >
-            Book a Demo
+            Join the Waitlist
             <ArrowRight size={16} />
           </Link>
         </div>

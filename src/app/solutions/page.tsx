@@ -78,11 +78,11 @@ const ROLES = [
 ];
 
 const VERTICALS = [
-  { icon: Utensils,    name: "Quick Service",        color: "#D84F18", line: "Drive-time targeting, daypart promos, foot-traffic attribution." },
-  { icon: ShoppingCart,name: "Retail",               color: "#C8921A", line: "Brand-consistent local promotions with head-office guardrails." },
-  { icon: Wrench,      name: "Home Services",         color: "#1A6478", line: "Postal-code geofencing, weather triggers, direct mail suppliers." },
-  { icon: Dumbbell,    name: "Fitness & Wellness",    color: "#2EA5A0", line: "Seasonal demand forecasting, member retention, referral programs." },
-  { icon: Briefcase,   name: "Professional Services", color: "#1C2B4A", line: "Regulated marketing compliance, CASL management, approval workflows." },
+  { icon: Utensils,    name: "Quick Service",        color: "#D84F18", line: "Drive-time targeting, daypart promos, foot-traffic attribution.",     photo: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80" },
+  { icon: ShoppingCart,name: "Retail",               color: "#C8921A", line: "Brand-consistent local promotions with head-office guardrails.",       photo: "https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?auto=format&fit=crop&w=800&q=80" },
+  { icon: Wrench,      name: "Home Services",         color: "#1A6478", line: "Postal-code geofencing, weather triggers, direct mail suppliers.",     photo: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=800&q=80" },
+  { icon: Dumbbell,    name: "Fitness & Wellness",    color: "#2EA5A0", line: "Seasonal demand forecasting, member retention, referral programs.",    photo: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80" },
+  { icon: Briefcase,   name: "Professional Services", color: "#1C2B4A", line: "Regulated marketing compliance, CASL management, approval workflows.", photo: "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80" },
 ];
 
 export default function SolutionsPage() {
@@ -261,6 +261,16 @@ export default function SolutionsPage() {
             </h2>
           </div>
 
+          {/* Photo strip */}
+          <div className="relative h-56 overflow-hidden mb-12 rounded-xl">
+            <img
+              src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1920&q=80"
+              alt="Franchise retail environment"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(28,43,74,0.7) 0%, transparent 60%)" }} />
+          </div>
+
           <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {VERTICALS.map((v, i) => {
               const Icon = v.icon;
@@ -271,15 +281,23 @@ export default function SolutionsPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.07 }}
-                  className="bg-white rounded-xl p-6 border border-[rgba(28,43,74,0.08)] card-hover"
-                  style={{ borderTop: `3px solid ${v.color}` }}
+                  className="relative overflow-hidden rounded-xl group card-hover"
+                  style={{ minHeight: "220px" }}
                 >
-                  <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
-                    style={{ background: `${v.color}15` }}>
-                    <Icon size={18} style={{ color: v.color }} />
+                  <img
+                    src={v.photo}
+                    alt={v.name}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(28,43,74,0.90) 0%, rgba(28,43,74,0.50) 60%, rgba(28,43,74,0.25) 100%)" }} />
+                  <div className="relative z-10 p-6 h-full flex flex-col justify-end">
+                    <div className="w-10 h-10 rounded-lg flex items-center justify-center mb-4"
+                      style={{ background: `${v.color}99` }}>
+                      <Icon size={18} style={{ color: "white" }} />
+                    </div>
+                    <div className="font-sans-ui text-[13px] font-semibold text-white mb-2">{v.name}</div>
+                    <div className="font-sans-ui text-[11px] text-white/70 leading-relaxed">{v.line}</div>
                   </div>
-                  <div className="font-sans-ui text-[13px] font-semibold text-[#1C2B4A] mb-2">{v.name}</div>
-                  <div className="font-sans-ui text-[11px] text-[#718096] leading-relaxed">{v.line}</div>
                 </motion.div>
               );
             })}
@@ -295,8 +313,8 @@ export default function SolutionsPage() {
           </h2>
           <div className="rule-gold mx-auto mb-8" />
           <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/demo" className="font-sans-ui inline-flex items-center gap-2 text-[14px] font-semibold px-7 py-3.5 rounded-sm bg-[#1C2B4A] text-white hover:bg-[#263d6b] transition-colors">
-              Book a Demo <ArrowRight size={15} />
+            <Link href="/early-access" className="font-sans-ui inline-flex items-center gap-2 text-[14px] font-semibold px-7 py-3.5 rounded-sm bg-[#1C2B4A] text-white hover:bg-[#263d6b] transition-colors">
+              Join the Waitlist <ArrowRight size={15} />
             </Link>
             <Link href="/platform" className="font-sans-ui inline-flex items-center gap-2 text-[14px] font-medium px-7 py-3.5 rounded-sm border border-[rgba(28,43,74,0.2)] text-[#1C2B4A] hover:border-[#1C2B4A] transition-colors">
               Explore the Platform
