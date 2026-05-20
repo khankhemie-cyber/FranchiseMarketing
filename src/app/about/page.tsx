@@ -98,8 +98,13 @@ export default function AboutPage() {
       </section>
 
       {/* Mission */}
-      <section className="bg-[#1C2B4A] py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      <section className="bg-[#1C2B4A] py-24 relative overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1920&q=80"
+          alt="" aria-hidden
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.08]"
+        />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
           <div className="font-sans-ui text-[11px] font-semibold tracking-[0.2em] text-[#C8921A] uppercase mb-6">
             Our Mission
           </div>
@@ -138,8 +143,14 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="bg-[#F5F1EB] py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      <section className="bg-[#F5F1EB] py-24 relative overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=1920&q=80"
+          alt="" aria-hidden
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0" style={{ background: "rgba(245,241,235,0.93)" }} />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
           <div className="font-sans-ui text-[11px] font-semibold tracking-[0.2em] text-[#C8921A] uppercase mb-4">
             What We Stand For
           </div>
@@ -175,24 +186,28 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="bg-[#1C2B4A] py-24">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 text-center">
+      <section className="bg-[#1C2B4A] py-24 relative overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=1920&q=80"
+          alt="" aria-hidden
+          className="absolute inset-0 w-full h-full object-cover opacity-[0.10]"
+        />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 text-center">
           <div className="font-sans-ui text-[11px] font-semibold tracking-[0.2em] text-[#C8921A] uppercase mb-6">
-            Ready to See Sova?
+            Early Access
           </div>
           <h2 className="font-display text-[56px] sm:text-[72px] text-white leading-[0.9] mb-8">
-            BOOK A 30-MINUTE DEMO
+            BE FIRST TO BUILD ON SOVA.
           </h2>
           <p
             className="text-lg text-[rgba(255,255,255,0.65)] max-w-xl mx-auto mb-10"
             style={{ fontFamily: "'Constantia', Georgia, serif" }}
           >
-            Walk through the platform with a franchise specialist. No pressure,
-            no generic slides — a tailored look at how Sova fits your network.
+            We are opening a limited cohort for Canadian franchise brands who want to shape the platform and lock in founder pricing before general availability.
           </p>
-          <Link href="/demo">
+          <Link href="/early-access">
             <Button variant="primary" size="lg">
-              Book a Demo
+              Join the Waitlist
             </Button>
           </Link>
         </div>

@@ -8,8 +8,8 @@ export function BookingCTA() {
       <p className="font-sans-ui text-[15px] text-[#4A5568] mb-4">
         Not sure which plan fits your network?
       </p>
-      <Link href="/demo">
-        <Button variant="dark" size="lg">Book a 15-Minute Call</Button>
+      <Link href="/contact">
+        <Button variant="dark" size="lg">Get in Touch</Button>
       </Link>
     </div>
   );
