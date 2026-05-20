@@ -10,8 +10,8 @@ import {
   Brain,
   FileText,
   Users,
-  ChevronDown,
-  ChevronUp,
+  Database,
+  UserCheck,
 } from "lucide-react";
 
 /* ─── Types ──────────────────────────────────────────────────────────────── */
@@ -22,7 +22,7 @@ interface Module {
   accent: string;
   name: string;
   tagline: string;
-  stat?: { value: string; label: string };
+  accentWord: string; // 3-word colour accent shown on card
   features: string[];
 }
 
@@ -35,7 +35,7 @@ const MODULES: Module[] = [
     accent: "#C8921A",
     name: "Campaign Engine",
     tagline: "Launch, localise, scale.",
-    stat: { value: "1-click", label: "deploy to all locations" },
+    accentWord: "Launch · Scale · Win",
     features: [
       "Brand-locked templates",
       "CASL opt-in built in",
@@ -50,7 +50,7 @@ const MODULES: Module[] = [
     accent: "#1A6478",
     name: "Paid Media",
     tagline: "Every dollar. Accountable.",
-    stat: { value: "4+", label: "channels unified" },
+    accentWord: "Track · Optimise · Report",
     features: [
       "Google + Meta + programmatic",
       "Per-location budget controls",
@@ -65,7 +65,7 @@ const MODULES: Module[] = [
     accent: "#2EA5A0",
     name: "Geofencing",
     tagline: "Own your trade area.",
-    stat: { value: "Drive-time", label: "precision targeting" },
+    accentWord: "Target · Conquer · Attribute",
     features: [
       "Trade-area fence builder",
       "Competitor conquest zones",
@@ -80,7 +80,7 @@ const MODULES: Module[] = [
     accent: "#D84F18",
     name: "Vendor Marketplace",
     tagline: "Vetted partners. Network rates.",
-    stat: { value: "Pre-vetted", label: "Canadian vendors" },
+    accentWord: "Source · Approve · Deliver",
     features: [
       "Network-negotiated pricing",
       "In-platform procurement",
@@ -95,7 +95,7 @@ const MODULES: Module[] = [
     accent: "#1C2B4A",
     name: "Network Analytics",
     tagline: "The view from head office.",
-    stat: { value: "Real-time", label: "location index" },
+    accentWord: "Measure · Benchmark · Act",
     features: [
       "Franchisee scorecards",
       "Peer benchmarking",
@@ -110,7 +110,7 @@ const MODULES: Module[] = [
     accent: "#C8921A",
     name: "AI Intelligence",
     tagline: "Insight that acts.",
-    stat: { value: "NL", label: "ask the platform anything" },
+    accentWord: "Predict · Recommend · Automate",
     features: [
       "Anomaly detection",
       "Demand forecasting",
@@ -125,7 +125,7 @@ const MODULES: Module[] = [
     accent: "#1A6478",
     name: "Content Studio",
     tagline: "Brand-safe at scale.",
-    stat: { value: "DAM", label: "versioned + searchable" },
+    accentWord: "Create · Approve · Publish",
     features: [
       "Central asset library",
       "Template-locked editing",
@@ -140,13 +140,43 @@ const MODULES: Module[] = [
     accent: "#2EA5A0",
     name: "Field Management",
     tagline: "Your field team, connected.",
-    stat: { value: "360°", label: "franchisee visibility" },
+    accentWord: "Visit · Flag · Resolve",
     features: [
       "Structured visit logs",
       "Territory rollups",
       "Compliance flags",
       "Corrective action tracking",
       "Escalation workflows",
+    ],
+  },
+  {
+    id: "crm",
+    icon: Database,
+    accent: "#C8921A",
+    name: "CRM",
+    tagline: "Every contact. Every deal. One view.",
+    accentWord: "Track · Nurture · Close",
+    features: [
+      "Franchise prospect pipeline",
+      "Operator contact management",
+      "Automated follow-up sequences",
+      "Deal stage tracking",
+      "Performance-linked contacts",
+    ],
+  },
+  {
+    id: "franchise-development",
+    icon: UserCheck,
+    accent: "#1A6478",
+    name: "Franchise Development",
+    tagline: "Sell franchises. Fill territories.",
+    accentWord: "Discover · Score · Develop",
+    features: [
+      "Territory heat maps & availability",
+      "Lead scoring & routing",
+      "FDD distribution tracking",
+      "Multi-unit operator pipeline",
+      "Development analytics",
     ],
   },
 ];
@@ -166,68 +196,48 @@ function ModuleCard({
   return (
     <button
       onClick={onClick}
-      className="text-left w-full rounded-sm transition-all duration-200 group"
+      className="text-left w-full rounded-sm transition-all duration-200 focus-visible:outline-none"
       style={{
         background: active ? mod.accent : "#FDFBF8",
         border: `1px solid ${active ? mod.accent : "rgba(28,43,74,0.10)"}`,
         boxShadow: active
-          ? `0 8px 32px ${mod.accent}30`
+          ? `0 8px 32px ${mod.accent}38`
           : "0 1px 4px rgba(0,0,0,0.04)",
       }}
     >
       <div className="p-5">
-        {/* Icon row */}
-        <div className="flex items-start justify-between mb-4">
-          <div
-            className="w-10 h-10 rounded-sm flex items-center justify-center flex-shrink-0"
-            style={{
-              background: active ? "rgba(255,255,255,0.18)" : `${mod.accent}18`,
-            }}
-          >
-            <Icon
-              size={20}
-              style={{ color: active ? "#fff" : mod.accent }}
-            />
-          </div>
-          <div
-            className="font-sans-ui text-[10px] font-semibold tracking-[0.14em] uppercase px-2 py-1 rounded-sm"
-            style={{
-              background: active ? "rgba(255,255,255,0.15)" : `${mod.accent}12`,
-              color: active ? "#fff" : mod.accent,
-            }}
-          >
-            {mod.stat?.value}
-          </div>
+        {/* Icon */}
+        <div
+          className="w-11 h-11 rounded-sm flex items-center justify-center mb-4"
+          style={{
+            background: active ? "rgba(255,255,255,0.18)" : `${mod.accent}1A`,
+          }}
+        >
+          <Icon size={22} style={{ color: active ? "#fff" : mod.accent }} />
         </div>
 
-        {/* Name + tagline */}
+        {/* Name */}
         <div
-          className="font-sans-ui font-semibold text-base mb-0.5 leading-snug"
+          className="font-sans-ui font-semibold text-sm leading-tight mb-1"
           style={{ color: active ? "#fff" : "#1C2B4A" }}
         >
           {mod.name}
         </div>
+
+        {/* Tagline — single line */}
         <div
-          className="font-sans-ui text-[13px] leading-snug"
-          style={{ color: active ? "rgba(255,255,255,0.75)" : "#6B7280" }}
+          className="font-sans-ui text-[12px] leading-snug mb-3"
+          style={{ color: active ? "rgba(255,255,255,0.72)" : "#6B7280" }}
         >
           {mod.tagline}
         </div>
 
-        {/* Expand hint */}
+        {/* 3-word accent */}
         <div
-          className="mt-3 flex items-center gap-1 font-sans-ui text-[11px] font-medium"
-          style={{ color: active ? "rgba(255,255,255,0.65)" : mod.accent }}
+          className="font-sans-ui text-[10px] font-semibold tracking-[0.14em] uppercase"
+          style={{ color: active ? "rgba(255,255,255,0.55)" : mod.accent }}
         >
-          {active ? (
-            <>
-              <ChevronUp size={13} /> Less
-            </>
-          ) : (
-            <>
-              <ChevronDown size={13} /> Details
-            </>
-          )}
+          {mod.accentWord}
         </div>
       </div>
     </button>
@@ -240,77 +250,64 @@ function ModuleDetail({ mod }: { mod: Module }) {
   const Icon = mod.icon;
   return (
     <div
-      className="rounded-sm p-8 lg:p-12 animate-in fade-in duration-300"
+      className="rounded-sm p-8 lg:p-12"
       style={{
         background: "#FDFBF8",
-        border: `1px solid rgba(28,43,74,0.08)`,
         borderTop: `3px solid ${mod.accent}`,
+        border: `1px solid rgba(28,43,74,0.08)`,
+        borderTopWidth: "3px",
+        borderTopColor: mod.accent,
       }}
     >
-      <div className="grid lg:grid-cols-[auto_1fr] gap-10 items-start">
-        {/* Left: icon + stat */}
-        <div className="flex flex-row lg:flex-col items-center lg:items-start gap-6 lg:gap-8">
-          <div
-            className="w-16 h-16 rounded-sm flex items-center justify-center flex-shrink-0"
-            style={{ background: mod.accent }}
-          >
-            <Icon size={30} color="#fff" />
-          </div>
-          {mod.stat && (
-            <div>
-              <div
-                className="font-display text-[40px] leading-none"
-                style={{ color: mod.accent }}
-              >
-                {mod.stat.value}
-              </div>
-              <div
-                className="font-sans-ui text-[12px] mt-1"
-                style={{ color: "#6B7280" }}
-              >
-                {mod.stat.label}
-              </div>
-            </div>
-          )}
+      <div className="grid lg:grid-cols-[80px_1fr] gap-8 lg:gap-12 items-start">
+        {/* Left: large icon */}
+        <div
+          className="w-16 h-16 rounded-sm flex items-center justify-center flex-shrink-0"
+          style={{ background: mod.accent }}
+        >
+          <Icon size={30} color="#fff" />
         </div>
 
-        {/* Right: name + tagline + features */}
+        {/* Right */}
         <div>
+          {/* Module label */}
           <div
-            className="font-sans-ui text-[11px] font-semibold tracking-[0.2em] uppercase mb-2"
+            className="font-sans-ui text-[10px] font-semibold tracking-[0.22em] uppercase mb-2"
             style={{ color: mod.accent }}
           >
             {mod.name}
           </div>
+
+          {/* Tagline as display headline */}
           <h3
-            className="font-display text-[34px] sm:text-[42px] leading-[0.95] mb-6"
+            className="font-display text-[32px] sm:text-[42px] leading-[0.92] mb-5"
             style={{ color: "#1C2B4A" }}
           >
             {mod.tagline.toUpperCase()}
           </h3>
 
+          {/* Gold rule */}
           <div
             className="w-10 h-0.5 mb-6"
             style={{ background: mod.accent }}
           />
 
-          {/* Feature bullets — 2 col grid */}
-          <ul className="grid sm:grid-cols-2 gap-x-8 gap-y-3">
+          {/* Features as pills */}
+          <div className="flex flex-wrap gap-2">
             {mod.features.map((f) => (
-              <li key={f} className="flex items-center gap-2.5">
-                <span
-                  className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                  style={{ background: mod.accent }}
-                />
-                <span
-                  className="font-sans-ui text-sm"
-                  style={{ color: "#1C2B4A" }}
-                >
-                  {f}
-                </span>
-              </li>
+              <span
+                key={f}
+                className="font-sans-ui text-[12px] font-medium px-3 py-1.5 rounded-full"
+                style={{
+                  background: `${mod.accent}12`,
+                  color: mod.accent,
+                  border: `1px solid ${mod.accent}28`,
+                }}
+              >
+                {f}
+              </span>
             ))}
-          </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -320,15 +317,16 @@ function ModuleDetail({ mod }: { mod: Module }) {
 /* ─── Grid ───────────────────────────────────────────────────────────────── */
 
 export default function ModuleGrid() {
-  const [active, setActive] = useState<string | null>(null);
+  const [active, setActive] = useState<string>("campaign-engine");
 
-  const toggle = (id: string) => setActive((prev) => (prev === id ? null : id));
-  const activeMod = MODULES.find((m) => m.id === active) ?? null;
+  const toggle = (id: string) =>
+    setActive((prev) => (prev === id ? "campaign-engine" : id));
+  const activeMod = MODULES.find((m) => m.id === active) ?? MODULES[0];
 
   return (
     <div>
-      {/* 4-col card grid */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+      {/* 5-col desktop / 2-col mobile card grid */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
         {MODULES.map((mod) => (
           <ModuleCard
             key={mod.id}
@@ -339,12 +337,10 @@ export default function ModuleGrid() {
         ))}
       </div>
 
-      {/* Expandable detail panel */}
-      {activeMod && (
-        <div className="mt-4">
-          <ModuleDetail mod={activeMod} />
-        </div>
-      )}
+      {/* Active module detail panel */}
+      <div className="mt-4">
+        <ModuleDetail mod={activeMod} />
+      </div>
     </div>
   );
 }
