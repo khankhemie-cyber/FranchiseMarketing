@@ -5,25 +5,6 @@ import { useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
-const BRANDS = [
-  "Tim Hortons", "Boston Pizza", "The UPS Store", "Subway Canada", "ServiceMaster",
-  "Cinnabon", "Kumon", "Pet Valu", "Mary Brown's", "Mr. Lube",
-  "Nurse Next Door", "Score Pizza", "Anytime Fitness", "Harvey's", "Cora's",
-];
-
-const STATS = [
-  { n: "$133B", l: "Franchise GDP" },
-  { n: "76,000+", l: "Locations" },
-  { n: "1,300", l: "Active Brands" },
-  { n: "8", l: "Platform Modules" },
-];
-
-const LIVE_METRICS = [
-  { label: "Active Campaigns", value: "247", delta: "+18%", color: "#C8921A" },
-  { label: "Network Revenue", value: "$8.4M", delta: "+24%", color: "#2EA5A0" },
-  { label: "Locations Live", value: "143", delta: "100%", color: "#1A6478" },
-];
-
 export function Hero() {
   const ref = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
@@ -46,7 +27,7 @@ export function Hero() {
           style={{ background: "radial-gradient(circle, rgba(46,165,160,0.08) 0%, transparent 70%)" }} />
       </motion.div>
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-10 pt-36 pb-16 w-full">
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-10 pt-36 pb-24 w-full">
         <div className="grid lg:grid-cols-[1fr_420px] gap-12 xl:gap-20 items-center">
 
           {/* Left */}
@@ -109,9 +90,9 @@ export function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.75 }}
             >
-              <Link href="/demo">
+              <Link href="/early-access">
                 <Button variant="dark" size="lg">
-                  Book a Demo <ArrowRight size={16} />
+                  Join the Waitlist <ArrowRight size={16} />
                 </Button>
               </Link>
               <Link href="/platform">
@@ -133,33 +114,16 @@ export function Hero() {
             <DashboardCard />
           </motion.div>
         </div>
-
-        {/* Stats strip */}
-        <motion.div
-          className="mt-20 pt-8 border-t border-[rgba(28,43,74,0.1)] grid grid-cols-2 sm:grid-cols-4 gap-8"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.9 }}
-        >
-          {STATS.map((s, i) => (
-            <motion.div
-              key={s.n}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.95 + i * 0.07 }}
-            >
-              <div className="font-display text-[44px] text-[#C8921A] leading-none mb-1">{s.n}</div>
-              <div className="font-sans-ui text-[11px] text-[#718096] tracking-wide uppercase">{s.l}</div>
-            </motion.div>
-          ))}
-        </motion.div>
       </div>
-
-      {/* Brand marquee */}
-      <BrandMarquee />
     </section>
   );
 }
+
+const LIVE_METRICS = [
+  { label: "Active Campaigns", value: "247", delta: "+18%", color: "#C8921A" },
+  { label: "Network Revenue", value: "$8.4M", delta: "+24%", color: "#2EA5A0" },
+  { label: "Locations Live", value: "143", delta: "100%", color: "#1A6478" },
+];
 
 function DashboardCard() {
   return (
@@ -239,22 +203,6 @@ function DashboardCard() {
             </motion.span>
           ))}
         </div>
-      </div>
-    </div>
-  );
-}
-
-function BrandMarquee() {
-  const items = [...BRANDS, ...BRANDS];
-  return (
-    <div className="w-full overflow-hidden border-t border-[rgba(28,43,74,0.08)] bg-[#EDE9E3]/80 backdrop-blur-sm py-4">
-      <div className="flex animate-marquee whitespace-nowrap">
-        {items.map((b, i) => (
-          <span key={i} className="inline-flex items-center gap-4 px-6">
-            <span className="font-sans-ui text-[11px] font-medium text-[#718096] tracking-[0.12em] uppercase">{b}</span>
-            <span className="w-1 h-1 rounded-full bg-[#C8921A]/40 flex-shrink-0" />
-          </span>
-        ))}
       </div>
     </div>
   );

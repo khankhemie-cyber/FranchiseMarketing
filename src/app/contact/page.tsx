@@ -44,50 +44,23 @@ export default function ContactPage() {
                     Email
                   </div>
                   <a
-                    href="mailto:hello@sovaos.ca"
+                    href="mailto:operations@sovaos.ca"
                     className="text-xl text-[#1A6478] hover:text-[#C8921A] transition-colors"
                     style={{ fontFamily: "'Constantia', Georgia, serif" }}
                   >
-                    hello@sovaos.ca
+                    operations@sovaos.ca
                   </a>
                 </div>
 
                 <div>
                   <div className="font-sans-ui text-[11px] font-semibold tracking-[0.15em] text-[#718096] uppercase mb-2">
-                    Phone
-                  </div>
-                  <a
-                    href="tel:+14165550100"
-                    className="text-xl text-[#1C2B4A] hover:text-[#C8921A] transition-colors"
-                    style={{ fontFamily: "'Constantia', Georgia, serif" }}
-                  >
-                    416-555-0100
-                  </a>
-                </div>
-
-                <div>
-                  <div className="font-sans-ui text-[11px] font-semibold tracking-[0.15em] text-[#718096] uppercase mb-2">
-                    Toronto Office
-                  </div>
-                  <address
-                    className="not-italic text-base text-[#4A5568] leading-relaxed"
-                    style={{ fontFamily: "'Constantia', Georgia, serif" }}
-                  >
-                    Suite 1400 — 150 King Street West<br />
-                    Toronto, ON&nbsp; M5H 1J9<br />
-                    Canada
-                  </address>
-                </div>
-
-                <div>
-                  <div className="font-sans-ui text-[11px] font-semibold tracking-[0.15em] text-[#718096] uppercase mb-2">
-                    Office Hours
+                    Response Time
                   </div>
                   <p
                     className="text-base text-[#4A5568]"
                     style={{ fontFamily: "'Constantia', Georgia, serif" }}
                   >
-                    Monday – Friday, 9:00 am – 6:00 pm ET
+                    Monday – Friday, within one business day
                   </p>
                 </div>
               </div>

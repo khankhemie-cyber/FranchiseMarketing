@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { BookingCTA } from './BookingCTA';
+import Link from 'next/link';
 
 export const metadata: Metadata = { title: 'Pricing' };
 
@@ -12,36 +12,17 @@ const TIERS = [
     sub: '+ $75 per location / month',
     note: 'CAD. HST not included.',
     popular: false,
-    cta: 'Book a Demo',
-    ctaHref: '/demo',
+    cta: 'Join the Waitlist',
+    ctaHref: '/early-access',
     features: [
-      'All 8 platform modules',
+      'All 10 platform modules',
       'Unlimited head office users',
       'Per-location franchisee logins',
       'Campaign Engine & Content Studio',
       'Network Analytics & AI Layer',
       'Paid Media, Geofencing & Vendors',
+      'CRM & Franchise Development',
       'Email support',
-    ],
-  },
-  {
-    name: 'Managed',
-    tagline: 'Platform plus a dedicated Sova team managing your campaigns.',
-    price: '$3,000',
-    period: '/mo',
-    sub: '+ $75 per location / month',
-    note: 'CAD. HST not included.',
-    popular: true,
-    cta: 'Book a Demo',
-    ctaHref: '/demo',
-    features: [
-      'Everything in Platform',
-      'Dedicated franchise marketing manager',
-      'Monthly campaign planning & execution',
-      'Paid media buying & optimisation',
-      'Monthly performance reviews',
-      'Priority phone & email support',
-      'Quarterly strategy sessions',
     ],
   },
   {
@@ -51,16 +32,17 @@ const TIERS = [
     period: '',
     sub: 'Tailored to your network',
     note: null,
-    popular: false,
+    popular: true,
     cta: 'Contact Sales',
     ctaHref: '/contact',
     features: [
-      'All Managed plan features',
+      'Everything in Platform',
       'Custom AI models & reporting',
       'API access & integrations',
       'Dedicated franchise success manager',
       'SLA guarantees',
       'Custom contract terms',
+      'Priority phone & email support',
     ],
   },
 ];
@@ -68,7 +50,7 @@ const TIERS = [
 const FAQS = [
   {
     q: "What's included in setup?",
-    a: "All plans include platform configuration, location data import, and brand asset setup. Managed plans add a dedicated onboarding manager for the first 60 days.",
+    a: "All plans include platform configuration, location data import, and brand asset setup.",
   },
   {
     q: "Can franchisees have their own logins?",
@@ -76,11 +58,11 @@ const FAQS = [
   },
   {
     q: "Is there a minimum contract term?",
-    a: "Platform plans are month-to-month. Managed plans require a 12-month commitment; Enterprise terms are negotiated per contract.",
+    a: "Platform plans are month-to-month. Enterprise terms are negotiated per contract.",
   },
   {
     q: "Do you offer trials?",
-    a: "No self-serve trials — qualified prospects can access a structured 30-day pilot with full platform support. Book a demo to determine eligibility.",
+    a: "Sova is currently in early access. Join the waitlist to be among the first brands on the platform, with founder-level pricing locked in.",
   },
   {
     q: "How are locations counted?",
@@ -109,15 +91,15 @@ export default function PricingPage() {
           </h1>
           <div className="w-12 h-0.5 bg-[#C8921A] mx-auto mb-8" />
           <p className="text-[18px] sm:text-[20px] text-white/60 leading-relaxed max-w-2xl mx-auto">
-            Simple per-location pricing. Self-serve platform or fully managed — you choose. All prices in CAD.
+            Simple per-location pricing that grows with your network. All prices in CAD.
           </p>
         </div>
       </section>
 
       {/* ── Pricing tiers ────────────────────────────────────── */}
       <section className="py-24 px-6 lg:px-10 bg-[#F5F1EB]">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-3 gap-6 items-stretch">
+        <div className="max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-6 items-stretch">
             {TIERS.map((tier) => (
               <div
                 key={tier.name}
@@ -133,7 +115,7 @@ export default function PricingPage() {
                 {tier.popular && (
                   <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
                     <span className="font-sans-ui text-[10px] font-semibold tracking-[0.15em] text-white bg-[#C8921A] px-3 py-1 rounded-full uppercase">
-                      Most Popular
+                      Enterprise
                     </span>
                   </div>
                 )}
@@ -173,7 +155,7 @@ export default function PricingPage() {
                   </ul>
 
                   {/* CTA */}
-                  <a
+                  <Link
                     href={tier.ctaHref}
                     className={`font-sans-ui text-sm font-semibold tracking-wide text-center px-6 py-3 rounded-sm transition-all active:scale-[0.98] block ${
                       tier.popular
@@ -182,7 +164,7 @@ export default function PricingPage() {
                     }`}
                   >
                     {tier.cta}
-                  </a>
+                  </Link>
                 </div>
               </div>
             ))}
@@ -222,9 +204,14 @@ export default function PricingPage() {
             NOT SURE WHICH<br />PLAN FITS?
           </h2>
           <p className="text-[17px] text-white/60 leading-relaxed mb-10">
-            Book a 15-minute call and we&rsquo;ll recommend the right plan for your network — no commitment required.
+            Reach out and we&rsquo;ll recommend the right plan for your network — no commitment required.
           </p>
-          <BookingCTA />
+          <Link
+            href="/contact"
+            className="font-sans-ui text-sm font-semibold bg-[#C8921A] text-white px-8 py-3.5 rounded-sm hover:bg-[#B07D14] transition-colors inline-block"
+          >
+            Get in Touch
+          </Link>
         </div>
       </section>
     </div>
