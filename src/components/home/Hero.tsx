@@ -71,7 +71,7 @@ export function Hero() {
                   className="block text-[#1C2B4A]"
                   initial={{ opacity: 0, x: -24 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.55, delay: 0.15 + i * 0.1 }}
+                  transition={{ duration: 0.45, delay: 0.1 + i * 0.08 }}
                 >
                   {line}
                 </motion.span>
@@ -164,10 +164,13 @@ export function Hero() {
 function DashboardCard() {
   return (
     <div
-      className="rounded-2xl overflow-hidden border border-[rgba(28,43,74,0.1)] card-hover"
+      className="rounded-2xl overflow-hidden card-hover"
       style={{
-        background: "#FDFBF8",
-        boxShadow: "0 32px 100px rgba(28,43,74,0.13), 0 4px 20px rgba(28,43,74,0.07)",
+        background: "rgba(253,251,248,0.82)",
+        backdropFilter: "blur(28px)",
+        WebkitBackdropFilter: "blur(28px)",
+        border: "1px solid rgba(255,255,255,0.65)",
+        boxShadow: "0 32px 100px rgba(28,43,74,0.16), 0 4px 24px rgba(28,43,74,0.08), inset 0 1px 0 rgba(255,255,255,0.85)",
       }}
     >
       {/* Chrome */}

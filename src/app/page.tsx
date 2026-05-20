@@ -1,6 +1,7 @@
 import { Hero } from "@/components/home/Hero";
-import { PlatformPillars } from "@/components/home/PlatformPillars";
 import { ModulesShowcase } from "@/components/home/ModulesShowcase";
+import { FranchiseLifecycle } from "@/components/home/FranchiseLifecycle";
+import { NetworkDiagram } from "@/components/home/NetworkDiagram";
 import { WhoItServes } from "@/components/home/WhoItServes";
 import { ExecutiveTeaser } from "@/components/home/ExecutiveTeaser";
 import { RankingsTeaser } from "@/components/home/RankingsTeaser";
@@ -10,8 +11,9 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <PlatformPillars />
       <ModulesShowcase />
+      <FranchiseLifecycle />
+      <NetworkDiagram />
       <WhoItServes />
       <ExecutiveTeaser />
       <RankingsTeaser />
