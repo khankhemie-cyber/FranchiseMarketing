@@ -142,7 +142,7 @@ export function NetworkDiagram() {
             </h2>
             <div className="rule-gold mb-8" />
             <p className="text-[17px] leading-relaxed text-[#4A5568] mb-10" style={{ fontFamily: "'Constantia', Georgia, serif" }}>
-              Unlike siloed tools, every Sova module shares a single data layer. A campaign launched in the Campaign Engine flows into Analytics, triggers CRM actions, and updates field performance — automatically.
+              Every Sova module shares a single data layer. A campaign launched in the Campaign Engine flows into Analytics, triggers CRM actions, and updates field performance — automatically.
             </p>
             <div className="grid grid-cols-2 gap-3">
               {NODES.map((n) => (

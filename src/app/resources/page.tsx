@@ -1,11 +1,13 @@
+"use client";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-export const metadata = { title: "Resources" };
-
 const GUIDES = [
   {
+    slug: "canadian-franchise-marketing-playbook",
     badge: "Guide",
     badgeVariant: "gold" as const,
     title: "The Canadian Franchise Marketing Playbook",
@@ -14,6 +16,7 @@ const GUIDES = [
     readTime: "18 min read",
   },
   {
+    slug: "state-of-canadian-franchise-marketing-2025",
     badge: "Research",
     badgeVariant: "teal" as const,
     title: "State of Canadian Franchise Marketing 2025",
@@ -22,6 +25,7 @@ const GUIDES = [
     readTime: "12 min read",
   },
   {
+    slug: "casl-compliance-franchise-marketers",
     badge: "Guide",
     badgeVariant: "gold" as const,
     title: "CASL Compliance for Franchise Marketers",
@@ -30,6 +34,7 @@ const GUIDES = [
     readTime: "9 min read",
   },
   {
+    slug: "co-op-fund-policy-template",
     badge: "Template",
     badgeVariant: "navy" as const,
     title: "Co-Op Fund Policy Template",
@@ -38,6 +43,7 @@ const GUIDES = [
     readTime: "Template",
   },
   {
+    slug: "geofencing-roi-canadian-qsr",
     badge: "Research",
     badgeVariant: "teal" as const,
     title: "Geofencing ROI in Canadian QSR: A 12-Month Study",
@@ -46,6 +52,7 @@ const GUIDES = [
     readTime: "7 min read",
   },
   {
+    slug: "building-franchise-brand-standards-manual",
     badge: "Guide",
     badgeVariant: "gold" as const,
     title: "Building a Franchise Brand Standards Manual",
@@ -58,6 +65,9 @@ const GUIDES = [
 const CATEGORIES = ["All", "Marketing Strategy", "Compliance", "Industry Research", "Operations", "Brand", "Case Study"];
 
 export default function ResourcesPage() {
+  const [active, setActive] = useState("All");
+  const filtered = active === "All" ? GUIDES : GUIDES.filter((g) => g.category === active);
+
   return (
     <>
       {/* Hero */}
@@ -79,20 +89,24 @@ export default function ResourcesPage() {
       <section className="py-6 bg-[#F5F1EB] border-b border-[rgba(28,43,74,0.08)] sticky top-[72px] z-30">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
           <div className="flex gap-2 overflow-x-auto pb-1">
-            {CATEGORIES.map((c, i) => (
-              <button
-                key={c}
-                className="font-sans-ui text-[12px] font-medium px-4 py-1.5 rounded-sm whitespace-nowrap transition-colors"
-                style={{
-                  background: i === 0 ? "#1C2B4A" : "transparent",
-                  color: i === 0 ? "white" : "#4A5568",
-                  border: "1px solid",
-                  borderColor: i === 0 ? "#1C2B4A" : "rgba(28,43,74,0.15)",
-                }}
-              >
-                {c}
-              </button>
-            ))}
+            {CATEGORIES.map((c) => {
+              const isActive = c === active;
+              return (
+                <button
+                  key={c}
+                  onClick={() => setActive(c)}
+                  className="font-sans-ui text-[12px] font-medium px-4 py-1.5 rounded-sm whitespace-nowrap transition-colors"
+                  style={{
+                    background: isActive ? "#1C2B4A" : "transparent",
+                    color: isActive ? "white" : "#4A5568",
+                    border: "1px solid",
+                    borderColor: isActive ? "#1C2B4A" : "rgba(28,43,74,0.15)",
+                  }}
+                >
+                  {c}
+                </button>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -100,25 +114,40 @@ export default function ResourcesPage() {
       {/* Grid */}
       <section className="py-16 bg-[#EDE9E3]">
         <div className="max-w-7xl mx-auto px-6 lg:px-10">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {GUIDES.map((g) => (
-              <div
-                key={g.title}
-                className="bg-[#FDFBF8] rounded-xl p-6 border border-[rgba(28,43,74,0.08)] flex flex-col hover:shadow-md transition-shadow cursor-pointer"
-              >
-                <div className="flex items-start justify-between gap-4 mb-4">
-                  <Badge variant={g.badgeVariant}>{g.badge}</Badge>
-                  <span className="font-sans-ui text-[11px] text-[#718096]">{g.readTime}</span>
-                </div>
-                <div className="font-sans-ui text-[11px] font-medium text-[#718096] mb-2 tracking-wide">{g.category}</div>
-                <h3 className="font-display text-[22px] text-[#1C2B4A] leading-tight mb-3">{g.title}</h3>
-                <p className="font-sans-ui text-[13px] leading-relaxed text-[#4A5568] flex-1 mb-5">{g.excerpt}</p>
-                <div className="flex items-center gap-1.5 font-sans-ui text-[12px] font-semibold text-[#C8921A]">
-                  Read more <ArrowRight size={12} />
-                </div>
-              </div>
-            ))}
-          </div>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+            >
+              {filtered.map((g, i) => (
+                <motion.div
+                  key={g.slug}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.06 }}
+                >
+                  <Link href={`/resources/${g.slug}`} className="block h-full">
+                    <div className="bg-[#FDFBF8] rounded-xl p-6 border border-[rgba(28,43,74,0.08)] flex flex-col h-full hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 cursor-pointer">
+                      <div className="flex items-start justify-between gap-4 mb-4">
+                        <Badge variant={g.badgeVariant}>{g.badge}</Badge>
+                        <span className="font-sans-ui text-[11px] text-[#718096]">{g.readTime}</span>
+                      </div>
+                      <div className="font-sans-ui text-[11px] font-medium text-[#718096] mb-2 tracking-wide">{g.category}</div>
+                      <h3 className="font-display text-[22px] text-[#1C2B4A] leading-tight mb-3">{g.title}</h3>
+                      <p className="font-sans-ui text-[13px] leading-relaxed text-[#4A5568] flex-1 mb-5">{g.excerpt}</p>
+                      <div className="flex items-center gap-1.5 font-sans-ui text-[12px] font-semibold text-[#C8921A]">
+                        Read article <ArrowRight size={12} />
+                      </div>
+                    </div>
+                  </Link>
+                </motion.div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
         </div>
       </section>
 
