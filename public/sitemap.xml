@@ -8,6 +8,12 @@
   <url><loc>https://sovaos.ca/rankings/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://sovaos.ca/about/</loc><changefreq>monthly</changefreq><priority>0.75</priority></url>
   <url><loc>https://sovaos.ca/resources/</loc><changefreq>weekly</changefreq><priority>0.75</priority></url>
+  <url><loc>https://sovaos.ca/resources/canadian-franchise-marketing-playbook/</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://sovaos.ca/resources/state-of-canadian-franchise-marketing-2025/</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://sovaos.ca/resources/casl-compliance-franchise-marketers/</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://sovaos.ca/resources/co-op-fund-policy-template/</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://sovaos.ca/resources/geofencing-roi-canadian-qsr/</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
+  <url><loc>https://sovaos.ca/resources/building-franchise-brand-standards-manual/</loc><changefreq>monthly</changefreq><priority>0.65</priority></url>
   <url><loc>https://sovaos.ca/demo/</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://sovaos.ca/contact/</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://sovaos.ca/early-access/</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>

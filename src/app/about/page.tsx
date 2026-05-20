@@ -40,7 +40,7 @@ const VALUES = [
   {
     icon: Flag,
     title: "Canadian-First",
-    body: "Bilingual support and Canadian privacy law compliance from day one — not an afterthought adaptation of a US product.",
+    body: "Bilingual support and Canadian privacy law compliance from day one — built for how Canadian franchises actually operate.",
   },
   {
     icon: Wrench,
