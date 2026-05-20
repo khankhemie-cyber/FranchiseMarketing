@@ -29,12 +29,12 @@ export function HomeCTA() {
               READY TO SEE<br />YOUR NETWORK<br />CLEARLY?
             </h2>
             <p className="text-[17px] leading-relaxed text-white/55 mb-10 max-w-lg mx-auto" style={{ fontFamily: "'Constantia', Georgia, serif" }}>
-              Book a 30-minute platform walkthrough with a Sova specialist and see exactly how it maps to your franchise system.
+              Join early access and be among the first Canadian franchise brands to build on Sova — with founder-level pricing locked in.
             </p>
             <div className="flex flex-wrap items-center justify-center gap-4">
-              <Link href="/demo">
+              <Link href="/early-access">
                 <Button variant="primary" size="lg">
-                  Book a Demo
+                  Join the Waitlist
                   <ArrowRight size={16} />
                 </Button>
               </Link>

@@ -80,8 +80,8 @@ export function Navigation() {
               >
                 Pricing
               </Link>
-              <Link href="/demo">
-                <Button size="sm" variant="dark">Book a Demo</Button>
+              <Link href="/early-access">
+                <Button size="sm" variant="dark">Join the Waitlist</Button>
               </Link>
             </div>
 
@@ -121,8 +121,8 @@ export function Navigation() {
                 Pricing
               </Link>
               <div className="pt-4">
-                <Link href="/demo">
-                  <Button variant="dark" size="md" className="w-full justify-center">Book a Demo</Button>
+                <Link href="/early-access">
+                  <Button variant="dark" size="md" className="w-full justify-center">Join the Waitlist</Button>
                 </Link>
               </div>
             </div>

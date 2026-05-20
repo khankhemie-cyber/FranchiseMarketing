@@ -1,4 +1,5 @@
 import { Hero } from "@/components/home/Hero";
+import { EventCallout } from "@/components/home/EventCallout";
 import { ModulesShowcase } from "@/components/home/ModulesShowcase";
 import { FranchiseLifecycle } from "@/components/home/FranchiseLifecycle";
 import { NetworkDiagram } from "@/components/home/NetworkDiagram";
@@ -11,6 +12,7 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <EventCallout />
       <ModulesShowcase />
       <FranchiseLifecycle />
       <NetworkDiagram />

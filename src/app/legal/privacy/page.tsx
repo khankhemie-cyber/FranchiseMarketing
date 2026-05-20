@@ -224,7 +224,7 @@ export default function PrivacyPolicy() {
           privacy@sovaos.ca
         </a>
         <br />
-        Mail: Privacy Officer, Sova Technologies Inc., Toronto, Ontario, Canada
+        Email: privacy@sovaos.ca
       </p>
       <p style={pStyle}>
         You also have the right to contact the Office of the Privacy Commissioner of Canada at{' '}

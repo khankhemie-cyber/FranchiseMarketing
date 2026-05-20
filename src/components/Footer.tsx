@@ -17,6 +17,7 @@ const LINKS = {
   Company: [
     { label: "About Sova", href: "/about" },
     { label: "Executive Circle", href: "/executive-circle" },
+    { label: "Roundtable · July 2026", href: "/executive-circle/events" },
     { label: "Canada Franchise Rankings", href: "/rankings" },
     { label: "Resources", href: "/resources" },
     { label: "Contact", href: "/contact" },
@@ -45,9 +46,9 @@ export function Footer() {
             <p className="text-[13px] leading-relaxed text-white/50 mb-6" style={{ fontFamily: "'Constantia', Georgia, serif" }}>
               The platform Canadian franchise brands trust to grow with confidence.
             </p>
-            <Link href="/demo">
+            <Link href="/early-access">
               <span className="font-sans-ui inline-flex items-center gap-2 text-xs font-semibold tracking-wider text-[#C8921A] border border-[#C8921A]/30 px-4 py-2.5 rounded-sm hover:bg-[#C8921A]/10 transition-colors">
-                BOOK A DEMO →
+                JOIN THE WAITLIST →
               </span>
             </Link>
           </div>
@@ -77,7 +78,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-white/[0.07] pt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="font-sans-ui text-xs text-white/30">
-            © {new Date().getFullYear()} Sova Technologies Inc. All rights reserved. Toronto, Ontario · Canada
+            © {new Date().getFullYear()} Sova Technologies Inc. All rights reserved. Canada
           </p>
           <div className="flex items-center gap-6">
             <Link href="/legal/privacy" className="font-sans-ui text-xs text-white/30 hover:text-white/60 transition-colors">Privacy</Link>
