@@ -37,14 +37,28 @@ export function ExecutiveTeaser() {
             </Link>
           </motion.div>
 
-          {/* Right — card grid */}
+          {/* Right — image + card grid */}
           <motion.div
             initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="grid grid-cols-2 gap-4"
+            className="space-y-4"
           >
+            {/* Photo */}
+            <div className="relative rounded-xl overflow-hidden h-56">
+              <img
+                src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=900&q=80"
+                alt="Executive roundtable discussion"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(28,43,74,0.7) 0%, transparent 60%)" }} />
+              <div className="absolute bottom-0 left-0 right-0 p-5">
+                <p className="font-display text-[18px] text-white leading-tight">Executive Circle</p>
+                <p className="font-sans-ui text-[11px] text-white/55 mt-0.5">Quarterly sessions · Invite only</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 gap-4">
             {[
               { n: "Peer", l: "Roundtables", detail: "Quarterly sessions with franchise CMOs across Canada" },
               { n: "Original", l: "Research", detail: "Annual State of Canadian Franchise Marketing report" },
@@ -60,6 +74,7 @@ export function ExecutiveTeaser() {
                 <p className="font-sans-ui text-[11px] text-[#718096] leading-relaxed">{c.detail}</p>
               </div>
             ))}
+            </div>
           </motion.div>
         </div>
       </div>

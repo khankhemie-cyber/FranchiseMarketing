@@ -95,9 +95,9 @@ export function Hero() {
                   Join the Waitlist <ArrowRight size={16} />
                 </Button>
               </Link>
-              <Link href="/platform">
+              <Link href="/executive-circle/events">
                 <Button variant="ghost" size="lg" className="font-sans-ui">
-                  Explore Platform →
+                  Join the Conversation →
                 </Button>
               </Link>
             </motion.div>

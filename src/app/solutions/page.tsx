@@ -200,8 +200,17 @@ export default function SolutionsPage() {
       </AnimatePresence>
 
       {/* Network flow diagram */}
-      <section className="py-20 bg-[#1C2B4A] overflow-hidden">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      <section className="py-20 bg-[#1C2B4A] overflow-hidden relative">
+        {/* Photo background */}
+        <img
+          src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1920&q=80"
+          alt=""
+          aria-hidden
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectFit: "cover" }}
+        />
+        <div className="absolute inset-0" style={{ background: "rgba(28,43,74,0.88)" }} />
+        <div className="max-w-7xl mx-auto px-6 lg:px-10 relative">
           <div className="text-center mb-14">
             <div className="font-sans-ui text-[11px] font-semibold tracking-[0.2em] text-[#C8921A] uppercase mb-4">How It Connects</div>
             <h2 className="font-display text-[clamp(36px,5vw,64px)] text-white leading-[0.9]">

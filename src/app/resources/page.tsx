@@ -71,8 +71,16 @@ export default function ResourcesPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-32 pb-16 bg-[#EDE9E3]">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10">
+      <section className="pt-32 pb-16 bg-[#EDE9E3] relative overflow-hidden">
+        {/* Photo background with near-opaque cream overlay */}
+        <img
+          src="https://images.unsplash.com/photo-1497366754035-f200586a9e6a?auto=format&fit=crop&w=1920&q=80"
+          alt=""
+          aria-hidden
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div className="absolute inset-0" style={{ background: "rgba(237,233,227,0.93)" }} />
+        <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
           <div className="font-sans-ui text-[11px] font-semibold tracking-[0.2em] text-[#C8921A] uppercase mb-4">
             Resources
           </div>
@@ -83,6 +91,7 @@ export default function ResourcesPage() {
             Guides, research, templates, and playbooks — built for Canadian franchise operators who want to grow with confidence.
           </p>
         </div>
+
       </section>
 
       {/* Category filter */}

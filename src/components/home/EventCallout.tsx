@@ -1,57 +1,73 @@
 "use client";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { Calendar, MapPin, ArrowRight, Lock } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export function EventCallout() {
   return (
-    <section className="py-6 bg-[#1C2B4A]">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+    <section className="relative overflow-hidden" style={{ minHeight: "480px" }}>
+      {/* Toronto skyline photograph */}
+      <img
+        src="https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?auto=format&fit=crop&w=1920&q=80"
+        alt="Toronto at night"
+        aria-hidden
+        className="absolute inset-0 w-full h-full object-cover"
+      />
+      {/* Deep gradient overlay */}
+      <div
+        className="absolute inset-0"
+        style={{ background: "linear-gradient(105deg, rgba(10,16,28,0.96) 0%, rgba(10,16,28,0.88) 50%, rgba(10,16,28,0.70) 100%)" }}
+      />
+      {/* Gold accent line on left */}
+      <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#C8921A]" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 py-20">
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
+          transition={{ duration: 0.65 }}
+          className="grid lg:grid-cols-[1fr_auto] gap-10 items-center"
         >
-          <Link href="/executive-circle/events" className="group block">
-            <div
-              className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 px-6 py-5 rounded-xl border border-[#C8921A]/25 hover:border-[#C8921A]/50 transition-colors"
-              style={{ background: "rgba(200,146,26,0.06)" }}
-            >
-              <div className="flex items-start sm:items-center gap-4">
-                <div
-                  className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0"
-                  style={{ background: "rgba(200,146,26,0.15)" }}
-                >
-                  <Calendar size={18} className="text-[#C8921A]" />
-                </div>
-                <div>
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="font-sans-ui text-[10px] font-semibold tracking-[0.15em] text-[#C8921A] uppercase">
-                      Executive Circle · Roundtable 01
-                    </span>
-                    <span className="inline-flex items-center gap-1 font-sans-ui text-[10px] text-white/35">
-                      <Lock size={9} /> Invite Only
-                    </span>
-                  </div>
-                  <p className="font-display text-[18px] sm:text-[20px] text-white leading-tight">
-                    The Systems Readiness Audit
-                  </p>
-                  <div className="flex items-center gap-4 mt-1">
-                    <span className="flex items-center gap-1.5 font-sans-ui text-[12px] text-white/50">
-                      <Calendar size={11} /> July 25, 2026
-                    </span>
-                    <span className="flex items-center gap-1.5 font-sans-ui text-[12px] text-white/50">
-                      <MapPin size={11} /> Toronto, ON
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div className="flex items-center gap-2 font-sans-ui text-[13px] font-semibold text-[#C8921A] group-hover:gap-3 transition-all shrink-0">
-                Request to Attend <ArrowRight size={14} />
-              </div>
+          {/* Left — event identity */}
+          <div>
+            <div className="flex flex-wrap items-center gap-3 mb-6">
+              <span className="font-sans-ui text-[11px] font-semibold tracking-[0.22em] text-[#C8921A] uppercase">
+                Executive Circle · Roundtable 01
+              </span>
+              <span className="w-1 h-1 rounded-full bg-white/20" />
+              <span className="font-sans-ui text-[11px] text-white/35 uppercase tracking-wider">Invite Only</span>
             </div>
-          </Link>
+
+            <h2 className="font-display text-[clamp(40px,6vw,76px)] text-white leading-[0.88] mb-5">
+              THE SYSTEMS<br />READINESS AUDIT.
+            </h2>
+
+            <p className="text-[17px] sm:text-[19px] text-white/55 leading-relaxed max-w-xl mb-8" style={{ fontFamily: "'Constantia', Georgia, serif" }}>
+              Is your franchise operationally ready to scale — and what&rsquo;s standing in the way? A half-day in Toronto with the executives building Canada&rsquo;s largest franchise systems.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-x-8 gap-y-2">
+              <span className="font-sans-ui text-[14px] text-white/55">July 25, 2026</span>
+              <span className="w-px h-4 bg-white/15 hidden sm:block" />
+              <span className="font-sans-ui text-[14px] text-white/55">Toronto, Ontario</span>
+              <span className="w-px h-4 bg-white/15 hidden sm:block" />
+              <span className="font-sans-ui text-[14px] text-white/55">$150 per attendee</span>
+            </div>
+          </div>
+
+          {/* Right — CTA */}
+          <div className="lg:text-right">
+            <Link
+              href="/executive-circle/events"
+              className="inline-flex items-center gap-2.5 font-sans-ui text-[14px] font-semibold bg-[#C8921A] text-white px-8 py-4 rounded-sm hover:bg-[#B07D14] transition-colors"
+            >
+              Request Your Invitation <ArrowRight size={15} />
+            </Link>
+            <p className="font-sans-ui text-[11px] text-white/30 mt-3 lg:text-right">
+              Limited seats · Applications reviewed weekly
+            </p>
+          </div>
         </motion.div>
       </div>
     </section>

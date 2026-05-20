@@ -2,29 +2,15 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import {
-  ArrowLeft,
-  ArrowRight,
-  Calendar,
-  MapPin,
-  Users,
-  CheckCircle,
-  Lock,
-  BarChart3,
-  Brain,
-  Shield,
-  Layers,
-  Eye,
-  Cpu,
-} from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle } from "lucide-react";
 
-const DIMENSIONS = [
-  { icon: Layers, label: "Data Infrastructure", color: "#C8921A" },
-  { icon: BarChart3, label: "Marketing Systems", color: "#1A6478" },
-  { icon: Shield, label: "Operational Consistency", color: "#2EA5A0" },
-  { icon: Eye, label: "Unit Visibility", color: "#D84F18" },
-  { icon: Users, label: "Customer Experience Systems", color: "#C8921A" },
-  { icon: Cpu, label: "AI Readiness", color: "#1A6478" },
+const SIX_DIMENSIONS = [
+  { n: "01", title: "Data Infrastructure" },
+  { n: "02", title: "Marketing Systems" },
+  { n: "03", title: "Operational Consistency" },
+  { n: "04", title: "Unit Visibility" },
+  { n: "05", title: "Customer Experience Systems" },
+  { n: "06", title: "AI Readiness" },
 ];
 
 export default function EventsPage() {
@@ -39,163 +25,195 @@ export default function EventsPage() {
   }
 
   const inputClass =
-    "font-sans-ui text-[14px] w-full px-4 py-2.5 rounded-sm border border-[rgba(28,43,74,0.15)] text-[#1C2B4A] focus:outline-none focus:border-[#C8921A] bg-[#FDFBF8]";
+    "font-sans-ui text-[14px] w-full px-4 py-2.5 rounded-sm border border-[rgba(28,43,74,0.15)] text-[#1C2B4A] focus:outline-none focus:border-[#C8921A] bg-[#FDFBF8] transition-colors";
 
   return (
     <div className="min-h-screen bg-[#EDE9E3]" style={{ fontFamily: "'Constantia', Georgia, serif" }}>
 
-      {/* ── Hero ─────────────────────────────────────────── */}
-      <section className="bg-[#1C2B4A] pt-32 pb-24 px-6 lg:px-10 relative overflow-hidden">
+      {/* ── Hero ─────────────────────────────────────────────────── */}
+      <section className="relative min-h-screen flex flex-col justify-end overflow-hidden">
+        {/* Toronto skyline photograph */}
+        <img
+          src="https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?auto=format&fit=crop&w=1920&q=80"
+          alt="Toronto skyline at night"
+          aria-hidden
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        {/* Gradient overlay — sky to near-black at bottom */}
+        <div
+          className="absolute inset-0"
+          style={{ background: "linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(10,16,28,0.78) 55%, rgba(10,16,28,0.97) 100%)" }}
+        />
+
         {/* Breadcrumb */}
-        <div className="relative max-w-5xl mx-auto mb-8 pt-4">
+        <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-10 w-full pt-36">
           <Link href="/executive-circle" className="inline-flex items-center gap-1.5 font-sans-ui text-[12px] text-white/40 hover:text-white/70 transition-colors">
             <ArrowLeft size={12} /> Executive Circle
           </Link>
         </div>
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 60% 50% at 70% 30%, rgba(200,146,26,0.08) 0%, transparent 70%)" }}
-        />
-        <div className="relative max-w-5xl mx-auto">
+
+        {/* Content pinned to bottom */}
+        <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-10 w-full pb-20 pt-8">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+          >
+            <div className="flex flex-wrap items-center gap-3 mb-6">
+              <span className="font-sans-ui text-[11px] font-semibold tracking-[0.22em] text-[#C8921A] uppercase">
+                Executive Circle · Roundtable 01
+              </span>
+              <span className="w-1 h-1 rounded-full bg-white/25" />
+              <span className="font-sans-ui text-[11px] text-white/40">Invite Only · $150</span>
+            </div>
+            <h1 className="font-display text-[clamp(52px,8vw,100px)] text-white leading-[0.88] mb-6">
+              THE SYSTEMS<br />READINESS<br />AUDIT.
+            </h1>
+          </motion.div>
+
           <motion.div
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6, delay: 0.35 }}
+            className="flex flex-wrap items-center gap-6 mb-10"
           >
-            <div className="flex flex-wrap items-center gap-4 mb-8">
-              <span className="inline-flex items-center gap-2 font-sans-ui text-[11px] font-semibold tracking-[0.2em] text-[#C8921A] uppercase">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#C8921A] animate-pulse" />
-                Executive Circle · Roundtable 01
-              </span>
-              <span className="inline-flex items-center gap-1.5 font-sans-ui text-[11px] text-white/40">
-                <Lock size={10} /> Invite Only
-              </span>
-            </div>
+            <span className="font-sans-ui text-[15px] text-white/70">July 25, 2026</span>
+            <span className="w-px h-4 bg-white/20" />
+            <span className="font-sans-ui text-[15px] text-white/70">Toronto, Ontario</span>
+            <span className="w-px h-4 bg-white/20" />
+            <span className="font-sans-ui text-[15px] text-white/70">Half-day session</span>
           </motion.div>
 
-          <motion.h1
-            className="font-display text-[clamp(44px,7vw,88px)] text-white leading-[0.88] mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-          >
-            THE SYSTEMS<br />READINESS AUDIT.
-          </motion.h1>
-
           <motion.div
-            className="w-12 h-0.5 bg-[#C8921A] mb-8"
-            initial={{ scaleX: 0, originX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ duration: 0.5, delay: 0.4 }}
-          />
-
-          <motion.p
-            className="text-[19px] sm:text-[21px] text-white/60 leading-relaxed max-w-2xl mb-10"
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.45 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
           >
-            Is your franchise operationally ready to scale — and what&rsquo;s standing in the way?
-          </motion.p>
+            <a
+              href="#request"
+              className="inline-flex items-center gap-2 font-sans-ui text-[14px] font-semibold bg-[#C8921A] text-white px-7 py-3.5 rounded-sm hover:bg-[#B07D14] transition-colors"
+            >
+              Request Your Invitation <ArrowRight size={15} />
+            </a>
+          </motion.div>
+        </div>
+      </section>
 
-          {/* Event details strip */}
-          <motion.div
-            className="flex flex-wrap gap-6"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.55 }}
-          >
-            {[
-              { icon: Calendar, label: "July 25, 2026" },
-              { icon: MapPin, label: "Toronto, Ontario" },
-              { icon: Users, label: "Invite-Only · Limited Seats" },
-            ].map(({ icon: Icon, label }) => (
-              <div key={label} className="flex items-center gap-2 font-sans-ui text-[13px] text-white/55">
-                <Icon size={14} className="text-[#C8921A]" />
-                {label}
+      {/* ── The session ──────────────────────────────────────────── */}
+      <section className="py-24 px-6 lg:px-10 bg-[#EDE9E3]">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid lg:grid-cols-[1fr_380px] gap-20 items-start">
+
+            <div>
+              <p className="font-sans-ui text-[11px] font-semibold tracking-[0.22em] text-[#C8921A] uppercase mb-6">
+                About the Day
+              </p>
+              <h2 className="font-display text-[clamp(36px,4vw,56px)] text-[#1C2B4A] leading-[0.92] mb-8">
+                THE ROOM YOU<br />WANT TO BE IN.
+              </h2>
+              <div className="w-10 h-0.5 bg-[#C8921A] mb-10" />
+              <div className="space-y-6 text-[17px] leading-relaxed text-[#4A5568]">
+                <p>
+                  Is your franchise operationally ready to scale — and what&rsquo;s standing in the way? A half-day with the executives who are building Canada&rsquo;s largest franchise systems, and an honest look at where the gaps are.
+                </p>
+                <p>
+                  No panels. No sponsor keynotes. This is a working session: sixty operators, a structured agenda, and the kind of direct conversation that does not happen at industry conferences.
+                </p>
+                <p>
+                  Every participant works through the same six-dimension readiness framework and leaves with a scored assessment of their organization. Where you are strong. Where delay is costing you.
+                </p>
+              </div>
+            </div>
+
+            {/* Event photo */}
+            <div className="relative rounded-xl overflow-hidden aspect-[3/4]">
+              <img
+                src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&w=800&q=80"
+                alt="Executive roundtable"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(28,43,74,0.6) 0%, transparent 60%)" }} />
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <p className="font-display text-[22px] text-white leading-tight">July 25, 2026</p>
+                <p className="font-sans-ui text-[13px] text-white/60 mt-1">Toronto · Invite Only</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Six dimensions ───────────────────────────────────────── */}
+      <section className="py-24 px-6 lg:px-10 bg-[#1C2B4A] relative overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1497366754035-f200586a9e6a?auto=format&fit=crop&w=1920&q=80"
+          alt=""
+          aria-hidden
+          className="absolute inset-0 w-full h-full object-cover opacity-10"
+        />
+        <div className="relative z-10 max-w-5xl mx-auto">
+          <p className="font-sans-ui text-[11px] font-semibold tracking-[0.22em] text-[#C8921A] uppercase mb-4">
+            What You&rsquo;ll Work Through
+          </p>
+          <h2 className="font-display text-[clamp(36px,4vw,56px)] text-white leading-[0.92] mb-4">
+            SIX DIMENSIONS.<br />ONE CLEAR PICTURE.
+          </h2>
+          <p className="font-sans-ui text-[14px] text-white/45 mb-14 max-w-lg">
+            Each dimension is scored. Every gap has a cost. The session translates readiness into clarity — and urgency into a plan.
+          </p>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.06] rounded-xl overflow-hidden">
+            {SIX_DIMENSIONS.map((d) => (
+              <div key={d.n} className="bg-[#1C2B4A] p-8 hover:bg-white/[0.04] transition-colors">
+                <div className="font-display text-[42px] text-[#C8921A]/20 leading-none mb-3">{d.n}</div>
+                <div className="font-display text-[22px] text-white leading-tight">{d.title.toUpperCase()}</div>
               </div>
             ))}
-            <div className="flex items-center gap-2 font-sans-ui text-[13px] font-semibold text-[#C8921A]">
-              $150 per attendee
-            </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* ── Session overview ─────────────────────────────── */}
-      <section className="py-20 px-6 lg:px-10 bg-[#F5F1EB]">
+      {/* ── The deliverable ──────────────────────────────────────── */}
+      <section className="py-24 px-6 lg:px-10 bg-[#F5F1EB]">
         <div className="max-w-5xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
 
             <div>
-              <p className="font-sans-ui text-[11px] font-semibold tracking-[0.2em] text-[#C8921A] uppercase mb-4">
-                About the Session
+              <p className="font-sans-ui text-[11px] font-semibold tracking-[0.22em] text-[#C8921A] uppercase mb-4">
+                What You&rsquo;ll Leave With
               </p>
-              <h2 className="font-display text-[clamp(32px,4vw,52px)] text-[#1C2B4A] leading-[0.92] mb-6">
-                A STRUCTURED<br />READINESS ASSESSMENT.
+              <h2 className="font-display text-[clamp(36px,4vw,52px)] text-[#1C2B4A] leading-[0.92] mb-6">
+                YOUR READINESS<br />REPORT.
               </h2>
               <div className="w-10 h-0.5 bg-[#C8921A] mb-8" />
-              <div className="space-y-5 text-[16px] leading-relaxed text-[#4A5568]">
-                <p>
-                  A structured readiness assessment across six dimensions: data infrastructure, marketing systems, operational consistency, unit visibility, customer experience systems, and AI readiness.
-                </p>
-                <p>
-                  Every participant gets a score. Every gap has a cost. The session creates urgency — and the Summit becomes the obvious next step.
-                </p>
-              </div>
-
-              <div
-                className="mt-10 p-6 rounded-xl border border-[#C8921A]/20 bg-white"
-                style={{ borderLeft: "3px solid #C8921A" }}
-              >
-                <p className="font-sans-ui text-[11px] font-semibold tracking-[0.15em] text-[#C8921A] uppercase mb-3">
-                  Sova Output
-                </p>
-                <p className="font-sans-ui text-[13px] text-[#1C2B4A] font-semibold mb-1">
-                  The Franchise Scale Readiness Report
-                </p>
-                <p className="font-sans-ui text-[13px] leading-relaxed text-[#718096]">
-                  The primary Summit teaser document — pitched to trade media ahead of the event. Every attendee receives a personalised readiness score and gap analysis.
-                </p>
-              </div>
+              <p className="text-[17px] leading-relaxed text-[#4A5568] mb-8">
+                Every attendee receives the Franchise Scale Readiness Report — a scored assessment of your organization across the six dimensions, the estimated cost of each gap, and a prioritized path forward.
+              </p>
+              <p className="text-[17px] leading-relaxed text-[#4A5568]">
+                This document will also be pitched to Canadian franchise trade media ahead of the Summit, positioning participating brands at the centre of the national conversation on franchise scale.
+              </p>
             </div>
 
-            <div>
-              <p className="font-sans-ui text-[11px] font-semibold tracking-[0.2em] text-[#C8921A] uppercase mb-4">
-                Session Format
+            <div
+              className="rounded-xl p-8 border-2 border-[#C8921A]/20 bg-white relative overflow-hidden"
+              style={{ borderTop: "3px solid #C8921A" }}
+            >
+              <p className="font-sans-ui text-[10px] font-semibold tracking-[0.2em] text-[#C8921A] uppercase mb-4">
+                Sova Output
               </p>
-              <div className="space-y-3 mb-10">
+              <h3 className="font-display text-[28px] text-[#1C2B4A] leading-tight mb-6">
+                THE FRANCHISE SCALE READINESS REPORT
+              </h3>
+              <div className="space-y-3">
                 {[
-                  "Six-dimension readiness assessment",
-                  "Gap scoring across your network",
-                  "Cost of delay modelling",
+                  "Scored assessment across six dimensions",
+                  "Cost-of-delay analysis per gap",
+                  "Prioritized action framework",
+                  "Peer benchmarking data",
                   "Summit preview and next steps",
-                ].map((step, i) => (
-                  <div key={step} className="flex items-start gap-3">
-                    <span className="font-display text-[20px] text-[#C8921A]/30 leading-none mt-0.5 w-6 shrink-0">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <span className="font-sans-ui text-[14px] text-[#4A5568] leading-relaxed">{step}</span>
-                  </div>
-                ))}
-              </div>
-
-              <p className="font-sans-ui text-[11px] font-semibold tracking-[0.2em] text-[#C8921A] uppercase mb-4">
-                Six Assessment Dimensions
-              </p>
-              <div className="grid grid-cols-2 gap-2.5">
-                {DIMENSIONS.map(({ icon: Icon, label, color }) => (
-                  <div
-                    key={label}
-                    className="flex items-center gap-2.5 bg-white rounded-lg px-3.5 py-3 border border-[rgba(28,43,74,0.07)]"
-                  >
-                    <div
-                      className="w-7 h-7 rounded-md flex items-center justify-center shrink-0"
-                      style={{ background: `${color}14` }}
-                    >
-                      <Icon size={14} style={{ color }} />
-                    </div>
-                    <span className="font-sans-ui text-[11px] font-medium text-[#1C2B4A] leading-tight">{label}</span>
+                ].map((item) => (
+                  <div key={item} className="flex items-start gap-2.5">
+                    <div className="w-1 h-1 rounded-full bg-[#C8921A] mt-2 shrink-0" />
+                    <span className="font-sans-ui text-[13px] text-[#4A5568]">{item}</span>
                   </div>
                 ))}
               </div>
@@ -204,39 +222,76 @@ export default function EventsPage() {
         </div>
       </section>
 
-      {/* ── Speakers teaser ──────────────────────────────── */}
-      <section className="py-20 px-6 lg:px-10 bg-[#1C2B4A]">
-        <div className="max-w-5xl mx-auto text-center">
-          <p className="font-sans-ui text-[11px] font-semibold tracking-[0.2em] text-[#C8921A] uppercase mb-4">
-            Guest Speakers
-          </p>
-          <h2 className="font-display text-[clamp(32px,4vw,56px)] text-white leading-[0.92] mb-6">
-            LEADING VOICES<br />IN CANADIAN FRANCHISING.
-          </h2>
-          <p className="text-[17px] text-white/55 max-w-xl mx-auto mb-10">
-            The July roundtable will feature guest speakers drawn from the senior leadership of Canada&rsquo;s most respected franchise systems. Speaker announcements coming soon.
-          </p>
-          <div className="inline-flex items-center gap-2 font-sans-ui text-[12px] text-[#C8921A] border border-[#C8921A]/30 px-5 py-2.5 rounded-full">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#C8921A] animate-pulse" />
-            Speaker lineup announced June 2026
+      {/* ── Speakers ─────────────────────────────────────────────── */}
+      <section className="relative overflow-hidden">
+        <img
+          src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=1920&q=80"
+          alt=""
+          aria-hidden
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div
+          className="absolute inset-0"
+          style={{ background: "rgba(28,43,74,0.88)" }}
+        />
+        <div className="relative z-10 py-24 px-6 lg:px-10">
+          <div className="max-w-5xl mx-auto text-center">
+            <p className="font-sans-ui text-[11px] font-semibold tracking-[0.22em] text-[#C8921A] uppercase mb-4">
+              Guest Speakers
+            </p>
+            <h2 className="font-display text-[clamp(36px,5vw,64px)] text-white leading-[0.92] mb-6">
+              LEADING PRACTITIONERS.<br />DIRECT CONVERSATION.
+            </h2>
+            <p className="text-[18px] text-white/55 max-w-2xl mx-auto leading-relaxed mb-10">
+              The July roundtable will feature guest speakers from the senior leadership of Canada&rsquo;s most recognized franchise systems. The agenda is built around their experience — not a stage.
+            </p>
+            <div className="inline-flex items-center gap-2.5 font-sans-ui text-[12px] text-[#C8921A] border border-[#C8921A]/30 px-5 py-2.5 rounded-full">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#C8921A] animate-pulse" />
+              Speaker lineup announced June 2026
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── Request to attend form ───────────────────────── */}
-      <section className="py-20 px-6 lg:px-10 bg-[#EDE9E3]" id="request">
-        <div className="max-w-2xl mx-auto">
-          <p className="font-sans-ui text-[11px] font-semibold tracking-[0.2em] text-[#C8921A] uppercase mb-4">
-            Request to Attend
+      {/* ── Who attends ──────────────────────────────────────────── */}
+      <section className="py-20 px-6 lg:px-10 bg-[#EDE9E3]">
+        <div className="max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-3">
+            {[
+              { role: "CEO / Founder", note: "Building the next phase of their network" },
+              { role: "COO / VP Operations", note: "Responsible for system-wide consistency" },
+              { role: "CMO / VP Marketing", note: "Accountable for brand and performance" },
+              { role: "VP Franchise Development", note: "Growing the network intelligently" },
+              { role: "Director of Operations", note: "Executing across every location" },
+              { role: "Director of Marketing", note: "Delivering campaigns at scale" },
+            ].map((p) => (
+              <div key={p.role} className="bg-[#FDFBF8] rounded-xl p-6 border border-[rgba(28,43,74,0.07)]">
+                <div className="w-2 h-2 rounded-full bg-[#C8921A] mb-4" />
+                <p className="font-sans-ui text-[14px] font-semibold text-[#1C2B4A] mb-1">{p.role}</p>
+                <p className="font-sans-ui text-[12px] text-[#718096] leading-snug">{p.note}</p>
+              </div>
+            ))}
+          </div>
+          <p className="font-sans-ui text-[12px] text-[#718096] text-center mt-6">
+            Canadian franchise brands · 10+ locations · Invite-only attendance
           </p>
-          <h2 className="font-display text-[clamp(32px,4vw,52px)] text-[#1C2B4A] leading-[0.92] mb-3">
-            SUBMIT YOUR<br />REQUEST.
+        </div>
+      </section>
+
+      {/* ── Request form ─────────────────────────────────────────── */}
+      <section className="py-20 px-6 lg:px-10 bg-[#1C2B4A]" id="request">
+        <div className="max-w-2xl mx-auto">
+          <p className="font-sans-ui text-[11px] font-semibold tracking-[0.22em] text-[#C8921A] uppercase mb-4">
+            Request Your Invitation
+          </p>
+          <h2 className="font-display text-[clamp(36px,4vw,56px)] text-white leading-[0.92] mb-3">
+            APPLY TO ATTEND.
           </h2>
-          <p className="font-sans-ui text-[14px] text-[#718096] mb-10">
-            This is an invite-only event. Requests are reviewed by the Sova team. Confirmed attendees will receive an invoice for the $150 attendance fee.
+          <p className="font-sans-ui text-[14px] text-white/50 mb-10">
+            Attendance is by invitation only. Requests are reviewed by the Sova team. Confirmed guests receive an invoice for the $150 attendance fee.
           </p>
 
-          <div className="bg-[#FDFBF8] rounded-xl p-8 border border-[rgba(28,43,74,0.08)]" style={{ borderTop: "3px solid #C8921A" }}>
+          <div className="bg-[#FDFBF8] rounded-xl p-8" style={{ borderTop: "3px solid #C8921A" }}>
             {!submitted ? (
               <form onSubmit={handleSubmit} className="space-y-4">
                 {[
@@ -279,7 +334,7 @@ export default function EventsPage() {
 
                 <div>
                   <label className="font-sans-ui text-[11px] font-semibold tracking-[0.1em] uppercase text-[#718096] block mb-1.5">
-                    How did you hear about this event? (optional)
+                    How did you hear about this event?
                   </label>
                   <input
                     type="text"
@@ -293,19 +348,18 @@ export default function EventsPage() {
                   type="submit"
                   className="font-sans-ui text-[14px] font-semibold w-full bg-[#1C2B4A] text-white px-6 py-3.5 rounded-sm hover:bg-[#263d6b] transition-colors flex items-center justify-center gap-2"
                 >
-                  Submit Request to Attend <ArrowRight size={16} />
+                  Submit Application <ArrowRight size={15} />
                 </button>
-
                 <p className="font-sans-ui text-[11px] text-[#718096] text-center">
-                  Invite-only · $150 per attendee · Toronto, July 25, 2026
+                  $150 per attendee · Toronto · July 25, 2026
                 </p>
               </form>
             ) : (
-              <div className="text-center py-8">
-                <CheckCircle size={40} className="text-[#2EA5A0] mx-auto mb-4" />
-                <h3 className="font-display text-[28px] text-[#1C2B4A] mb-3">Request Received</h3>
-                <p className="font-sans-ui text-[14px] text-[#4A5568] max-w-sm mx-auto">
-                  Thank you for your interest. We&apos;ll review your request and be in touch within 5 business days.
+              <div className="text-center py-10">
+                <CheckCircle size={36} className="text-[#2EA5A0] mx-auto mb-4" />
+                <h3 className="font-display text-[28px] text-[#1C2B4A] mb-3">Application Received</h3>
+                <p className="font-sans-ui text-[14px] text-[#4A5568] max-w-sm mx-auto leading-relaxed">
+                  Thank you. We&apos;ll review your application and be in touch within 5 business days.
                 </p>
               </div>
             )}

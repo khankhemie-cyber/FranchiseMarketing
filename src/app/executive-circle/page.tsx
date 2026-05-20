@@ -73,8 +73,17 @@ export default function ExecutiveCirclePage() {
       className="min-h-screen bg-[#EDE9E3]"
     >
       {/* ── Hero ─────────────────────────────────────────────── */}
-      <section className="bg-[#1C2B4A] pt-40 pb-28 px-6 lg:px-10">
-        <div className="max-w-5xl mx-auto">
+      <section className="bg-[#1C2B4A] pt-40 pb-28 px-6 lg:px-10 relative overflow-hidden">
+        {/* Photo background */}
+        <img
+          src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&w=1920&q=80"
+          alt=""
+          aria-hidden
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectFit: "cover" }}
+        />
+        <div className="absolute inset-0" style={{ background: "rgba(28,43,74,0.82)" }} />
+        <div className="max-w-5xl mx-auto relative">
           <p className="font-sans-ui text-[11px] font-semibold tracking-[0.22em] text-[#C8921A] uppercase mb-6">
             Executive Circle
           </p>

@@ -13,8 +13,14 @@ const SAMPLE_BRANDS = [
 
 export function RankingsTeaser() {
   return (
-    <section className="py-24 bg-[#1C2B4A]">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10">
+    <section className="py-24 bg-[#1C2B4A] relative overflow-hidden">
+      <img
+        src="https://images.unsplash.com/photo-1464817739973-0128fe77aaa1?auto=format&fit=crop&w=1920&q=80"
+        alt=""
+        aria-hidden
+        className="absolute inset-0 w-full h-full object-cover opacity-[0.07]"
+      />
+      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
           {/* Left — preview table */}
           <motion.div

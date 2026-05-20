@@ -47,6 +47,18 @@ const ROLES = [
 export function WhoItServes() {
   return (
     <section className="py-24 bg-[#F5F1EB]">
+      {/* Full-width photo strip */}
+      <div className="relative h-64 overflow-hidden mb-16">
+        <img
+          src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1920&q=80"
+          alt="Franchise restaurant interior"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        <div
+          className="absolute inset-0"
+          style={{ background: "linear-gradient(to bottom, rgba(245,241,235,0) 0%, rgba(245,241,235,0) 40%, rgba(245,241,235,1) 100%)" }}
+        />
+      </div>
       <div className="max-w-7xl mx-auto px-6 lg:px-10">
         <div className="text-center mb-16">
           <div className="font-sans-ui text-[11px] font-semibold tracking-[0.2em] text-[#C8921A] uppercase mb-4">
