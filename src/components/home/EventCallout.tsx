@@ -64,7 +64,10 @@ export function EventCallout() {
             >
               Request Your Invitation <ArrowRight size={15} />
             </Link>
-            <p className="font-sans-ui text-[11px] text-white/30 mt-3 lg:text-right">
+            <p className="font-sans-ui text-[12px] font-semibold text-[#C8921A] mt-3 lg:text-right">
+              No cost to apply
+            </p>
+            <p className="font-sans-ui text-[11px] text-white/30 mt-1 lg:text-right">
               Limited seats · Applications reviewed weekly
             </p>
           </div>

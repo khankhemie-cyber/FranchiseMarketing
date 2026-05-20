@@ -117,9 +117,6 @@ export default function EventsPage() {
                   Is your franchise operationally ready to scale — and what&rsquo;s standing in the way? A half-day with the executives who are building Canada&rsquo;s largest franchise systems, and an honest look at where the gaps are.
                 </p>
                 <p>
-                  No panels. No sponsor keynotes. This is a working session: sixty operators, a structured agenda, and the kind of direct conversation that does not happen at industry conferences.
-                </p>
-                <p>
                   Every participant works through the same six-dimension readiness framework and leaves with a scored assessment of their organization. Where you are strong. Where delay is costing you.
                 </p>
               </div>
@@ -188,9 +185,6 @@ export default function EventsPage() {
               <p className="text-[17px] leading-relaxed text-[#4A5568] mb-8">
                 Every attendee receives the Franchise Scale Readiness Report — a scored assessment of your organization across the six dimensions, the estimated cost of each gap, and a prioritized path forward.
               </p>
-              <p className="text-[17px] leading-relaxed text-[#4A5568]">
-                This document will also be pitched to Canadian franchise trade media ahead of the Summit, positioning participating brands at the centre of the national conversation on franchise scale.
-              </p>
             </div>
 
             <div
@@ -209,7 +203,6 @@ export default function EventsPage() {
                   "Cost-of-delay analysis per gap",
                   "Prioritized action framework",
                   "Peer benchmarking data",
-                  "Summit preview and next steps",
                 ].map((item) => (
                   <div key={item} className="flex items-start gap-2.5">
                     <div className="w-1 h-1 rounded-full bg-[#C8921A] mt-2 shrink-0" />
@@ -287,9 +280,13 @@ export default function EventsPage() {
           <h2 className="font-display text-[clamp(36px,4vw,56px)] text-white leading-[0.92] mb-3">
             APPLY TO ATTEND.
           </h2>
-          <p className="font-sans-ui text-[14px] text-white/50 mb-10">
+          <p className="font-sans-ui text-[14px] text-white/50 mb-4">
             Attendance is by invitation only. Requests are reviewed by the Sova team. Confirmed guests receive an invoice for the $150 attendance fee.
           </p>
+          <div className="inline-flex items-center gap-2 font-sans-ui text-[13px] font-semibold text-[#C8921A] bg-[#C8921A]/10 border border-[#C8921A]/25 px-4 py-2 rounded-full mb-10">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#C8921A]" />
+            No cost to submit your application
+          </div>
 
           <div className="bg-[#FDFBF8] rounded-xl p-8" style={{ borderTop: "3px solid #C8921A" }}>
             {!submitted ? (
@@ -351,7 +348,7 @@ export default function EventsPage() {
                   Submit Application <ArrowRight size={15} />
                 </button>
                 <p className="font-sans-ui text-[11px] text-[#718096] text-center">
-                  $150 per attendee · Toronto · July 25, 2026
+                  No cost to apply · $150 per attendee if confirmed · Toronto · July 25, 2026
                 </p>
               </form>
             ) : (
