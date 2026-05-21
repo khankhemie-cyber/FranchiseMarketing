@@ -62,7 +62,7 @@ export function EventCallout() {
               href="/executive-circle/events"
               className="inline-flex items-center gap-2.5 font-sans-ui text-[14px] font-semibold bg-[#C8921A] text-white px-8 py-4 rounded-sm hover:bg-[#B07D14] transition-colors"
             >
-              Request Your Invitation <ArrowRight size={15} />
+              Request Invitation <ArrowRight size={15} />
             </Link>
             <p className="font-sans-ui text-[12px] font-semibold text-[#C8921A] mt-3 lg:text-right">
               No cost to apply
