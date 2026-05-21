@@ -93,7 +93,7 @@ export default function EventsPage() {
               href="#request"
               className="inline-flex items-center gap-2 font-sans-ui text-[14px] font-semibold bg-[#C8921A] text-white px-7 py-3.5 rounded-sm hover:bg-[#B07D14] transition-colors"
             >
-              Request Your Invitation <ArrowRight size={15} />
+              Request Invitation <ArrowRight size={15} />
             </a>
           </motion.div>
         </div>
@@ -125,7 +125,7 @@ export default function EventsPage() {
             {/* Event photo */}
             <div className="relative rounded-xl overflow-hidden aspect-[3/4]">
               <img
-                src="https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&w=800&q=80"
+                src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=800&q=80"
                 alt="Executive roundtable"
                 className="absolute inset-0 w-full h-full object-cover"
               />
@@ -218,7 +218,7 @@ export default function EventsPage() {
       {/* ── Speakers ─────────────────────────────────────────────── */}
       <section className="relative overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=1920&q=80"
+          src="https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?auto=formatphoto-1560179707-f14e90ef3623?auto=format&fit=crop&w=1920&q=80fit=cropphoto-1560179707-f14e90ef3623?auto=format&fit=crop&w=1920&q=80w=1920photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=1920&q=80q=80"
           alt=""
           aria-hidden
           className="absolute inset-0 w-full h-full object-cover"
@@ -275,7 +275,7 @@ export default function EventsPage() {
       <section className="py-20 px-6 lg:px-10 bg-[#1C2B4A]" id="request">
         <div className="max-w-2xl mx-auto">
           <p className="font-sans-ui text-[11px] font-semibold tracking-[0.22em] text-[#C8921A] uppercase mb-4">
-            Request Your Invitation
+            Request Invitation
           </p>
           <h2 className="font-display text-[clamp(36px,4vw,56px)] text-white leading-[0.92] mb-3">
             APPLY TO ATTEND.
