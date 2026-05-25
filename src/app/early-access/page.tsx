@@ -1,28 +1,43 @@
-"use client";
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { ArrowRight, CheckCircle } from "lucide-react";
-import { Button } from "@/components/ui/button";
+'use client';
+
+import { useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
+import { CheckCircle } from 'lucide-react';
 
 const BENEFITS = [
-  "Locked-in founder pricing for 24 months",
-  "Priority access to new modules as they launch",
-  "Direct line to the product team",
-  "Co-design sessions for features relevant to your network",
-  "First cohort of Canada Franchise Rankings participants",
-  "Executive Circle founding membership",
+  'Locked-in founder pricing for 24 months',
+  'Priority access to new modules as they launch',
+  'Direct line to the product team',
+  'Co-design sessions for features relevant to your network',
+  'First cohort of Canada Franchise Rankings participants',
+  'Executive Circle founding membership',
 ];
 
 export default function EarlyAccessPage() {
-  const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({
-    name: "", title: "", brand: "", email: "", locations: "", notes: "",
-  });
+  const iframeRef = useRef<HTMLIFrameElement>(null);
 
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setSubmitted(true);
-  }
+  useEffect(() => {
+    const frame = iframeRef.current;
+    if (!frame) return;
+    let src = frame.src;
+    if (!(/[?&]referrername=/.test(src))) {
+      let rfr = window.location.href;
+      try {
+        rfr = window.self !== window.top
+          ? window.top!.location.href
+          : (/^https?:\/\/[\w.-]+\.[a-zA-Z]{2,}/i.test(rfr) ? rfr : '');
+      } catch (e) {}
+      if (rfr) {
+        if (rfr.length > 1800) {
+          const qi = rfr.indexOf('?');
+          if (qi > -1) rfr = rfr.substring(0, qi);
+          if (rfr.length > 1800) rfr = rfr.substring(0, 1800);
+        }
+        src += (src.indexOf('?') > 0 ? '&' : '?') + 'referrername=' + encodeURIComponent(rfr);
+      }
+    }
+    if (frame.src !== src) frame.src = src;
+  }, []);
 
   return (
     <>
@@ -30,7 +45,7 @@ export default function EarlyAccessPage() {
       <section className="pt-32 pb-20 bg-[#1C2B4A] relative overflow-hidden">
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 60% 50% at 60% 40%, rgba(200,146,26,0.08) 0%, transparent 70%)" }}
+          style={{ background: 'radial-gradient(ellipse 60% 50% at 60% 40%, rgba(200,146,26,0.08) 0%, transparent 70%)' }}
         />
         <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
           <div className="max-w-2xl">
@@ -83,74 +98,14 @@ export default function EarlyAccessPage() {
             {/* Right — form */}
             <div>
               <div className="bg-white rounded-xl p-8 border border-[rgba(28,43,74,0.08)]">
-                {!submitted ? (
-                  <>
-                    <h3 className="font-display text-[28px] text-[#1C2B4A] mb-6">REQUEST EARLY ACCESS</h3>
-                    <form onSubmit={handleSubmit} className="space-y-4">
-                      {[
-                        { key: "name", label: "Full Name", type: "text", required: true },
-                        { key: "title", label: "Job Title", type: "text", required: true },
-                        { key: "brand", label: "Franchise Brand / Company", type: "text", required: true },
-                        { key: "email", label: "Work Email", type: "email", required: true },
-                      ].map(({ key, label, type, required }) => (
-                        <div key={key}>
-                          <label className="font-sans-ui text-[11px] font-semibold tracking-[0.1em] uppercase text-[#718096] block mb-1.5">
-                            {label}
-                          </label>
-                          <input
-                            type={type}
-                            required={required}
-                            value={form[key as keyof typeof form]}
-                            onChange={(e) => setForm({ ...form, [key]: e.target.value })}
-                            className="font-sans-ui text-[14px] w-full px-4 py-2.5 rounded-sm border border-[rgba(28,43,74,0.15)] text-[#1C2B4A] focus:outline-none focus:border-[#C8921A] bg-[#FDFBF8]"
-                          />
-                        </div>
-                      ))}
-                      <div>
-                        <label className="font-sans-ui text-[11px] font-semibold tracking-[0.1em] uppercase text-[#718096] block mb-1.5">
-                          Number of Locations
-                        </label>
-                        <select
-                          value={form.locations}
-                          onChange={(e) => setForm({ ...form, locations: e.target.value })}
-                          className="font-sans-ui text-[14px] w-full px-4 py-2.5 rounded-sm border border-[rgba(28,43,74,0.15)] text-[#1C2B4A] focus:outline-none focus:border-[#C8921A] bg-[#FDFBF8]"
-                          required
-                        >
-                          <option value="">Select range</option>
-                          <option>1–10</option>
-                          <option>11–50</option>
-                          <option>51–200</option>
-                          <option>200+</option>
-                        </select>
-                      </div>
-                      <div>
-                        <label className="font-sans-ui text-[11px] font-semibold tracking-[0.1em] uppercase text-[#718096] block mb-1.5">
-                          What are you trying to solve? (optional)
-                        </label>
-                        <textarea
-                          rows={3}
-                          value={form.notes}
-                          onChange={(e) => setForm({ ...form, notes: e.target.value })}
-                          className="font-sans-ui text-[14px] w-full px-4 py-2.5 rounded-sm border border-[rgba(28,43,74,0.15)] text-[#1C2B4A] focus:outline-none focus:border-[#C8921A] bg-[#FDFBF8] resize-none"
-                        />
-                      </div>
-                      <Button type="submit" variant="dark" size="lg" className="w-full justify-center">
-                        Request Early Access <ArrowRight size={16} />
-                      </Button>
-                      <p className="font-sans-ui text-[11px] text-[#718096] text-center">
-                        We review applications weekly and respond within 5 business days.
-                      </p>
-                    </form>
-                  </>
-                ) : (
-                  <div className="text-center py-8">
-                    <CheckCircle size={40} className="text-[#2EA5A0] mx-auto mb-4" />
-                    <h3 className="font-display text-[28px] text-[#1C2B4A] mb-3">Application Received</h3>
-                    <p className="font-sans-ui text-[14px] text-[#4A5568]">
-                      Thank you for your interest in early access. We&apos;ll review your application and be in touch within 5 business days.
-                    </p>
-                  </div>
-                )}
+                <h3 className="font-display text-[28px] text-[#1C2B4A] mb-6">REQUEST EARLY ACCESS</h3>
+                <iframe
+                  ref={iframeRef}
+                  id="ziframe_958060"
+                  aria-label="Sova Request a Demo Form"
+                  style={{ height: '500px', width: '99%', border: 'none' }}
+                  src="https://forms.zohopublic.ca/operationssov1/form/SovaRequestaDemoForm/formperma/EsouIeAMfuRmgDePcQDZe48-jbbE2bIcdmcqDBtMpCY"
+                />
               </div>
             </div>
           </div>
