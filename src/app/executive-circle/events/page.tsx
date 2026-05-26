@@ -114,7 +114,7 @@ export default function EventsPage() {
               <div className="w-10 h-0.5 bg-[#C8921A] mb-10" />
               <div className="space-y-6 text-[17px] leading-relaxed text-[#4A5568]">
                 <p>
-                  Is your franchise operationally ready to scale — and what&rsquo;s standing in the way? A half-day with the executives who are building Canada&rsquo;s largest franchise systems, and an honest look at where the gaps are.
+                  Is your franchise operationally ready to scale &mdash; and what&rsquo;s standing in the way? A half-day with the executives who are building Canada&rsquo;s largest franchise systems, and an honest look at where the gaps are.
                 </p>
                 <p>
                   Every participant works through the same six-dimension readiness framework and leaves with a scored assessment of their organization. Where you are strong. Where delay is costing you.
@@ -126,7 +126,7 @@ export default function EventsPage() {
             <div className="relative rounded-xl overflow-hidden aspect-[3/4]">
               <img
                 src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=800&q=80"
-                alt="Executive roundtable"
+                alt="Toronto skyline"
                 className="absolute inset-0 w-full h-full object-cover"
               />
               <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(28,43,74,0.6) 0%, transparent 60%)" }} />
@@ -155,7 +155,7 @@ export default function EventsPage() {
             SIX DIMENSIONS.<br />ONE CLEAR PICTURE.
           </h2>
           <p className="font-sans-ui text-[14px] text-white/45 mb-14 max-w-lg">
-            Each dimension is scored. Every gap has a cost. The session translates readiness into clarity — and urgency into a plan.
+            Each dimension is scored. Every gap has a cost. The session translates readiness into clarity &mdash; and urgency into a plan.
           </p>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/[0.06] rounded-xl overflow-hidden">
@@ -183,7 +183,7 @@ export default function EventsPage() {
               </h2>
               <div className="w-10 h-0.5 bg-[#C8921A] mb-8" />
               <p className="text-[17px] leading-relaxed text-[#4A5568] mb-8">
-                Every attendee receives the Franchise Scale Readiness Report — a scored assessment of your organization across the six dimensions, the estimated cost of each gap, and a prioritized path forward.
+                Every attendee receives the Franchise Scale Readiness Report &mdash; a scored assessment of your organization across the six dimensions, the estimated cost of each gap, and a prioritized path forward.
               </p>
             </div>
 
@@ -218,7 +218,7 @@ export default function EventsPage() {
       {/* ── Speakers ─────────────────────────────────────────────── */}
       <section className="relative overflow-hidden">
         <img
-          src="https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?auto=formatphoto-1560179707-f14e90ef3623?auto=format&fit=crop&w=1920&q=80fit=cropphoto-1560179707-f14e90ef3623?auto=format&fit=crop&w=1920&q=80w=1920photo-1560179707-f14e90ef3623?auto=format&fit=crop&w=1920&q=80q=80"
+          src="https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?auto=format&fit=crop&w=1920&q=80"
           alt=""
           aria-hidden
           className="absolute inset-0 w-full h-full object-cover"
@@ -236,7 +236,7 @@ export default function EventsPage() {
               LEADING PRACTITIONERS.<br />DIRECT CONVERSATION.
             </h2>
             <p className="text-[18px] text-white/55 max-w-2xl mx-auto leading-relaxed mb-10">
-              The July roundtable will feature guest speakers from the senior leadership of Canada&rsquo;s most recognized franchise systems. The agenda is built around their experience — not a stage.
+              The July roundtable will feature guest speakers from the senior leadership of Canada&rsquo;s most recognized franchise systems. The agenda is built around their experience &mdash; not a stage.
             </p>
             <div className="inline-flex items-center gap-2.5 font-sans-ui text-[12px] text-[#C8921A] border border-[#C8921A]/30 px-5 py-2.5 rounded-full">
               <span className="w-1.5 h-1.5 rounded-full bg-[#C8921A] animate-pulse" />
@@ -322,9 +322,9 @@ export default function EventsPage() {
                     className={inputClass}
                   >
                     <option value="">Select range</option>
-                    <option>1–10</option>
-                    <option>11–50</option>
-                    <option>51–200</option>
+                    <option>1&ndash;10</option>
+                    <option>11&ndash;50</option>
+                    <option>51&ndash;200</option>
                     <option>200+</option>
                   </select>
                 </div>
