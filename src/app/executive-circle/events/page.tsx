@@ -1,8 +1,8 @@
 "use client";
-import { useState } from "react";
+import { useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, CheckCircle } from "lucide-react";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 
 const SIX_DIMENSIONS = [
   { n: "01", title: "Data Infrastructure" },
@@ -14,18 +14,28 @@ const SIX_DIMENSIONS = [
 ];
 
 export default function EventsPage() {
-  const [submitted, setSubmitted] = useState(false);
-  const [form, setForm] = useState({
-    name: "", title: "", brand: "", email: "", locations: "", how: "",
-  });
-
-  function handleSubmit(e: React.FormEvent) {
-    e.preventDefault();
-    setSubmitted(true);
-  }
-
-  const inputClass =
-    "font-sans-ui text-[14px] w-full px-4 py-2.5 rounded-sm border border-[rgba(28,43,74,0.15)] text-[#1C2B4A] focus:outline-none focus:border-[#C8921A] bg-[#FDFBF8] transition-colors";
+  useEffect(() => {
+    try {
+      const zf_frame = document.getElementById("ziframe_257204") as HTMLIFrameElement | null;
+      if (!zf_frame) return;
+      let ifrmSrc = zf_frame.src;
+      if (!(/[?&]referrername=/.test(ifrmSrc))) {
+        let rfr = window.location.href;
+        try {
+          rfr = window.self !== window.top ? window.top!.location.href : rfr;
+        } catch (e) {}
+        if (rfr && rfr !== "") {
+          if (rfr.length > 1800) {
+            const qi = rfr.indexOf("?");
+            if (qi > -1) rfr = rfr.substring(0, qi);
+            if (rfr.length > 1800) rfr = rfr.substring(0, 1800);
+          }
+          ifrmSrc += (ifrmSrc.indexOf("?") > 0 ? "&" : "?") + "referrername=" + encodeURIComponent(rfr);
+        }
+      }
+      if (zf_frame.src !== ifrmSrc) zf_frame.src = ifrmSrc;
+    } catch (e) {}
+  }, []);
 
   return (
     <div className="min-h-screen bg-[#EDE9E3]" style={{ fontFamily: "'Constantia', Georgia, serif" }}>
@@ -288,78 +298,14 @@ export default function EventsPage() {
             No cost to submit your application
           </div>
 
-          <div className="bg-[#FDFBF8] rounded-xl p-8" style={{ borderTop: "3px solid #C8921A" }}>
-            {!submitted ? (
-              <form onSubmit={handleSubmit} className="space-y-4">
-                {[
-                  { key: "name", label: "Full Name", type: "text" },
-                  { key: "title", label: "Job Title", type: "text" },
-                  { key: "brand", label: "Franchise Brand / Company", type: "text" },
-                  { key: "email", label: "Work Email", type: "email" },
-                ].map(({ key, label, type }) => (
-                  <div key={key}>
-                    <label className="font-sans-ui text-[11px] font-semibold tracking-[0.1em] uppercase text-[#718096] block mb-1.5">
-                      {label}
-                    </label>
-                    <input
-                      type={type}
-                      required
-                      value={form[key as keyof typeof form]}
-                      onChange={(e) => setForm({ ...form, [key]: e.target.value })}
-                      className={inputClass}
-                    />
-                  </div>
-                ))}
-
-                <div>
-                  <label className="font-sans-ui text-[11px] font-semibold tracking-[0.1em] uppercase text-[#718096] block mb-1.5">
-                    Number of Locations
-                  </label>
-                  <select
-                    required
-                    value={form.locations}
-                    onChange={(e) => setForm({ ...form, locations: e.target.value })}
-                    className={inputClass}
-                  >
-                    <option value="">Select range</option>
-                    <option>1&ndash;10</option>
-                    <option>11&ndash;50</option>
-                    <option>51&ndash;200</option>
-                    <option>200+</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label className="font-sans-ui text-[11px] font-semibold tracking-[0.1em] uppercase text-[#718096] block mb-1.5">
-                    How did you hear about this event?
-                  </label>
-                  <input
-                    type="text"
-                    value={form.how}
-                    onChange={(e) => setForm({ ...form, how: e.target.value })}
-                    className={inputClass}
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="font-sans-ui text-[14px] font-semibold w-full bg-[#1C2B4A] text-white px-6 py-3.5 rounded-sm hover:bg-[#263d6b] transition-colors flex items-center justify-center gap-2"
-                >
-                  Submit Application <ArrowRight size={15} />
-                </button>
-                <p className="font-sans-ui text-[11px] text-[#718096] text-center">
-                  No cost to apply · $150 per attendee if confirmed · Toronto · July 25, 2026
-                </p>
-              </form>
-            ) : (
-              <div className="text-center py-10">
-                <CheckCircle size={36} className="text-[#2EA5A0] mx-auto mb-4" />
-                <h3 className="font-display text-[28px] text-[#1C2B4A] mb-3">Application Received</h3>
-                <p className="font-sans-ui text-[14px] text-[#4A5568] max-w-sm mx-auto leading-relaxed">
-                  Thank you. We&apos;ll review your application and be in touch within 5 business days.
-                </p>
-              </div>
-            )}
+          <div className="bg-[#FDFBF8] rounded-xl overflow-hidden" style={{ borderTop: "3px solid #C8921A" }}>
+            <iframe
+              id="ziframe_257204"
+              aria-label="Sova Event Invitations Form"
+              frameBorder={0}
+              style={{ height: "500px", width: "99%", border: "none", display: "block" }}
+              src="https://forms.zohopublic.ca/operationssov1/form/SovaEventInvitationsForm/formperma/6IgnFXe-dPL20cJkfDQb07xJMsO3b5SI6ZTysFxJFe8"
+            />
           </div>
         </div>
       </section>
