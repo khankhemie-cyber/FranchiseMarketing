@@ -6,19 +6,16 @@ import { ArrowRight } from "lucide-react";
 export function EventCallout() {
   return (
     <section className="relative overflow-hidden" style={{ minHeight: "480px" }}>
-      {/* Toronto skyline photograph */}
       <img
         src="https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?auto=format&fit=crop&w=1920&q=80"
         alt="Toronto at night"
         aria-hidden
         className="absolute inset-0 w-full h-full object-cover"
       />
-      {/* Deep gradient overlay */}
       <div
         className="absolute inset-0"
         style={{ background: "linear-gradient(105deg, rgba(10,16,28,0.96) 0%, rgba(10,16,28,0.88) 50%, rgba(10,16,28,0.70) 100%)" }}
       />
-      {/* Gold accent line on left */}
       <div className="absolute left-0 top-0 bottom-0 w-1 bg-[#C8921A]" />
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10 py-20">
@@ -29,7 +26,6 @@ export function EventCallout() {
           transition={{ duration: 0.65 }}
           className="grid lg:grid-cols-[1fr_auto] gap-10 items-center"
         >
-          {/* Left — event identity */}
           <div>
             <div className="flex flex-wrap items-center gap-3 mb-6">
               <span className="font-sans-ui text-[11px] font-semibold tracking-[0.22em] text-[#C8921A] uppercase">
@@ -56,7 +52,6 @@ export function EventCallout() {
             </div>
           </div>
 
-          {/* Right — CTA */}
           <div className="lg:text-right">
             <Link
               href="/executive-circle/events"

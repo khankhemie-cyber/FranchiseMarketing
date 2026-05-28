@@ -22,7 +22,6 @@ export function RankingsTeaser() {
       />
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-10">
         <div className="grid lg:grid-cols-2 gap-16 items-start">
-          {/* Left — preview table */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -30,12 +29,11 @@ export function RankingsTeaser() {
             transition={{ duration: 0.6 }}
           >
             <div className="rounded-xl overflow-hidden border border-white/[0.08]" style={{ background: "rgba(255,255,255,0.04)" }}>
-              {/* Table header */}
-              <div className="grid grid-cols-[40px_1fr_auto_auto] gap-4 px-5 py-3 border-b border-white/[0.08]">
+              <div className="grid grid-cols-[40px_1fr_64px] sm:grid-cols-[40px_1fr_auto_64px] gap-3 px-5 py-3 border-b border-white/[0.08]">
                 <div className="font-sans-ui text-[10px] font-semibold tracking-[0.15em] text-white/30 uppercase">#</div>
                 <div className="font-sans-ui text-[10px] font-semibold tracking-[0.15em] text-white/30 uppercase">Brand</div>
-                <div className="font-sans-ui text-[10px] font-semibold tracking-[0.15em] text-white/30 uppercase">Category</div>
-                <div className="font-sans-ui text-[10px] font-semibold tracking-[0.15em] text-white/30 uppercase">Score</div>
+                <div className="font-sans-ui text-[10px] font-semibold tracking-[0.15em] text-white/30 uppercase hidden sm:block">Category</div>
+                <div className="font-sans-ui text-[10px] font-semibold tracking-[0.15em] text-white/30 uppercase text-right">Score</div>
               </div>
 
               {SAMPLE_BRANDS.map((brand, i) => (
@@ -45,12 +43,12 @@ export function RankingsTeaser() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 + i * 0.07 }}
-                  className="grid grid-cols-[40px_1fr_auto_auto] gap-4 px-5 py-4 border-b border-white/[0.05] items-center"
+                  className="grid grid-cols-[40px_1fr_64px] sm:grid-cols-[40px_1fr_auto_64px] gap-3 px-5 py-4 border-b border-white/[0.05] items-center"
                 >
                   <div className="font-display text-[22px] text-[#C8921A]">{brand.rank}</div>
                   <div className="font-sans-ui text-[14px] font-medium text-white">{brand.name}</div>
                   <div className="font-sans-ui text-[11px] text-white/40 hidden sm:block">{brand.category}</div>
-                  <div className="font-sans-ui text-[13px] font-semibold text-[#C8921A]">{brand.score}</div>
+                  <div className="font-sans-ui text-[13px] font-semibold text-[#C8921A] text-right">{brand.score}</div>
                 </motion.div>
               ))}
 
@@ -65,7 +63,6 @@ export function RankingsTeaser() {
             </div>
           </motion.div>
 
-          {/* Right — content */}
           <motion.div
             initial={{ opacity: 0, x: 24 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -80,7 +77,7 @@ export function RankingsTeaser() {
             </h2>
             <div className="w-10 h-0.5 bg-[#C8921A] mb-6" />
             <p className="text-[17px] leading-relaxed text-white/55 mb-8" style={{ fontFamily: "'Constantia', Georgia, serif" }}>
-              Sova's annual Canada Franchise Rankings evaluate 1,300+ brands on marketing sophistication, franchisee support quality, digital presence, and growth trajectory — the only ranking built by franchise marketing operators, not analysts.
+              Sova’s annual Canada Franchise Rankings evaluate 1,300+ brands on marketing sophistication, franchisee support quality, digital presence, and growth trajectory — the only ranking built by franchise marketing operators, not analysts.
             </p>
 
             <div className="grid grid-cols-3 gap-4 mb-8">

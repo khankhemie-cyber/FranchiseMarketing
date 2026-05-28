@@ -40,7 +40,6 @@ export default function EventsPage() {
   return (
     <div className="min-h-screen bg-[#EDE9E3]" style={{ fontFamily: "'Constantia', Georgia, serif" }}>
 
-      {/* ── Hero ─────────────────────────────────────────────────── */}
       <section className="relative min-h-screen flex flex-col justify-end overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?auto=format&fit=crop&w=1920&q=80"
@@ -105,7 +104,6 @@ export default function EventsPage() {
         </div>
       </section>
 
-      {/* ── The session ──────────────────────────────────────────── */}
       <section className="py-24 px-6 lg:px-10 bg-[#EDE9E3]">
         <div className="max-w-5xl mx-auto">
           <div className="grid lg:grid-cols-[1fr_380px] gap-20 items-start">
@@ -136,7 +134,6 @@ export default function EventsPage() {
         </div>
       </section>
 
-      {/* ── Six dimensions ───────────────────────────────────────── */}
       <section className="py-24 px-6 lg:px-10 bg-[#1C2B4A] relative overflow-hidden">
         <img src="https://images.unsplash.com/photo-1497366754035-f200586a9e6a?auto=format&fit=crop&w=1920&q=80" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover opacity-10" />
         <div className="relative z-10 max-w-5xl mx-auto">
@@ -154,7 +151,6 @@ export default function EventsPage() {
         </div>
       </section>
 
-      {/* ── The deliverable ──────────────────────────────────────── */}
       <section className="py-24 px-6 lg:px-10 bg-[#F5F1EB]">
         <div className="max-w-5xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -180,7 +176,6 @@ export default function EventsPage() {
         </div>
       </section>
 
-      {/* ── Speakers ─────────────────────────────────────────────── */}
       <section className="relative overflow-hidden">
         <img src="https://images.unsplash.com/photo-1569025690938-a00729c9e1f9?auto=format&fit=crop&w=1920&q=80" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0" style={{ background: "rgba(28,43,74,0.88)" }} />
@@ -197,7 +192,6 @@ export default function EventsPage() {
         </div>
       </section>
 
-      {/* ── Who attends ──────────────────────────────────────────── */}
       <section className="py-20 px-6 lg:px-10 bg-[#EDE9E3]">
         <div className="max-w-5xl mx-auto">
           <div className="grid md:grid-cols-3 gap-3">
@@ -222,7 +216,6 @@ export default function EventsPage() {
         </div>
       </section>
 
-      {/* ── Request form ─────────────────────────────────────────── */}
       <section className="py-20 px-6 lg:px-10 bg-[#1C2B4A]" id="request">
         <div className="max-w-2xl mx-auto">
           <p className="font-sans-ui text-[11px] font-semibold tracking-[0.22em] text-[#C8921A] uppercase mb-4">Request Invitation</p>

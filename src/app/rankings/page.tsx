@@ -68,7 +68,6 @@ export default function RankingsPage() {
       style={{ fontFamily: "'Constantia', Georgia, serif" }}
       className="min-h-screen bg-[#EDE9E3]"
     >
-      {/* ── Hero ─────────────────────────────────────────────── */}
       <section className="relative overflow-hidden bg-[#EDE9E3] pt-40 pb-24 px-6 lg:px-10">
         <img src="https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=1920&q=80" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover" />
         <div className="absolute inset-0" style={{ background: "rgba(237,233,227,0.92)" }} />
@@ -95,7 +94,6 @@ export default function RankingsPage() {
         </div>
       </section>
 
-      {/* ── Methodology ──────────────────────────────────────── */}
       <section className="relative overflow-hidden py-24 px-6 lg:px-10 bg-[#1C2B4A]">
         <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1920&q=80" alt="" aria-hidden className="absolute inset-0 w-full h-full object-cover opacity-[0.08]" />
         <div className="relative max-w-5xl mx-auto">
@@ -139,7 +137,6 @@ export default function RankingsPage() {
         </div>
       </section>
 
-      {/* ── Top 10 table ─────────────────────────────────────── */}
       <section className="py-24 px-6 lg:px-10 bg-[#F5F1EB]">
         <div className="max-w-5xl mx-auto">
           <p className="font-sans-ui text-[11px] font-semibold tracking-[0.2em] text-[#C8921A] uppercase mb-4">
@@ -150,8 +147,7 @@ export default function RankingsPage() {
           </h2>
 
           <div className="bg-[#FDFBF8] border border-[rgba(28,43,74,0.08)] rounded-xl overflow-hidden">
-            {/* Table header */}
-            <div className="grid grid-cols-[48px_1fr_160px_80px_80px] gap-4 px-6 py-3 bg-[#EDE9E3] border-b border-[rgba(28,43,74,0.08)]">
+            <div className="grid grid-cols-[48px_1fr_72px] sm:grid-cols-[48px_1fr_72px_72px] md:grid-cols-[48px_1fr_160px_72px_72px] gap-3 px-6 py-3 bg-[#EDE9E3] border-b border-[rgba(28,43,74,0.08)]">
               <span className="font-sans-ui text-[10px] font-semibold tracking-[0.15em] text-[#718096] uppercase">Rank</span>
               <span className="font-sans-ui text-[10px] font-semibold tracking-[0.15em] text-[#718096] uppercase">Brand</span>
               <span className="font-sans-ui text-[10px] font-semibold tracking-[0.15em] text-[#718096] uppercase hidden md:block">Category</span>
@@ -166,7 +162,7 @@ export default function RankingsPage() {
               return (
                 <div
                   key={row.rank}
-                  className={`grid grid-cols-[48px_1fr_160px_80px_80px] gap-4 px-6 py-4 items-center transition-colors hover:bg-[rgba(28,43,74,0.03)] ${
+                  className={`grid grid-cols-[48px_1fr_72px] sm:grid-cols-[48px_1fr_72px_72px] md:grid-cols-[48px_1fr_160px_72px_72px] gap-3 px-6 py-4 items-center transition-colors hover:bg-[rgba(28,43,74,0.03)] ${
                     i < TOP_10.length - 1 ? 'border-b border-[rgba(28,43,74,0.05)]' : ''
                   } ${isEven ? '' : 'bg-[rgba(28,43,74,0.015)]'}`}
                 >
@@ -186,7 +182,6 @@ export default function RankingsPage() {
         </div>
       </section>
 
-      {/* ── Category leaders ─────────────────────────────────── */}
       <section className="py-24 px-6 lg:px-10 bg-[#EDE9E3]">
         <div className="max-w-5xl mx-auto">
           <p className="font-sans-ui text-[11px] font-semibold tracking-[0.2em] text-[#C8921A] uppercase mb-4">
@@ -228,7 +223,6 @@ export default function RankingsPage() {
         </div>
       </section>
 
-      {/* ── Report CTA ───────────────────────────────────────── */}
       <section className="py-24 px-6 lg:px-10 bg-[#F5F1EB]">
         <div className="max-w-2xl mx-auto text-center">
           <p className="font-sans-ui text-[11px] font-semibold tracking-[0.2em] text-[#C8921A] uppercase mb-4">

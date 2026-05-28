@@ -14,10 +14,8 @@ export function Hero() {
 
   return (
     <section ref={ref} className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-[#EDE9E3] noise">
-      {/* Grid */}
       <div className="absolute inset-0 grid-subtle opacity-50 pointer-events-none" />
 
-      {/* Animated orbs */}
       <motion.div style={{ y: y1 }} className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="orb-a absolute top-[10%] right-[8%] w-[520px] h-[520px] rounded-full"
           style={{ background: "radial-gradient(circle, rgba(200,146,26,0.12) 0%, transparent 70%)" }} />
@@ -30,7 +28,6 @@ export function Hero() {
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10 pt-36 pb-24 w-full">
         <div className="grid lg:grid-cols-[1fr_420px] gap-12 xl:gap-20 items-center">
 
-          {/* Left */}
           <motion.div style={{ opacity }} className="relative z-10">
             <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
               <div className="inline-flex items-center gap-2 font-sans-ui text-[11px] font-semibold tracking-[0.2em] text-[#C8921A] uppercase mb-8">
@@ -103,7 +100,6 @@ export function Hero() {
             </motion.div>
           </motion.div>
 
-          {/* Right — Dashboard */}
           <motion.div
             style={{ y: y2 }}
             initial={{ opacity: 0, y: 40 }}
@@ -137,7 +133,6 @@ function DashboardCard() {
         boxShadow: "0 32px 100px rgba(28,43,74,0.16), 0 4px 24px rgba(28,43,74,0.08), inset 0 1px 0 rgba(255,255,255,0.85)",
       }}
     >
-      {/* Chrome */}
       <div className="flex items-center gap-2 px-4 py-3 border-b border-[rgba(28,43,74,0.07)] bg-[#F5F1EB]">
         <div className="w-2.5 h-2.5 rounded-full bg-[#D84F18]/50" />
         <div className="w-2.5 h-2.5 rounded-full bg-[#C8921A]/50" />
@@ -150,7 +145,6 @@ function DashboardCard() {
       </div>
 
       <div className="p-5 space-y-4">
-        {/* KPI row */}
         <div className="grid grid-cols-3 gap-2.5">
           {LIVE_METRICS.map((k, i) => (
             <motion.div
@@ -169,7 +163,6 @@ function DashboardCard() {
           ))}
         </div>
 
-        {/* Chart */}
         <div className="rounded-xl border border-[rgba(28,43,74,0.07)] p-4 bg-white">
           <div className="flex items-center justify-between mb-3">
             <div className="font-sans-ui text-[11px] font-semibold text-[#1C2B4A]">Location Performance Index</div>
@@ -191,7 +184,6 @@ function DashboardCard() {
           </div>
         </div>
 
-        {/* Module pills */}
         <div className="flex flex-wrap gap-1.5">
           {["Campaigns", "Paid Media", "Geofencing", "Vendors", "Analytics", "AI Layer"].map((m) => (
             <motion.span
