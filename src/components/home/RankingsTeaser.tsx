@@ -31,11 +31,11 @@ export function RankingsTeaser() {
           >
             <div className="rounded-xl overflow-hidden border border-white/[0.08]" style={{ background: "rgba(255,255,255,0.04)" }}>
               {/* Table header */}
-              <div className="grid grid-cols-[40px_1fr_auto_auto] gap-4 px-5 py-3 border-b border-white/[0.08]">
+              <div className="grid grid-cols-[40px_1fr_64px] sm:grid-cols-[40px_1fr_auto_64px] gap-3 px-5 py-3 border-b border-white/[0.08]">
                 <div className="font-sans-ui text-[10px] font-semibold tracking-[0.15em] text-white/30 uppercase">#</div>
                 <div className="font-sans-ui text-[10px] font-semibold tracking-[0.15em] text-white/30 uppercase">Brand</div>
-                <div className="font-sans-ui text-[10px] font-semibold tracking-[0.15em] text-white/30 uppercase">Category</div>
-                <div className="font-sans-ui text-[10px] font-semibold tracking-[0.15em] text-white/30 uppercase">Score</div>
+                <div className="font-sans-ui text-[10px] font-semibold tracking-[0.15em] text-white/30 uppercase hidden sm:block">Category</div>
+                <div className="font-sans-ui text-[10px] font-semibold tracking-[0.15em] text-white/30 uppercase text-right">Score</div>
               </div>
 
               {SAMPLE_BRANDS.map((brand, i) => (
@@ -45,12 +45,12 @@ export function RankingsTeaser() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.1 + i * 0.07 }}
-                  className="grid grid-cols-[40px_1fr_auto_auto] gap-4 px-5 py-4 border-b border-white/[0.05] items-center"
+                  className="grid grid-cols-[40px_1fr_64px] sm:grid-cols-[40px_1fr_auto_64px] gap-3 px-5 py-4 border-b border-white/[0.05] items-center"
                 >
                   <div className="font-display text-[22px] text-[#C8921A]">{brand.rank}</div>
                   <div className="font-sans-ui text-[14px] font-medium text-white">{brand.name}</div>
                   <div className="font-sans-ui text-[11px] text-white/40 hidden sm:block">{brand.category}</div>
-                  <div className="font-sans-ui text-[13px] font-semibold text-[#C8921A]">{brand.score}</div>
+                  <div className="font-sans-ui text-[13px] font-semibold text-[#C8921A] text-right">{brand.score}</div>
                 </motion.div>
               ))}
 

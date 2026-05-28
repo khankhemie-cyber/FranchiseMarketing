@@ -151,7 +151,7 @@ export default function RankingsPage() {
 
           <div className="bg-[#FDFBF8] border border-[rgba(28,43,74,0.08)] rounded-xl overflow-hidden">
             {/* Table header */}
-            <div className="grid grid-cols-[48px_1fr_160px_80px_80px] gap-4 px-6 py-3 bg-[#EDE9E3] border-b border-[rgba(28,43,74,0.08)]">
+            <div className="grid grid-cols-[48px_1fr_72px] sm:grid-cols-[48px_1fr_72px_72px] md:grid-cols-[48px_1fr_160px_72px_72px] gap-3 px-6 py-3 bg-[#EDE9E3] border-b border-[rgba(28,43,74,0.08)]">
               <span className="font-sans-ui text-[10px] font-semibold tracking-[0.15em] text-[#718096] uppercase">Rank</span>
               <span className="font-sans-ui text-[10px] font-semibold tracking-[0.15em] text-[#718096] uppercase">Brand</span>
               <span className="font-sans-ui text-[10px] font-semibold tracking-[0.15em] text-[#718096] uppercase hidden md:block">Category</span>
@@ -166,7 +166,7 @@ export default function RankingsPage() {
               return (
                 <div
                   key={row.rank}
-                  className={`grid grid-cols-[48px_1fr_160px_80px_80px] gap-4 px-6 py-4 items-center transition-colors hover:bg-[rgba(28,43,74,0.03)] ${
+                  className={`grid grid-cols-[48px_1fr_72px] sm:grid-cols-[48px_1fr_72px_72px] md:grid-cols-[48px_1fr_160px_72px_72px] gap-3 px-6 py-4 items-center transition-colors hover:bg-[rgba(28,43,74,0.03)] ${
                     i < TOP_10.length - 1 ? 'border-b border-[rgba(28,43,74,0.05)]' : ''
                   } ${isEven ? '' : 'bg-[rgba(28,43,74,0.015)]'}`}
                 >
